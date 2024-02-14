@@ -29,8 +29,15 @@ class SlidesCollectionViewCell: UICollectionViewCell {
         let text = UILabel()
         text.font = UIFont(name: "SFProDisplay-Medium", size: 14)
         text.textColor = UIColor(red: 107/255, green: 114/255, blue: 128/255, alpha: 0.9)
-        text.textAlignment = .center
-        text.numberOfLines = 4
+        text.numberOfLines = 0
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 7
+        paragraphStyle.alignment = .center
+        let attributedString = NSMutableAttributedString(string: text.text ?? "default value")
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
+        text.attributedText = attributedString
+        
         return text
     }()
     
@@ -38,7 +45,6 @@ class SlidesCollectionViewCell: UICollectionViewCell {
         let button = UIButton()
         let title: String = "Өткізу"
         var config = UIButton.Configuration.filled()
-        config.title = title
         config.attributedTitle = AttributedString(title, attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Regular", size: 12)!]))
         //config.attributedTitle?.foregroundColor = UIColor(named: "111827 - FFFFFF")
         config.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16)
@@ -103,7 +109,7 @@ class SlidesCollectionViewCell: UICollectionViewCell {
         gradientView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(slideImage.snp.bottom).offset(3)
-            make.height.equalTo(271)
+            make.height.equalTo(285)
         }
     }
     //- MARK: - Views

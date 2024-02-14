@@ -70,11 +70,13 @@ class OnboardingViewController: UIViewController, UICollectionViewDelegate, UICo
                               анимациялық жобалар, телебағдарламалар
                               мен реалити-шоулар, аниме және тағы
                               басқалары
-                              """), Slides(image: "secondSlide", centerLabel: "ÖZINŞE-ге қош келдің!", textLabel: """
+                              """), 
+                       Slides(image: "secondSlide", centerLabel: "ÖZINŞE-ге қош келдің!", textLabel: """
                                            Кез келген құрылғыдан қара
                                            Сүйікті фильміңді қосымша төлемсіз
                                            телефоннан, планшеттен, ноутбуктан қара
-                                           """), Slides(image: "thirdSlide", centerLabel: "ÖZINŞE-ге қош келдің!", textLabel: """
+                                           """), 
+                       Slides(image: "thirdSlide", centerLabel: "ÖZINŞE-ге қош келдің!", textLabel: """
                                                         Тіркелу оңай. Қазір тіркел де қалаған
                                                         фильміңе қол жеткіз
                                                         """)]
