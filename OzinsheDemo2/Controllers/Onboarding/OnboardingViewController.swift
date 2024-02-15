@@ -117,6 +117,8 @@ class OnboardingViewController: UIViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SlidesCollectionViewCell
         cell.setupCell(slides: slidesArray[indexPath.item])
+        cell.skipButton.addTarget(self, action: #selector(OnboardingViewController.buttonTapped), for: .touchUpInside)
+        cell.nextButton.addTarget(self, action: #selector(OnboardingViewController.buttonTapped), for: .touchUpInside)
         if indexPath.row != 2 {
             cell.nextButton.isHidden = true
         }
@@ -124,5 +126,9 @@ class OnboardingViewController: UIViewController, UICollectionViewDelegate, UICo
             cell.skipButton.isHidden = true
         }
         return cell
+    }
+    
+    @objc func buttonTapped() {
+        self.navigationController?.show(SignInViewController(), sender: self)
     }
 }

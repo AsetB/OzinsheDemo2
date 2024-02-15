@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		DB4E9E782B7BE7760074DAD5 /* CustomGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4E9E772B7BE7760074DAD5 /* CustomGradientView.swift */; };
+		DB7078962B7DE2730010BFDA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7078952B7DE2730010BFDA /* SignUpViewController.swift */; };
+		DB7078982B7E1D1E0010BFDA /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7078972B7E1D1E0010BFDA /* UIViewController+Extensions.swift */; };
+		DB70789B2B7E2E590010BFDA /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB70789A2B7E2E590010BFDA /* URLs.swift */; };
+		DB70789E2B7E2E950010BFDA /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB70789D2B7E2E950010BFDA /* Storage.swift */; };
+		DB7078A02B7E2ED90010BFDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB70789F2B7E2ED90010BFDA /* User.swift */; };
 		DBA37F952B78E63B00051C51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA37F942B78E63B00051C51 /* AppDelegate.swift */; };
 		DBA37F972B78E63B00051C51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA37F962B78E63B00051C51 /* SceneDelegate.swift */; };
 		DBA37F9E2B78E63C00051C51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBA37F9D2B78E63C00051C51 /* Assets.xcassets */; };
@@ -39,7 +44,7 @@
 		DBFDB7AF2B7C8A0700EA5C69 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7AE2B7C8A0700EA5C69 /* Grid.swift */; };
 		DBFDB7B12B7C8A1100EA5C69 /* Apperance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7B02B7C8A1100EA5C69 /* Apperance.swift */; };
 		DBFDB7B72B7C933D00EA5C69 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7B62B7C933D00EA5C69 /* SignInViewController.swift */; };
-		DBFDB7B92B7C9A6E00EA5C69 /* Textfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7B82B7C9A6E00EA5C69 /* Textfield.swift */; };
+		DBFDB7B92B7C9A6E00EA5C69 /* UITextfield+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7B82B7C9A6E00EA5C69 /* UITextfield+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +80,11 @@
 
 /* Begin PBXFileReference section */
 		DB4E9E772B7BE7760074DAD5 /* CustomGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradientView.swift; sourceTree = "<group>"; };
+		DB7078952B7DE2730010BFDA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		DB7078972B7E1D1E0010BFDA /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		DB70789A2B7E2E590010BFDA /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
+		DB70789D2B7E2E950010BFDA /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		DB70789F2B7E2ED90010BFDA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DBA37F912B78E63B00051C51 /* OzinsheDemo2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OzinsheDemo2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBA37F942B78E63B00051C51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBA37F962B78E63B00051C51 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,7 +112,7 @@
 		DBFDB7AE2B7C8A0700EA5C69 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		DBFDB7B02B7C8A1100EA5C69 /* Apperance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apperance.swift; sourceTree = "<group>"; };
 		DBFDB7B62B7C933D00EA5C69 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		DBFDB7B82B7C9A6E00EA5C69 /* Textfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Textfield.swift; sourceTree = "<group>"; };
+		DBFDB7B82B7C9A6E00EA5C69 /* UITextfield+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +147,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB7078992B7E2E4B0010BFDA /* Static */ = {
+			isa = PBXGroup;
+			children = (
+				DB70789A2B7E2E590010BFDA /* URLs.swift */,
+			);
+			path = Static;
+			sourceTree = "<group>";
+		};
+		DB70789C2B7E2E860010BFDA /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				DB70789D2B7E2E950010BFDA /* Storage.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		DBA37F882B78E63B00051C51 = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +187,8 @@
 		DBA37F932B78E63B00051C51 /* OzinsheDemo2 */ = {
 			isa = PBXGroup;
 			children = (
+				DB70789C2B7E2E860010BFDA /* Shared */,
+				DB7078992B7E2E4B0010BFDA /* Static */,
 				DBA37FDF2B79E9AB00051C51 /* Extensions */,
 				DBA37FD62B79E96E00051C51 /* Fonts */,
 				DBA37FD02B78EFDD00051C51 /* Model */,
@@ -196,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				DBA380012B7A38DF00051C51 /* Onboarding */,
-				DBFDB7B52B7C92F600EA5C69 /* Sign in-up */,
+				DBFDB7B52B7C92F600EA5C69 /* Sign in Sign Up */,
 				DBA37FE02B79E9D800051C51 /* Main */,
 				DBA37FE32B79E9EF00051C51 /* Profile */,
 				DBA37FE22B79E9E900051C51 /* Favorites */,
@@ -210,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				DBA380042B7A39B800051C51 /* Slides.swift */,
+				DB70789F2B7E2ED90010BFDA /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -231,7 +260,8 @@
 				DB4E9E772B7BE7760074DAD5 /* CustomGradientView.swift */,
 				DBFDB7AE2B7C8A0700EA5C69 /* Grid.swift */,
 				DBFDB7B02B7C8A1100EA5C69 /* Apperance.swift */,
-				DBFDB7B82B7C9A6E00EA5C69 /* Textfield.swift */,
+				DBFDB7B82B7C9A6E00EA5C69 /* UITextfield+Extensions.swift */,
+				DB7078972B7E1D1E0010BFDA /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -284,12 +314,13 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		DBFDB7B52B7C92F600EA5C69 /* Sign in-up */ = {
+		DBFDB7B52B7C92F600EA5C69 /* Sign in Sign Up */ = {
 			isa = PBXGroup;
 			children = (
 				DBFDB7B62B7C933D00EA5C69 /* SignInViewController.swift */,
+				DB7078952B7DE2730010BFDA /* SignUpViewController.swift */,
 			);
-			path = "Sign in-up";
+			path = "Sign in Sign Up";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,19 +479,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBFDB7B72B7C933D00EA5C69 /* SignInViewController.swift in Sources */,
+				DB70789B2B7E2E590010BFDA /* URLs.swift in Sources */,
 				DBA37F952B78E63B00051C51 /* AppDelegate.swift in Sources */,
+				DB70789E2B7E2E950010BFDA /* Storage.swift in Sources */,
 				DBFDB7B12B7C8A1100EA5C69 /* Apperance.swift in Sources */,
 				DBA37F972B78E63B00051C51 /* SceneDelegate.swift in Sources */,
 				DBA37FFC2B7A05D000051C51 /* SearchViewController.swift in Sources */,
+				DB7078982B7E1D1E0010BFDA /* UIViewController+Extensions.swift in Sources */,
+				DB7078A02B7E2ED90010BFDA /* User.swift in Sources */,
 				DBA37FFA2B7A05C000051C51 /* HomeViewController.swift in Sources */,
 				DBA380002B7A05EB00051C51 /* ProfileViewController.swift in Sources */,
 				DBA37FF82B7A04CD00051C51 /* TabBarController.swift in Sources */,
 				DBA37FFE2B7A05DE00051C51 /* FavoritesViewController.swift in Sources */,
 				DBA380032B7A390A00051C51 /* SlidesCollectionViewCell.swift in Sources */,
+				DB7078962B7DE2730010BFDA /* SignUpViewController.swift in Sources */,
 				DBA37FE52B79EA0B00051C51 /* OnboardingViewController.swift in Sources */,
 				DBA380052B7A39B800051C51 /* Slides.swift in Sources */,
 				DB4E9E782B7BE7760074DAD5 /* CustomGradientView.swift in Sources */,
-				DBFDB7B92B7C9A6E00EA5C69 /* Textfield.swift in Sources */,
+				DBFDB7B92B7C9A6E00EA5C69 /* UITextfield+Extensions.swift in Sources */,
 				DBFDB7AF2B7C8A0700EA5C69 /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

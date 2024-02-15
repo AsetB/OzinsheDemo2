@@ -97,7 +97,7 @@ class SlidesCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(centerLabel.snp.bottom).offset(24)
         }
         skipButton.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).inset(16)
+            make.top.equalToSuperview().inset(78)
             make.trailing.equalToSuperview().inset(16)
             make.height.equalTo(24)
         }
