@@ -85,9 +85,21 @@ class OnboardingViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "FFFFFF - 111827")
+        navigationController?.navigationBar.tintColor = ._111827_FFFFFF
         configurePageControl()
         setupViews()
         setupConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationItem.title = " "
     }
     
     //- MARK: - Views
@@ -129,6 +141,6 @@ class OnboardingViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     @objc func buttonTapped() {
-        self.navigationController?.show(SignInViewController(), sender: self)
+        navigationController?.show(SignInViewController(), sender: self)
     }
 }

@@ -13,6 +13,11 @@ import Alamofire
 
 class SignInViewController: UIViewController {
     
+    //- MARK: - Variables
+    var errorLabelTopToEmailTFBottom: Constraint? = nil
+    var passLabelTopToEmailTFBottom: Constraint? = nil
+    var errorLabelBottomToPassLabelTop: Constraint? = nil
+    
     //- MARK: - Local outlets
     lazy var titleLabel: UILabel = {
         let title = UILabel()
@@ -70,6 +75,7 @@ class SignInViewController: UIViewController {
                             for: .editingDidEnd)
         textfield.textContentType = .emailAddress
         textfield.keyboardType = .emailAddress
+        textfield.tintColor = UIColor(red: 151/255, green: 83/255, blue: 240/255, alpha: 1.0)
         return textfield
     }()
     
@@ -91,6 +97,7 @@ class SignInViewController: UIViewController {
         textfield.addTarget(self,
                             action: #selector(passTextfieldEditingDidEnd),
                             for: .editingDidEnd)
+        textfield.tintColor = UIColor(red: 151/255, green: 83/255, blue: 240/255, alpha: 1.0)
         return textfield
     }()
     
@@ -211,6 +218,14 @@ class SignInViewController: UIViewController {
         button.configuration = config
         return button
     }()
+    
+    lazy var errorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Қате формат"
+        label.textColor = UIColor(red: 255/255, green: 64/255, blue: 43/255, alpha: 1)
+        label.font = appearance.regular400Font14
+        return label
+    }()
     //- MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -237,6 +252,8 @@ class SignInViewController: UIViewController {
         view.addSubview(orLabel)
         view.addSubview(appleIDSignUpButton)
         view.addSubview(googleSignUpButton)
+        view.addSubview(errorLabel)
+        errorLabel.isHidden = true
     }
     //- MARK: - Constraints
     func setupConstraints() {
@@ -260,7 +277,8 @@ class SignInViewController: UIViewController {
             make.height.equalTo(56)
         }
         passwordLabel.snp.makeConstraints { make in
-            make.top.equalTo(emailTextfield.snp.bottom).offset(13)
+            self.passLabelTopToEmailTFBottom = make.top.equalTo(emailTextfield.snp.bottom).offset(13).priority(.high).constraint
+            self.errorLabelBottomToPassLabelTop = make.top.equalTo(errorLabel.snp.bottom).offset(16).priority(.low).constraint
             make.horizontalEdges.equalToSuperview().inset(24)
         }
         passTextfield.snp.makeConstraints { make in
@@ -304,6 +322,25 @@ class SignInViewController: UIViewController {
             make.horizontalEdges.equalToSuperview().inset(24)
             make.height.equalTo(52)
         }
+        errorLabel.snp.makeConstraints { make in
+            self.errorLabelTopToEmailTFBottom = make.top.equalTo(emailTextfield.snp.bottom).offset(16).priority(.low).constraint
+            make.horizontalEdges.equalToSuperview().inset(24)
+            make.height.equalTo(22)
+        }
+    }
+    func turnOnEmailFormatError() {
+        errorLabel.isHidden = false
+        errorLabelTopToEmailTFBottom?.update(priority: .high)
+        passLabelTopToEmailTFBottom?.update(priority: .low)
+        errorLabelBottomToPassLabelTop?.update(priority: .high)
+        emailTextfield.layer.borderColor = UIColor(red: 255/255, green: 64/255, blue: 43/255, alpha: 1.0).cgColor
+    }
+    func turnOffEmailFormatError() {
+        errorLabel.isHidden = true
+        errorLabelTopToEmailTFBottom?.update(priority: .low)
+        passLabelTopToEmailTFBottom?.update(priority: .high)
+        errorLabelBottomToPassLabelTop?.update(priority: .low)
+        emailTextfield.layer.borderColor = UIColor(red: 151/255, green: 83/255, blue: 240/255, alpha: 1.0).cgColor
     }
     
     //- MARK: - Setup Button Actions
@@ -311,6 +348,8 @@ class SignInViewController: UIViewController {
         showPassButton.addTarget(self, action: #selector(showPass), for: .touchUpInside)
         goToSignUpButton.addTarget(self, action: #selector(showSignUpScreen), for: .touchUpInside)
         enterButton.addTarget(self, action: #selector(signInAction), for: .touchUpInside)
+        appleIDSignUpButton.addTarget(self, action: #selector(underDev), for: .touchUpInside)
+        googleSignUpButton.addTarget(self, action: #selector(underDev), for: .touchUpInside)
         
     }
     @objc func showPass() {
@@ -325,6 +364,13 @@ class SignInViewController: UIViewController {
         let password = passTextfield.text!
         
         if email.isEmpty || password.isEmpty {
+            return
+        }
+        
+        if !emailTextfield.text!.isEmail(){
+            showAlertMessage(title: "Wrong email format", message: "Please write correct email")
+            emailTextfield.text = ""
+            turnOffEmailFormatError()
             return
         }
         
@@ -362,28 +408,21 @@ class SignInViewController: UIViewController {
                 }
             }
     }
+    
+    @objc func underDev() {
+        showAlertMessage(title: "Oops", message: "Not available at the moment")
+    }
+    
     //- MARK: - TextField Actions
     @objc func emailTextfieldEditingChange(){
         if !emailTextfield.text!.isEmail() {
-//            errorLabel.isHidden = false
-//            errorLabelTopToEmailTFBottom.priority = .defaultHigh
-//            passLabelTopToEmailTFBottom.priority = .defaultLow
-//            errorLabelBottomToPassLabelTop.priority = .defaultHigh
-            emailTextfield.layer.borderColor = UIColor(red: 255/255, green: 64/255, blue: 43/255, alpha: 1.0).cgColor
+            turnOnEmailFormatError()
         } else {
-//            errorLabel.isHidden = true
-//            errorLabelTopToEmailTFBottom.priority = .defaultLow
-//            passLabelTopToEmailTFBottom.priority = .defaultHigh
-//            errorLabelBottomToPassLabelTop.priority = .defaultLow
-            emailTextfield.layer.borderColor = UIColor(red: 151/255, green: 83/255, blue: 240/255, alpha: 1.0).cgColor
+            turnOffEmailFormatError()
         }
         
         if emailTextfield.text!.isEmpty {
-//            errorLabel.isHidden = true
-//            errorLabelTopToEmailTFBottom.priority = .defaultLow
-//            passLabelTopToEmailTFBottom.priority = .defaultHigh
-//            errorLabelBottomToPassLabelTop.priority = .defaultLow
-            emailTextfield.layer.borderColor = UIColor(red: 151/255, green: 83/255, blue: 240/255, alpha: 1.0).cgColor
+            turnOffEmailFormatError()
         }
     }
     @objc func emailTextfieldEditingDidBegin(){
@@ -420,11 +459,9 @@ class SignInViewController: UIViewController {
             fatalError()
         }
     }
-    
     func startApp() {
         let tabViewController = TabBarController()
         tabViewController.modalPresentationStyle = .fullScreen
         self.present(tabViewController, animated: true, completion: nil)
     }
-    
 }
