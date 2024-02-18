@@ -62,7 +62,7 @@ class SignInViewController: UIViewController {
         textfield.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.font : appearance.regular400Font16, NSAttributedString.Key.foregroundColor : UIColor(red: 156/255, green: 163/255, blue: 175/255, alpha: 1)])
         textfield.layer.cornerRadius = appearance.textFieldCornerRadius
         textfield.layer.borderWidth = 1
-        textfield.layer.borderColor = CGColor(red: 229/255, green: 235/255, blue: 240/255, alpha: 1)
+        textfield.layer.borderColor = UIColor.Border.signTextfield.cgColor
         textfield.setIcon(UIImage(named: "Message")!)
         textfield.addTarget(self, 
                             action: #selector(emailTextfieldEditingChange),
@@ -75,6 +75,7 @@ class SignInViewController: UIViewController {
                             for: .editingDidEnd)
         textfield.textContentType = .emailAddress
         textfield.keyboardType = .emailAddress
+        textfield.autocapitalizationType = .none
         textfield.tintColor = UIColor(red: 151/255, green: 83/255, blue: 240/255, alpha: 1.0)
         return textfield
     }()
@@ -86,7 +87,7 @@ class SignInViewController: UIViewController {
         textfield.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.font : appearance.regular400Font16, NSAttributedString.Key.foregroundColor : UIColor(red: 156/255, green: 163/255, blue: 175/255, alpha: 1)])
         textfield.layer.cornerRadius = appearance.textFieldCornerRadius
         textfield.layer.borderWidth = 1
-        textfield.layer.borderColor = CGColor(red: 229/255, green: 235/255, blue: 240/255, alpha: 1)
+        textfield.layer.borderColor = UIColor.Border.signTextfield.cgColor
         textfield.setIcon(UIImage(named: "Password")!)
         textfield.keyboardType = .default
         textfield.textContentType = .password
@@ -177,7 +178,7 @@ class SignInViewController: UIViewController {
         config.baseBackgroundColor = .FFFFFF_4_B_5563
         config.baseForegroundColor = ._111827_FFFFFF
         button.layer.borderWidth = 1.5
-        button.layer.borderColor = CGColor(red: 229/255, green: 231/255, blue: 235/255, alpha: 1)
+        button.layer.borderColor = UIColor.Border.appleGoogleSignInButton.cgColor
         button.layer.cornerRadius = appearance.buttonCornerRadius
         button.clipsToBounds = true
         //button.layer.borderColor = CGColor(red: 75/255, green: 85/255, blue: 99/255, alpha: 1) for dark theme border color
@@ -205,7 +206,7 @@ class SignInViewController: UIViewController {
         config.baseBackgroundColor = .FFFFFF_4_B_5563
         config.baseForegroundColor = ._111827_FFFFFF
         button.layer.borderWidth = 1.5
-        button.layer.borderColor = CGColor(red: 229/255, green: 231/255, blue: 235/255, alpha: 1)
+        button.layer.borderColor = UIColor.Border.appleGoogleSignInButton.cgColor
         button.layer.cornerRadius = appearance.buttonCornerRadius
         button.clipsToBounds = true
         //button.layer.borderColor = CGColor(red: 75/255, green: 85/255, blue: 99/255, alpha: 1) for dark theme border color
@@ -230,13 +231,27 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = appearance.FFFFFF_111827
+        navigationItem.title = ""
         setupViews()
         setupConstraints()
         setupButtonActions()
         hideKeyboardWhenTappedAround()
-        navigationItem.title = ""
+        setupBorderColor()
     }
     
+    //- MARK: - Dark mode(for CGColor)
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setupBorderColor()
+    }
+    
+    func setupBorderColor(){
+        emailTextfield.layer.borderColor = UIColor.Border.signTextfield.cgColor
+        passTextfield.layer.borderColor = UIColor.Border.signTextfield.cgColor
+        appleIDSignUpButton.layer.borderColor = UIColor.Border.appleGoogleSignInButton.cgColor
+        googleSignUpButton.layer.borderColor = UIColor.Border.appleGoogleSignInButton.cgColor
+    }
+
     //- MARK: - Views
     func setupViews() {
         view.addSubview(titleLabel)
@@ -360,12 +375,8 @@ class SignInViewController: UIViewController {
         navigationController?.show(signupVC, sender: self)
     }
     @objc func signInAction() {
-        let email = emailTextfield.text!
-        let password = passTextfield.text!
-        
-        if email.isEmpty || password.isEmpty {
-            return
-        }
+        guard let email = emailTextfield.text, !email.isEmpty else { return }
+        guard let password = passTextfield.text, !password.isEmpty else { return }
         
         if !emailTextfield.text!.isEmail(){
             showAlertMessage(title: "Wrong email format", message: "Please write correct email")
@@ -392,8 +403,9 @@ class SignInViewController: UIViewController {
                     print("JSON: \(json)")
                     
                     if let token = json["accessToken"].string {
-                        Storage.sharedInstance.accessToken = token
-                        UserDefaults.standard.set(token, forKey: "accessToken")
+                        AuthenticationService.shared.token = token
+//                        Storage.sharedInstance.accessToken = token
+//                        UserDefaults.standard.set(token, forKey: "accessToken")
                         self.startApp()
                     } else {
                         SVProgressHUD.showError(withStatus: "CONNECTION_ERROR")
@@ -438,27 +450,8 @@ class SignInViewController: UIViewController {
         passTextfield.layer.borderColor = UIColor(red: 229/255, green: 235/255, blue: 240/255, alpha: 1.0).cgColor
     }
     
-    //- MARK: - Dark mode(for CGColor)
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        switch self.traitCollection.userInterfaceStyle {
-        case .dark:
-            appleIDSignUpButton.layer.borderColor = CGColor(red: 75/255, green: 85/255, blue: 99/255, alpha: 1)
-            googleSignUpButton.layer.borderColor = CGColor(red: 75/255, green: 85/255, blue: 99/255, alpha: 1)
-            emailTextfield.layer.borderColor = CGColor(red: 55/255, green: 65/255, blue: 81/255, alpha: 1)
-            passTextfield.layer.borderColor = CGColor(red: 55/255, green: 65/255, blue: 81/255, alpha: 1)
-        case .light:
-            appleIDSignUpButton.layer.borderColor = CGColor(red: 229/255, green: 231/255, blue: 235/255, alpha: 1)
-            googleSignUpButton.layer.borderColor = CGColor(red: 229/255, green: 231/255, blue: 235/255, alpha: 1)
-            emailTextfield.layer.borderColor = CGColor(red: 229/255, green: 235/255, blue: 240/255, alpha: 1)
-            passTextfield.layer.borderColor = CGColor(red: 229/255, green: 235/255, blue: 240/255, alpha: 1)
-        case .unspecified:
-            print("unspecified")
-        @unknown default:
-            fatalError()
-        }
-    }
+    //- MARK: - StartApp
+    
     func startApp() {
         let tabViewController = TabBarController()
         tabViewController.modalPresentationStyle = .fullScreen

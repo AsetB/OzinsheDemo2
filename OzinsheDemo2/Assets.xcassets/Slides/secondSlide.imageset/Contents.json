@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "karsten-winegeart-CnEEF5eJemQ-unsplash 1.png",
+      "filename" : "Image2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "karsten-winegeart-CnEEF5eJemQ-unsplash 1@2x.png",
+      "filename" : "Image2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "karsten-winegeart-CnEEF5eJemQ-unsplash 1@3x.png",
+      "filename" : "Image2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

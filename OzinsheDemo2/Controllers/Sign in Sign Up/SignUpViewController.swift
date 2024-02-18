@@ -73,7 +73,7 @@ class SignUpViewController: UIViewController {
         textfield.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.font : appearance.regular400Font16, NSAttributedString.Key.foregroundColor : UIColor(red: 156/255, green: 163/255, blue: 175/255, alpha: 1)])
         textfield.layer.cornerRadius = appearance.textFieldCornerRadius
         textfield.layer.borderWidth = 1
-        textfield.layer.borderColor = CGColor(red: 229/255, green: 235/255, blue: 240/255, alpha: 1)
+        textfield.layer.borderColor = UIColor.Border.signTextfield.cgColor
         textfield.setIcon(UIImage(named: "Message")!)
         textfield.addTarget(self,
                             action: #selector(emailTextfieldEditingChange),
@@ -84,8 +84,9 @@ class SignUpViewController: UIViewController {
         textfield.addTarget(self,
                             action: #selector(emailTextfieldEditingDidEnd),
                             for: .editingDidEnd)
-        //textfield.textContentType = .emailAddress
+        textfield.textContentType = .emailAddress
         textfield.keyboardType = .emailAddress
+        textfield.autocapitalizationType = .none
         return textfield
     }()
     
@@ -96,7 +97,7 @@ class SignUpViewController: UIViewController {
         textfield.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.font : appearance.regular400Font16, NSAttributedString.Key.foregroundColor : UIColor(red: 156/255, green: 163/255, blue: 175/255, alpha: 1)])
         textfield.layer.cornerRadius = appearance.textFieldCornerRadius
         textfield.layer.borderWidth = 1
-        textfield.layer.borderColor = CGColor(red: 229/255, green: 235/255, blue: 240/255, alpha: 1)
+        textfield.layer.borderColor = UIColor.Border.signTextfield.cgColor
         textfield.setIcon(UIImage(named: "Password")!)
         textfield.keyboardType = .default
         //textfield.textContentType = .password
@@ -118,7 +119,7 @@ class SignUpViewController: UIViewController {
         textfield.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.font : appearance.regular400Font16, NSAttributedString.Key.foregroundColor : UIColor(red: 156/255, green: 163/255, blue: 175/255, alpha: 1)])
         textfield.layer.cornerRadius = appearance.textFieldCornerRadius
         textfield.layer.borderWidth = 1
-        textfield.layer.borderColor = CGColor(red: 229/255, green: 235/255, blue: 240/255, alpha: 1)
+        textfield.layer.borderColor = UIColor.Border.signTextfield.cgColor
         textfield.setIcon(UIImage(named: "Password")!)
         textfield.keyboardType = .default
         //textfield.textContentType = .password
@@ -204,8 +205,21 @@ class SignUpViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupButtonActions()
+        setupBorderColor()
         hideKeyboardWhenTappedAround()
     }
+    //- MARK: - Dark mode(for CGColor)
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setupBorderColor()
+    }
+    
+    func setupBorderColor(){
+        emailTextfield.layer.borderColor = UIColor.Border.signTextfield.cgColor
+        passTextfield.layer.borderColor = UIColor.Border.signTextfield.cgColor
+        repeatPassTextfield.layer.borderColor = UIColor.Border.signTextfield.cgColor
+    }
+    
     //- MARK: - Views
     func setupViews() {
         view.addSubview(titleLabel)
@@ -333,13 +347,9 @@ class SignUpViewController: UIViewController {
         navigationController?.show(signupVC, sender: self)
     }
     @objc func signUpAction() {
-        let email = emailTextfield.text!
-        let password = passTextfield.text!
-        let repeatedPass = repeatPassTextfield.text!
-        
-        if email.isEmpty || password.isEmpty || repeatedPass.isEmpty {
-            return
-        }
+        guard let email = emailTextfield.text, !email.isEmpty else { return }
+        guard let password = passTextfield.text, !password.isEmpty else { return }
+        guard let repeatedPass = repeatPassTextfield.text, !repeatedPass.isEmpty else { return }
         
         if !emailTextfield.text!.isEmail(){
             showAlertMessage(title: "Wrong email format", message: "Please write correct email")
@@ -375,8 +385,9 @@ class SignUpViewController: UIViewController {
                     print("JSON: \(json)")
                     
                     if let token = json["accessToken"].string {
-                        Storage.sharedInstance.accessToken = token
-                        UserDefaults.standard.set(token, forKey: "accessToken")
+                        AuthenticationService.shared.token = token
+//                        Storage.sharedInstance.accessToken = token
+//                        UserDefaults.standard.set(token, forKey: "accessToken")
                         self.startApp()
                     } else {
                         SVProgressHUD.showError(withStatus: "CONNECTION_ERROR")
@@ -430,29 +441,7 @@ class SignUpViewController: UIViewController {
         repeatPassTextfield.layer.borderColor = UIColor(red: 229/255, green: 235/255, blue: 240/255, alpha: 1.0).cgColor
     }
     
-    //- MARK: - Dark mode(for CGColor)
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        switch self.traitCollection.userInterfaceStyle {
-        case .dark:
-            print("dark")
-            emailTextfield.layer.borderColor = CGColor(red: 55/255, green: 65/255, blue: 81/255, alpha: 1)
-            passTextfield.layer.borderColor = CGColor(red: 55/255, green: 65/255, blue: 81/255, alpha: 1)
-            repeatPassTextfield.layer.borderColor = CGColor(red: 55/255, green: 65/255, blue: 81/255, alpha: 1)
-        case .light:
-            print("light")
-
-            emailTextfield.layer.borderColor = CGColor(red: 229/255, green: 235/255, blue: 240/255, alpha: 1)
-            passTextfield.layer.borderColor = CGColor(red: 229/255, green: 235/255, blue: 240/255, alpha: 1)
-            repeatPassTextfield.layer.borderColor = CGColor(red: 229/255, green: 235/255, blue: 240/255, alpha: 1)
-        case .unspecified:
-            print("unspecified")
-        @unknown default:
-            fatalError()
-        }
-    }
-    
+    //- MARK: - StartApp
     func startApp() {
         let tabViewController = TabBarController()
         tabViewController.modalPresentationStyle = .fullScreen

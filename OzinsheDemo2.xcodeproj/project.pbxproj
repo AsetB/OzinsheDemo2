@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB07DEB82B827DE8001E10C7 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DB07DEB72B827DE8001E10C7 /* KeychainSwift */; };
+		DB4D50112B7F859800C684F2 /* DynamicSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4D50102B7F859800C684F2 /* DynamicSize.swift */; };
 		DB4E9E782B7BE7760074DAD5 /* CustomGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4E9E772B7BE7760074DAD5 /* CustomGradientView.swift */; };
 		DB7078962B7DE2730010BFDA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7078952B7DE2730010BFDA /* SignUpViewController.swift */; };
 		DB7078982B7E1D1E0010BFDA /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7078972B7E1D1E0010BFDA /* UIViewController+Extensions.swift */; };
@@ -79,6 +81,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DB4D50102B7F859800C684F2 /* DynamicSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSize.swift; sourceTree = "<group>"; };
 		DB4E9E772B7BE7760074DAD5 /* CustomGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradientView.swift; sourceTree = "<group>"; };
 		DB7078952B7DE2730010BFDA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DB7078972B7E1D1E0010BFDA /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 				DBA37FEE2B79EAE200051C51 /* SDWebImage in Frameworks */,
 				DBA37FC92B78E6AA00051C51 /* Alamofire in Frameworks */,
 				DBA37FE82B79EABB00051C51 /* SnapKit in Frameworks */,
+				DB07DEB82B827DE8001E10C7 /* KeychainSwift in Frameworks */,
 				DBA37FEA2B79EAD100051C51 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +266,7 @@
 				DBFDB7B02B7C8A1100EA5C69 /* Apperance.swift */,
 				DBFDB7B82B7C9A6E00EA5C69 /* UITextfield+Extensions.swift */,
 				DB7078972B7E1D1E0010BFDA /* UIViewController+Extensions.swift */,
+				DB4D50102B7F859800C684F2 /* DynamicSize.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 				DBA37FE72B79EABB00051C51 /* SnapKit */,
 				DBA37FE92B79EAD100051C51 /* SnapKit-Dynamic */,
 				DBA37FED2B79EAE200051C51 /* SDWebImage */,
+				DB07DEB72B827DE8001E10C7 /* KeychainSwift */,
 			);
 			productName = OzinsheDemo2;
 			productReference = DBA37F912B78E63B00051C51 /* OzinsheDemo2.app */;
@@ -430,6 +436,7 @@
 				DBA37FCB2B78E9AD00051C51 /* XCRemoteSwiftPackageReference "SVProgressHUD" */,
 				DBA37FCE2B78EA0500051C51 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				DBA37FD32B79E86900051C51 /* XCRemoteSwiftPackageReference "Localize-Swift" */,
+				DB07DEB62B827DE8001E10C7 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = DBA37F922B78E63B00051C51 /* Products */;
 			projectDirPath = "";
@@ -496,6 +503,7 @@
 				DBA37FE52B79EA0B00051C51 /* OnboardingViewController.swift in Sources */,
 				DBA380052B7A39B800051C51 /* Slides.swift in Sources */,
 				DB4E9E782B7BE7760074DAD5 /* CustomGradientView.swift in Sources */,
+				DB4D50112B7F859800C684F2 /* DynamicSize.swift in Sources */,
 				DBFDB7B92B7C9A6E00EA5C69 /* UITextfield+Extensions.swift in Sources */,
 				DBFDB7AF2B7C8A0700EA5C69 /* Grid.swift in Sources */,
 			);
@@ -825,6 +833,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DB07DEB62B827DE8001E10C7 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 21.0.0;
+			};
+		};
 		DBA37FC42B78E68300051C51 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
@@ -876,6 +892,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DB07DEB72B827DE8001E10C7 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DB07DEB62B827DE8001E10C7 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
 		DBA37FC52B78E68300051C51 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DBA37FC42B78E68300051C51 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;

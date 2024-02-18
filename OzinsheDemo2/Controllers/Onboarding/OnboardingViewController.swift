@@ -12,6 +12,7 @@ class OnboardingViewController: UIViewController, UICollectionViewDelegate, UICo
     
     //- MARK: - Local outlets
     lazy var collectionView: UICollectionView = {
+        //flowlayoutdelegate
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         let height = view.frame.size.height
@@ -111,12 +112,11 @@ class OnboardingViewController: UIViewController, UICollectionViewDelegate, UICo
     //- MARK: - Constraints
     func setupConstraints() {
         collectionView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.edges.equalToSuperview()
         }
         pageControl.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(654)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(118)
         }
     }
     

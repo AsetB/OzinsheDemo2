@@ -67,7 +67,7 @@ class SlidesCollectionViewCell: UICollectionViewCell {
     }()
     
     //- MARK: - Gradient
-    var gradientView = CustomGradientView(startColor: UIColor(named: "startingpoint")!, midColor: UIColor(named: "endingpoint")!, endColor: UIColor(named: "endingpoint")!, startLocation: 0.1, midLocation: 0.8, endLocation: 1.0, horizontalMode: false, diagonalMode: false)
+    var gradientView = CustomGradientView(startColor: UIColor(named: "startingpoint")!, midColor: UIColor(named: "endingpoint")!, endColor: UIColor(named: "endingpoint")!, startLocation: 0.01, midLocation: 0.43, endLocation: 1.0, horizontalMode: false, diagonalMode: false)
     
     //- MARK: - Lifecycle
     override init(frame: CGRect) {
@@ -85,31 +85,32 @@ class SlidesCollectionViewCell: UICollectionViewCell {
     //- MARK: - Constraints
     func setupConstraints() {
         slideImage.snp.makeConstraints { make in
+            //make.size.equalTo([375, 504].VResized)
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(self.frame.height*0.6161)
+            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(274)
         }
         centerLabel.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview()
-            make.bottom.equalTo(slideImage.snp.bottom).inset(1)
+            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(dynamicValue(for: 276))
+            make.horizontalEdges.equalToSuperview().inset(40)
+//            make.horizontalEdges.equalToSuperview()
+//            make.bottom.equalTo(slideImage.snp.bottom).inset(10)
         }
         centerText.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(32)
             make.top.equalTo(centerLabel.snp.bottom).offset(24)
         }
         skipButton.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).inset(16)
-            make.trailing.equalToSuperview().inset(16)
+            make.top.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(24)
         }
         nextButton.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(24)
-            make.bottom.equalToSuperview().inset(72)
+            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(38)
             make.height.equalTo(56)
         }
         gradientView.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview()
-            make.bottom.equalTo(slideImage.snp.bottom).offset(3)
-            make.height.equalTo(285)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(dynamicValue(for: 180))
+            make.horizontalEdges.bottom.equalToSuperview()
         }
     }
     //- MARK: - Views
