@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		DB07DEB82B827DE8001E10C7 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DB07DEB72B827DE8001E10C7 /* KeychainSwift */; };
+		DB07DEBA2B831A6F001E10C7 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEB92B831A6F001E10C7 /* AuthService.swift */; };
+		DB07DEBC2B831AC2001E10C7 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEBB2B831AC2001E10C7 /* Movie.swift */; };
+		DB07DEBE2B831AEE001E10C7 /* Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEBD2B831AEE001E10C7 /* Screenshot.swift */; };
+		DB07DEC02B831B0F001E10C7 /* CategoryAge.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEBF2B831B0F001E10C7 /* CategoryAge.swift */; };
+		DB07DEC22B831B2C001E10C7 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEC12B831B2C001E10C7 /* Genres.swift */; };
+		DB07DEC42B831B4B001E10C7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEC32B831B4B001E10C7 /* Category.swift */; };
+		DB07DEC62B831B8F001E10C7 /* MainMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEC52B831B8F001E10C7 /* MainMovie.swift */; };
+		DB07DEC82B831BA7001E10C7 /* BannerMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEC72B831BA7001E10C7 /* BannerMovie.swift */; };
+		DB07DECA2B831BBD001E10C7 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEC92B831BBD001E10C7 /* Series.swift */; };
+		DB07DED02B83289D001E10C7 /* MainMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DECF2B83289D001E10C7 /* MainMovieCollectionViewCell.swift */; };
+		DB07DED82B833558001E10C7 /* MainMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DED72B833558001E10C7 /* MainMovieTableViewCell.swift */; };
+		DB07DEDA2B833AAC001E10C7 /* TopAlignedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DED92B833AAC001E10C7 /* TopAlignedCollectionView.swift */; };
+		DB07DEDC2B835312001E10C7 /* MainBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEDB2B835312001E10C7 /* MainBannerCollectionViewCell.swift */; };
+		DB07DEDE2B835A83001E10C7 /* MainBannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEDD2B835A83001E10C7 /* MainBannerTableViewCell.swift */; };
+		DB07DEE02B8364BE001E10C7 /* MainHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEDF2B8364BE001E10C7 /* MainHistoryCollectionViewCell.swift */; };
+		DB07DEE22B8366BD001E10C7 /* MainHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEE12B8366BD001E10C7 /* MainHistoryTableViewCell.swift */; };
+		DB07DEE42B8369B4001E10C7 /* AgeGenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEE32B8369B4001E10C7 /* AgeGenreCollectionViewCell.swift */; };
+		DB07DEE62B836B3D001E10C7 /* MainAgeGenreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEE52B836B3D001E10C7 /* MainAgeGenreTableViewCell.swift */; };
 		DB4D50112B7F859800C684F2 /* DynamicSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4D50102B7F859800C684F2 /* DynamicSize.swift */; };
 		DB4E9E782B7BE7760074DAD5 /* CustomGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4E9E772B7BE7760074DAD5 /* CustomGradientView.swift */; };
 		DB7078962B7DE2730010BFDA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7078952B7DE2730010BFDA /* SignUpViewController.swift */; };
@@ -81,6 +99,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DB07DEB92B831A6F001E10C7 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		DB07DEBB2B831AC2001E10C7 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		DB07DEBD2B831AEE001E10C7 /* Screenshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screenshot.swift; sourceTree = "<group>"; };
+		DB07DEBF2B831B0F001E10C7 /* CategoryAge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAge.swift; sourceTree = "<group>"; };
+		DB07DEC12B831B2C001E10C7 /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
+		DB07DEC32B831B4B001E10C7 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		DB07DEC52B831B8F001E10C7 /* MainMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMovie.swift; sourceTree = "<group>"; };
+		DB07DEC72B831BA7001E10C7 /* BannerMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerMovie.swift; sourceTree = "<group>"; };
+		DB07DEC92B831BBD001E10C7 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
+		DB07DECF2B83289D001E10C7 /* MainMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		DB07DED72B833558001E10C7 /* MainMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMovieTableViewCell.swift; sourceTree = "<group>"; };
+		DB07DED92B833AAC001E10C7 /* TopAlignedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlignedCollectionView.swift; sourceTree = "<group>"; };
+		DB07DEDB2B835312001E10C7 /* MainBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		DB07DEDD2B835A83001E10C7 /* MainBannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBannerTableViewCell.swift; sourceTree = "<group>"; };
+		DB07DEDF2B8364BE001E10C7 /* MainHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		DB07DEE12B8366BD001E10C7 /* MainHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		DB07DEE32B8369B4001E10C7 /* AgeGenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeGenreCollectionViewCell.swift; sourceTree = "<group>"; };
+		DB07DEE52B836B3D001E10C7 /* MainAgeGenreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAgeGenreTableViewCell.swift; sourceTree = "<group>"; };
 		DB4D50102B7F859800C684F2 /* DynamicSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSize.swift; sourceTree = "<group>"; };
 		DB4E9E772B7BE7760074DAD5 /* CustomGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradientView.swift; sourceTree = "<group>"; };
 		DB7078952B7DE2730010BFDA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +187,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB07DECB2B832801001E10C7 /* MainMovie */ = {
+			isa = PBXGroup;
+			children = (
+				DB07DECF2B83289D001E10C7 /* MainMovieCollectionViewCell.swift */,
+				DB07DED72B833558001E10C7 /* MainMovieTableViewCell.swift */,
+			);
+			path = MainMovie;
+			sourceTree = "<group>";
+		};
+		DB07DECC2B83283E001E10C7 /* MainHistory */ = {
+			isa = PBXGroup;
+			children = (
+				DB07DEDF2B8364BE001E10C7 /* MainHistoryCollectionViewCell.swift */,
+				DB07DEE12B8366BD001E10C7 /* MainHistoryTableViewCell.swift */,
+			);
+			path = MainHistory;
+			sourceTree = "<group>";
+		};
+		DB07DECD2B83284E001E10C7 /* MainAgeGenre */ = {
+			isa = PBXGroup;
+			children = (
+				DB07DEE32B8369B4001E10C7 /* AgeGenreCollectionViewCell.swift */,
+				DB07DEE52B836B3D001E10C7 /* MainAgeGenreTableViewCell.swift */,
+			);
+			path = MainAgeGenre;
+			sourceTree = "<group>";
+		};
+		DB07DECE2B83285A001E10C7 /* MainBanner */ = {
+			isa = PBXGroup;
+			children = (
+				DB07DEDB2B835312001E10C7 /* MainBannerCollectionViewCell.swift */,
+				DB07DEDD2B835A83001E10C7 /* MainBannerTableViewCell.swift */,
+			);
+			path = MainBanner;
+			sourceTree = "<group>";
+		};
 		DB7078992B7E2E4B0010BFDA /* Static */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				DB70789D2B7E2E950010BFDA /* Storage.swift */,
+				DB07DEB92B831A6F001E10C7 /* AuthService.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -243,6 +316,14 @@
 			children = (
 				DBA380042B7A39B800051C51 /* Slides.swift */,
 				DB70789F2B7E2ED90010BFDA /* User.swift */,
+				DB07DEBB2B831AC2001E10C7 /* Movie.swift */,
+				DB07DEBD2B831AEE001E10C7 /* Screenshot.swift */,
+				DB07DEBF2B831B0F001E10C7 /* CategoryAge.swift */,
+				DB07DEC12B831B2C001E10C7 /* Genres.swift */,
+				DB07DEC32B831B4B001E10C7 /* Category.swift */,
+				DB07DEC52B831B8F001E10C7 /* MainMovie.swift */,
+				DB07DEC72B831BA7001E10C7 /* BannerMovie.swift */,
+				DB07DEC92B831BBD001E10C7 /* Series.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,6 +348,7 @@
 				DBFDB7B82B7C9A6E00EA5C69 /* UITextfield+Extensions.swift */,
 				DB7078972B7E1D1E0010BFDA /* UIViewController+Extensions.swift */,
 				DB4D50102B7F859800C684F2 /* DynamicSize.swift */,
+				DB07DED92B833AAC001E10C7 /* TopAlignedCollectionView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -274,6 +356,10 @@
 		DBA37FE02B79E9D800051C51 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				DB07DECB2B832801001E10C7 /* MainMovie */,
+				DB07DECE2B83285A001E10C7 /* MainBanner */,
+				DB07DECC2B83283E001E10C7 /* MainHistory */,
+				DB07DECD2B83284E001E10C7 /* MainAgeGenre */,
 				DBA37FF92B7A05C000051C51 /* HomeViewController.swift */,
 			);
 			path = Main;
@@ -486,12 +572,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBFDB7B72B7C933D00EA5C69 /* SignInViewController.swift in Sources */,
+				DB07DEDC2B835312001E10C7 /* MainBannerCollectionViewCell.swift in Sources */,
+				DB07DEBE2B831AEE001E10C7 /* Screenshot.swift in Sources */,
 				DB70789B2B7E2E590010BFDA /* URLs.swift in Sources */,
 				DBA37F952B78E63B00051C51 /* AppDelegate.swift in Sources */,
+				DB07DEBC2B831AC2001E10C7 /* Movie.swift in Sources */,
+				DB07DEC22B831B2C001E10C7 /* Genres.swift in Sources */,
+				DB07DED02B83289D001E10C7 /* MainMovieCollectionViewCell.swift in Sources */,
 				DB70789E2B7E2E950010BFDA /* Storage.swift in Sources */,
 				DBFDB7B12B7C8A1100EA5C69 /* Apperance.swift in Sources */,
+				DB07DEBA2B831A6F001E10C7 /* AuthService.swift in Sources */,
 				DBA37F972B78E63B00051C51 /* SceneDelegate.swift in Sources */,
+				DB07DEC02B831B0F001E10C7 /* CategoryAge.swift in Sources */,
+				DB07DEC82B831BA7001E10C7 /* BannerMovie.swift in Sources */,
 				DBA37FFC2B7A05D000051C51 /* SearchViewController.swift in Sources */,
+				DB07DEDE2B835A83001E10C7 /* MainBannerTableViewCell.swift in Sources */,
+				DB07DEE42B8369B4001E10C7 /* AgeGenreCollectionViewCell.swift in Sources */,
 				DB7078982B7E1D1E0010BFDA /* UIViewController+Extensions.swift in Sources */,
 				DB7078A02B7E2ED90010BFDA /* User.swift in Sources */,
 				DBA37FFA2B7A05C000051C51 /* HomeViewController.swift in Sources */,
@@ -499,11 +595,19 @@
 				DBA37FF82B7A04CD00051C51 /* TabBarController.swift in Sources */,
 				DBA37FFE2B7A05DE00051C51 /* FavoritesViewController.swift in Sources */,
 				DBA380032B7A390A00051C51 /* SlidesCollectionViewCell.swift in Sources */,
+				DB07DEC62B831B8F001E10C7 /* MainMovie.swift in Sources */,
+				DB07DED82B833558001E10C7 /* MainMovieTableViewCell.swift in Sources */,
+				DB07DEE62B836B3D001E10C7 /* MainAgeGenreTableViewCell.swift in Sources */,
 				DB7078962B7DE2730010BFDA /* SignUpViewController.swift in Sources */,
 				DBA37FE52B79EA0B00051C51 /* OnboardingViewController.swift in Sources */,
+				DB07DEDA2B833AAC001E10C7 /* TopAlignedCollectionView.swift in Sources */,
 				DBA380052B7A39B800051C51 /* Slides.swift in Sources */,
+				DB07DECA2B831BBD001E10C7 /* Series.swift in Sources */,
 				DB4E9E782B7BE7760074DAD5 /* CustomGradientView.swift in Sources */,
+				DB07DEC42B831B4B001E10C7 /* Category.swift in Sources */,
+				DB07DEE02B8364BE001E10C7 /* MainHistoryCollectionViewCell.swift in Sources */,
 				DB4D50112B7F859800C684F2 /* DynamicSize.swift in Sources */,
+				DB07DEE22B8366BD001E10C7 /* MainHistoryTableViewCell.swift in Sources */,
 				DBFDB7B92B7C9A6E00EA5C69 /* UITextfield+Extensions.swift in Sources */,
 				DBFDB7AF2B7C8A0700EA5C69 /* Grid.swift in Sources */,
 			);

@@ -15,7 +15,8 @@ class TabBarController: UITabBarController {
     
     func setupTabs() {
         tabBar.backgroundColor = UIColor(named: "FFFFFF - 1C2431")
-        //tabBar.barTintColor = UIColor(named: "FFFFFF - 1C2431")
+        tabBar.barTintColor = UIColor(named: "FFFFFF - 1C2431")
+        tabBar.isTranslucent = false
         
         let homeVC = HomeViewController()
         let searchVC = SearchViewController()
