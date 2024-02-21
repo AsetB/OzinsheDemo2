@@ -9,9 +9,10 @@ import UIKit
 import SnapKit
 import SDWebImage
 
-class MainMovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+class MainMovieTableViewCell: UITableViewCell {
     //- MARK: - Variables
     var mainMovies = MainMovies()
+    var delegate: ItemDidSelect?
     
     //- MARK: - Local Outlets
     lazy var mainLabel: UILabel = {
@@ -36,7 +37,6 @@ class MainMovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColle
         
         let layout = TopAlignedCollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
-        //layout.itemSize = CGSize(width: 112, height: 220)
         layout.minimumInteritemSpacing = 16
         layout.minimumLineSpacing = 16
         layout.estimatedItemSize.width = 112
@@ -49,6 +49,7 @@ class MainMovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColle
         
         return collectionView
     }()
+    
     //- MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: "mainCell")
@@ -60,12 +61,14 @@ class MainMovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColle
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     //- MARK: - Setup Views
     func setupViews() {
         contentView.addSubview(mainLabel)
         contentView.addSubview(goToCategoryLabel)
         contentView.addSubview(collectionView)
     }
+    
     //- MARK: - Constarints
     func setupConstraints() {
         mainLabel.snp.makeConstraints { make in
@@ -90,15 +93,15 @@ class MainMovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColle
         goToCategoryLabel.text = "Барлығы"
         self.mainMovies = mainMovie
         collectionView.reloadData()
-        
     }
-    
-    //- MARK: - Collection view
+}
+
+//- MARK: - UICollectionViewDelegate & UICollectionViewDataSource
+extension MainMovieTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource  {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         mainMovies.movies.count
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MainMovieCollectionViewCell
@@ -114,8 +117,11 @@ class MainMovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColle
             cell.subTitle.text = ""
         }
         
-        
         return cell
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        delegate?.movieDidSelect(movie: mainMovies.movies[indexPath.row])
+    }
 }

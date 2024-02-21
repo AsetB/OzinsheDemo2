@@ -9,9 +9,10 @@ import UIKit
 import SnapKit
 import SDWebImage
 
-class MainAgeGenreTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+class MainAgeGenreTableViewCell: UITableViewCell {
     //- MARK: - Variables
     var mainMovies = MainMovies()
+    var delegate: ItemDidSelect?
     
     //- MARK: - Local Outlets
     lazy var mainLabel: UILabel = {
@@ -81,15 +82,16 @@ class MainAgeGenreTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
         }
         collectionView.reloadData()
     }
-    
-    //- MARK: - Collection view
+}
+
+//- MARK: - UICollectionViewDelegate & UICollectionViewDataSource
+extension MainAgeGenreTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if mainMovies.cellType == .ageCategory {
             return mainMovies.categoryAges.count
         }
         return mainMovies.genres.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! AgeGenreCollectionViewCell
         let transformer = SDImageResizingTransformer(size: CGSize(width: 184, height: 112), scaleMode: .aspectFill)
@@ -106,6 +108,12 @@ class MainAgeGenreTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
         
         return cell
     }
-    
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        if mainMovies.cellType == .ageCategory {
+            delegate?.ageDidSelect(ageID: mainMovies.categoryAges[indexPath.row].id, ageName: mainMovies.categoryAges[indexPath.row].name)
+        } else {
+            delegate?.genreDidSelect(genreID: mainMovies.genres[indexPath.row].id, genreName: mainMovies.genres[indexPath.row].name)
+        }
+    }
 }

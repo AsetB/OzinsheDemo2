@@ -11,7 +11,7 @@ import SVProgressHUD
 import SwiftyJSON
 import Alamofire
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController {
     //- MARK: - Variables
     var mainMovies: [MainMovies] = []
     
@@ -27,10 +27,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.FFFFFF_111827
+        addNavBarImage()
         downloadMainBanners()
         setUI()
-        addNavBarImage()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,77 +52,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let imageItem = UIBarButtonItem(customView: logoImageView)
         navigationItem.leftBarButtonItem = imageItem
     }
-    
-    //- MARK: - Table view
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mainMovies.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch mainMovies[indexPath.row].cellType {
-        case .mainBanner:
-            return {
-                let cell = MainBannerTableViewCell() //tableView.dequeueReusableCell(withIdentifier: "mainBannerCell", for: indexPath) as! MainBannerTableViewCell
-                
-                cell.setCellData(mainMovie: mainMovies[indexPath.row])
-                //cell.delegate = self
-                return cell
-            }()
-        case .userHistory:
-            return {
-                let cell = MainHistoryTableViewCell() //tableView.dequeueReusableCell(withIdentifier: "mainHistoryCell", for: indexPath) as! MainHistoryTableViewCell
-                
-                cell.setCellData(mainMovie: mainMovies[indexPath.row])
-                //cell.delegate = self
-                return cell
-            }()
-        case .genre:
-            return {
-                let cell = MainAgeGenreTableViewCell() //tableView.dequeueReusableCell(withIdentifier: "mainAgeGenreCell", for: indexPath) as! MainAgeGenreTableViewCell
-                
-                cell.setCellData(mainMovie: mainMovies[indexPath.row])
-                //cell.delegate = self
-                return cell
-            }()
-        case .ageCategory:
-            return {
-                let cell = MainAgeGenreTableViewCell() //tableView.dequeueReusableCell(withIdentifier: "mainAgeGenreCell", for: indexPath) as! MainAgeGenreTableViewCell
-                
-                cell.setCellData(mainMovie: mainMovies[indexPath.row])
-                //cell.delegate = self
-                return cell
-            }()
-        case .mainMovie:
-            return {
-                let cell = MainMovieTableViewCell()// tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as! MainMovieTableViewCell
-                cell.setCellData(mainMovie: mainMovies[indexPath.row])
-                if cell.collectionView.isHidden {
-                    tableView.isHidden = true
-                }
-                //cell.delegate = self
-                return cell
-            }()
-        }
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch mainMovies[indexPath.row].cellType {
-        case .mainBanner:
-            return 272
-        case .userHistory:
-            return 228
-        case .genre:
-            return 184
-        case .ageCategory:
-            return 184
-        case .mainMovie:
-            return 288
-        }
-    }
-    
-    // - MARK: Data loading -
+
+    // - MARK: - Data loading
     func downloadMainBanners() {
         //SVProgressHUD.show()
         
@@ -369,5 +299,88 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 SVProgressHUD.showError(withStatus: "\(ErrorString)")
             }
         }
+    }
+}
+
+    //- MARK: - UITableViewDelegate & UITableViewDataSource
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return mainMovies.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch mainMovies[indexPath.row].cellType {
+        case .mainBanner:
+            return {
+                let cell = MainBannerTableViewCell()
+                cell.setCellData(mainMovie: mainMovies[indexPath.row])
+                cell.delegate = self
+                return cell
+            }()
+        case .userHistory:
+            return {
+                let cell = MainHistoryTableViewCell()
+                cell.setCellData(mainMovie: mainMovies[indexPath.row])
+                cell.delegate = self
+                return cell
+            }()
+        case .genre:
+            return {
+                let cell = MainAgeGenreTableViewCell()
+                cell.setCellData(mainMovie: mainMovies[indexPath.row])
+                cell.delegate = self
+                return cell
+            }()
+        case .ageCategory:
+            return {
+                let cell = MainAgeGenreTableViewCell()
+                cell.setCellData(mainMovie: mainMovies[indexPath.row])
+                cell.delegate = self
+                return cell
+            }()
+        case .mainMovie:
+            return {
+                let cell = MainMovieTableViewCell()
+                cell.setCellData(mainMovie: mainMovies[indexPath.row])
+                cell.delegate = self
+                return cell
+            }()
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch mainMovies[indexPath.row].cellType {
+        case .mainBanner:
+            return 272
+        case .userHistory:
+            return 228
+        case .genre:
+            return 184
+        case .ageCategory:
+            return 184
+        case .mainMovie:
+            return 288
+        }
+    }
+}
+
+//- MARK: - ItemDidSelect
+extension HomeViewController: ItemDidSelect {
+    func movieDidSelect(movie: Movie) {
+        let movieInfoVC = MovieInfoViewController()
+        movieInfoVC.movie = movie
+        navigationController?.show(movieInfoVC, sender: self)
+    }
+    
+    func genreDidSelect(genreID: Int, genreName: String) {
+        print("genreDidSelect")
+    }
+    
+    func ageDidSelect(ageID: Int, ageName: String) {
+        print("ageDidSelect")
     }
 }

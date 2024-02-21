@@ -9,9 +9,10 @@ import UIKit
 import SnapKit
 import SDWebImage
 
-class MainHistoryTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+class MainHistoryTableViewCell: UITableViewCell {
     //- MARK: - Variables
     var mainMovies = MainMovies()
+    var delegate: ItemDidSelect?
     
     //- MARK: - Local Outlets
     lazy var mainLabel: UILabel = {
@@ -29,7 +30,6 @@ class MainHistoryTableViewCell: UITableViewCell, UICollectionViewDelegate, UICol
         
         let layout = TopAlignedCollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
-        //layout.itemSize = CGSize(width: 112, height: 220)
         layout.minimumInteritemSpacing = 16
         layout.minimumLineSpacing = 16
         layout.estimatedItemSize.width = 184
@@ -77,12 +77,13 @@ class MainHistoryTableViewCell: UITableViewCell, UICollectionViewDelegate, UICol
         self.mainMovies = mainMovie
         collectionView.reloadData()
     }
-    
-    //- MARK: - Collection view
+}
+
+//- MARK: - ICollectionViewDelegate & UICollectionViewDataSource
+extension MainHistoryTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         mainMovies.movies.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MainHistoryCollectionViewCell
         let transformer = SDImageResizingTransformer(size: CGSize(width: 184, height: 112), scaleMode: .aspectFill)
@@ -99,6 +100,8 @@ class MainHistoryTableViewCell: UITableViewCell, UICollectionViewDelegate, UICol
         
         return cell
     }
-
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        delegate?.movieDidSelect(movie: mainMovies.movies[indexPath.row])
+    }
 }

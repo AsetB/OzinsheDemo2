@@ -9,9 +9,10 @@ import UIKit
 import SnapKit
 import SDWebImage
 
-class MainBannerTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+class MainBannerTableViewCell: UITableViewCell {
     //- MARK: - Variables
     var mainMovies = MainMovies()
+    var delegate: ItemDidSelect?
     
     //- MARK: - Local Outlets
     lazy var collectionView: UICollectionView = {
@@ -62,17 +63,19 @@ class MainBannerTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         self.mainMovies = mainMovie
         collectionView.reloadData()
     }
-    
-    //- MARK: - Collection view
+}
+//- MARK: - UICollectionViewDelegate & UICollectionViewDataSource
+extension MainBannerTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         mainMovies.bannerMovie.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MainBannerCollectionViewCell
         cell.setCellData(bannerMovie: mainMovies.bannerMovie[indexPath.row])
         return cell
     }
-
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        delegate?.movieDidSelect(movie: mainMovies.bannerMovie[indexPath.row].movie)
+    }
 }

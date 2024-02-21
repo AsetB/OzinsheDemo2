@@ -26,6 +26,11 @@
 		DB07DEE22B8366BD001E10C7 /* MainHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEE12B8366BD001E10C7 /* MainHistoryTableViewCell.swift */; };
 		DB07DEE42B8369B4001E10C7 /* AgeGenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEE32B8369B4001E10C7 /* AgeGenreCollectionViewCell.swift */; };
 		DB07DEE62B836B3D001E10C7 /* MainAgeGenreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEE52B836B3D001E10C7 /* MainAgeGenreTableViewCell.swift */; };
+		DB07DEEA2B83C5CE001E10C7 /* ScreenshotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEE92B83C5CE001E10C7 /* ScreenshotCollectionViewCell.swift */; };
+		DB07DEEE2B83C88E001E10C7 /* SimilarMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEED2B83C88E001E10C7 /* SimilarMovieCollectionViewCell.swift */; };
+		DB07DEF02B83C950001E10C7 /* MovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEEF2B83C950001E10C7 /* MovieInfoViewController.swift */; };
+		DB07DEF22B84C45D001E10C7 /* ItemDidSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEF12B84C45D001E10C7 /* ItemDidSelect.swift */; };
+		DB07DEF42B8526D3001E10C7 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07DEF32B8526D3001E10C7 /* UILabel + Extension.swift */; };
 		DB4D50112B7F859800C684F2 /* DynamicSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4D50102B7F859800C684F2 /* DynamicSize.swift */; };
 		DB4E9E782B7BE7760074DAD5 /* CustomGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4E9E772B7BE7760074DAD5 /* CustomGradientView.swift */; };
 		DB7078962B7DE2730010BFDA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7078952B7DE2730010BFDA /* SignUpViewController.swift */; };
@@ -33,6 +38,10 @@
 		DB70789B2B7E2E590010BFDA /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB70789A2B7E2E590010BFDA /* URLs.swift */; };
 		DB70789E2B7E2E950010BFDA /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB70789D2B7E2E950010BFDA /* Storage.swift */; };
 		DB7078A02B7E2ED90010BFDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB70789F2B7E2ED90010BFDA /* User.swift */; };
+		DB8A7F282B85D87F00B69212 /* SeasonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8A7F272B85D87F00B69212 /* SeasonCollectionViewCell.swift */; };
+		DB8A7F2A2B85DCC200B69212 /* SeriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8A7F292B85DCC200B69212 /* SeriesTableViewCell.swift */; };
+		DB8A7F2C2B85DFDA00B69212 /* SeasonSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8A7F2B2B85DFDA00B69212 /* SeasonSeriesViewController.swift */; };
+		DB8A7F302B85FD9B00B69212 /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = DB8A7F2F2B85FD9B00B69212 /* YouTubePlayerKit */; };
 		DBA37F952B78E63B00051C51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA37F942B78E63B00051C51 /* AppDelegate.swift */; };
 		DBA37F972B78E63B00051C51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA37F962B78E63B00051C51 /* SceneDelegate.swift */; };
 		DBA37F9E2B78E63C00051C51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBA37F9D2B78E63C00051C51 /* Assets.xcassets */; };
@@ -117,6 +126,11 @@
 		DB07DEE12B8366BD001E10C7 /* MainHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		DB07DEE32B8369B4001E10C7 /* AgeGenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeGenreCollectionViewCell.swift; sourceTree = "<group>"; };
 		DB07DEE52B836B3D001E10C7 /* MainAgeGenreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAgeGenreTableViewCell.swift; sourceTree = "<group>"; };
+		DB07DEE92B83C5CE001E10C7 /* ScreenshotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotCollectionViewCell.swift; sourceTree = "<group>"; };
+		DB07DEED2B83C88E001E10C7 /* SimilarMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		DB07DEEF2B83C950001E10C7 /* MovieInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoViewController.swift; sourceTree = "<group>"; };
+		DB07DEF12B84C45D001E10C7 /* ItemDidSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDidSelect.swift; sourceTree = "<group>"; };
+		DB07DEF32B8526D3001E10C7 /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		DB4D50102B7F859800C684F2 /* DynamicSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSize.swift; sourceTree = "<group>"; };
 		DB4E9E772B7BE7760074DAD5 /* CustomGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradientView.swift; sourceTree = "<group>"; };
 		DB7078952B7DE2730010BFDA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +138,9 @@
 		DB70789A2B7E2E590010BFDA /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		DB70789D2B7E2E950010BFDA /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		DB70789F2B7E2ED90010BFDA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DB8A7F272B85D87F00B69212 /* SeasonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCollectionViewCell.swift; sourceTree = "<group>"; };
+		DB8A7F292B85DCC200B69212 /* SeriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesTableViewCell.swift; sourceTree = "<group>"; };
+		DB8A7F2B2B85DFDA00B69212 /* SeasonSeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonSeriesViewController.swift; sourceTree = "<group>"; };
 		DBA37F912B78E63B00051C51 /* OzinsheDemo2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OzinsheDemo2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBA37F942B78E63B00051C51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBA37F962B78E63B00051C51 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +178,7 @@
 			files = (
 				DBA37FCD2B78E9AD00051C51 /* SVProgressHUD in Frameworks */,
 				DBA37FD52B79E86900051C51 /* Localize_Swift in Frameworks */,
+				DB8A7F302B85FD9B00B69212 /* YouTubePlayerKit in Frameworks */,
 				DBA37FC62B78E68300051C51 /* SwiftyJSON in Frameworks */,
 				DBA37FEE2B79EAE200051C51 /* SDWebImage in Frameworks */,
 				DBA37FC92B78E6AA00051C51 /* Alamofire in Frameworks */,
@@ -223,6 +241,16 @@
 			path = MainBanner;
 			sourceTree = "<group>";
 		};
+		DB07DEE82B83C2A4001E10C7 /* MovieInfo */ = {
+			isa = PBXGroup;
+			children = (
+				DB07DEE92B83C5CE001E10C7 /* ScreenshotCollectionViewCell.swift */,
+				DB07DEED2B83C88E001E10C7 /* SimilarMovieCollectionViewCell.swift */,
+				DB07DEEF2B83C950001E10C7 /* MovieInfoViewController.swift */,
+			);
+			path = MovieInfo;
+			sourceTree = "<group>";
+		};
 		DB7078992B7E2E4B0010BFDA /* Static */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +266,16 @@
 				DB07DEB92B831A6F001E10C7 /* AuthService.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		DB8A7F262B85D85D00B69212 /* Seasons */ = {
+			isa = PBXGroup;
+			children = (
+				DB8A7F272B85D87F00B69212 /* SeasonCollectionViewCell.swift */,
+				DB8A7F292B85DCC200B69212 /* SeriesTableViewCell.swift */,
+				DB8A7F2B2B85DFDA00B69212 /* SeasonSeriesViewController.swift */,
+			);
+			path = Seasons;
 			sourceTree = "<group>";
 		};
 		DBA37F882B78E63B00051C51 = {
@@ -300,6 +338,8 @@
 		DBA37FCF2B78EFD100051C51 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DB8A7F262B85D85D00B69212 /* Seasons */,
+				DB07DEE82B83C2A4001E10C7 /* MovieInfo */,
 				DBA380012B7A38DF00051C51 /* Onboarding */,
 				DBFDB7B52B7C92F600EA5C69 /* Sign in Sign Up */,
 				DBA37FE02B79E9D800051C51 /* Main */,
@@ -349,6 +389,8 @@
 				DB7078972B7E1D1E0010BFDA /* UIViewController+Extensions.swift */,
 				DB4D50102B7F859800C684F2 /* DynamicSize.swift */,
 				DB07DED92B833AAC001E10C7 /* TopAlignedCollectionView.swift */,
+				DB07DEF12B84C45D001E10C7 /* ItemDidSelect.swift */,
+				DB07DEF32B8526D3001E10C7 /* UILabel + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -440,6 +482,7 @@
 				DBA37FE92B79EAD100051C51 /* SnapKit-Dynamic */,
 				DBA37FED2B79EAE200051C51 /* SDWebImage */,
 				DB07DEB72B827DE8001E10C7 /* KeychainSwift */,
+				DB8A7F2F2B85FD9B00B69212 /* YouTubePlayerKit */,
 			);
 			productName = OzinsheDemo2;
 			productReference = DBA37F912B78E63B00051C51 /* OzinsheDemo2.app */;
@@ -523,6 +566,7 @@
 				DBA37FCE2B78EA0500051C51 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				DBA37FD32B79E86900051C51 /* XCRemoteSwiftPackageReference "Localize-Swift" */,
 				DB07DEB62B827DE8001E10C7 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				DB8A7F2E2B85FD9A00B69212 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
 			);
 			productRefGroup = DBA37F922B78E63B00051C51 /* Products */;
 			projectDirPath = "";
@@ -571,12 +615,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8A7F2C2B85DFDA00B69212 /* SeasonSeriesViewController.swift in Sources */,
 				DBFDB7B72B7C933D00EA5C69 /* SignInViewController.swift in Sources */,
 				DB07DEDC2B835312001E10C7 /* MainBannerCollectionViewCell.swift in Sources */,
+				DB8A7F2A2B85DCC200B69212 /* SeriesTableViewCell.swift in Sources */,
 				DB07DEBE2B831AEE001E10C7 /* Screenshot.swift in Sources */,
 				DB70789B2B7E2E590010BFDA /* URLs.swift in Sources */,
 				DBA37F952B78E63B00051C51 /* AppDelegate.swift in Sources */,
 				DB07DEBC2B831AC2001E10C7 /* Movie.swift in Sources */,
+				DB07DEF42B8526D3001E10C7 /* UILabel + Extension.swift in Sources */,
 				DB07DEC22B831B2C001E10C7 /* Genres.swift in Sources */,
 				DB07DED02B83289D001E10C7 /* MainMovieCollectionViewCell.swift in Sources */,
 				DB70789E2B7E2E950010BFDA /* Storage.swift in Sources */,
@@ -593,6 +640,7 @@
 				DBA37FFA2B7A05C000051C51 /* HomeViewController.swift in Sources */,
 				DBA380002B7A05EB00051C51 /* ProfileViewController.swift in Sources */,
 				DBA37FF82B7A04CD00051C51 /* TabBarController.swift in Sources */,
+				DB07DEF22B84C45D001E10C7 /* ItemDidSelect.swift in Sources */,
 				DBA37FFE2B7A05DE00051C51 /* FavoritesViewController.swift in Sources */,
 				DBA380032B7A390A00051C51 /* SlidesCollectionViewCell.swift in Sources */,
 				DB07DEC62B831B8F001E10C7 /* MainMovie.swift in Sources */,
@@ -601,12 +649,16 @@
 				DB7078962B7DE2730010BFDA /* SignUpViewController.swift in Sources */,
 				DBA37FE52B79EA0B00051C51 /* OnboardingViewController.swift in Sources */,
 				DB07DEDA2B833AAC001E10C7 /* TopAlignedCollectionView.swift in Sources */,
+				DB07DEEE2B83C88E001E10C7 /* SimilarMovieCollectionViewCell.swift in Sources */,
 				DBA380052B7A39B800051C51 /* Slides.swift in Sources */,
 				DB07DECA2B831BBD001E10C7 /* Series.swift in Sources */,
 				DB4E9E782B7BE7760074DAD5 /* CustomGradientView.swift in Sources */,
 				DB07DEC42B831B4B001E10C7 /* Category.swift in Sources */,
+				DB07DEF02B83C950001E10C7 /* MovieInfoViewController.swift in Sources */,
+				DB07DEEA2B83C5CE001E10C7 /* ScreenshotCollectionViewCell.swift in Sources */,
 				DB07DEE02B8364BE001E10C7 /* MainHistoryCollectionViewCell.swift in Sources */,
 				DB4D50112B7F859800C684F2 /* DynamicSize.swift in Sources */,
+				DB8A7F282B85D87F00B69212 /* SeasonCollectionViewCell.swift in Sources */,
 				DB07DEE22B8366BD001E10C7 /* MainHistoryTableViewCell.swift in Sources */,
 				DBFDB7B92B7C9A6E00EA5C69 /* UITextfield+Extensions.swift in Sources */,
 				DBFDB7AF2B7C8A0700EA5C69 /* Grid.swift in Sources */,
@@ -778,8 +830,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -788,9 +841,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Aset.OzinsheDemo2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -807,8 +864,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -817,9 +875,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Aset.OzinsheDemo2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -945,6 +1007,14 @@
 				minimumVersion = 21.0.0;
 			};
 		};
+		DB8A7F2E2B85FD9A00B69212 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/YouTubePlayerKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
 		DBA37FC42B78E68300051C51 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
@@ -1000,6 +1070,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DB07DEB62B827DE8001E10C7 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
+		};
+		DB8A7F2F2B85FD9B00B69212 /* YouTubePlayerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DB8A7F2E2B85FD9A00B69212 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */;
+			productName = YouTubePlayerKit;
 		};
 		DBA37FC52B78E68300051C51 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
