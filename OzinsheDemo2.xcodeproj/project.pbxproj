@@ -44,6 +44,8 @@
 		DB8A7F302B85FD9B00B69212 /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = DB8A7F2F2B85FD9B00B69212 /* YouTubePlayerKit */; };
 		DB8A7F332B87398700B69212 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8A7F322B87398700B69212 /* MovieTableViewCell.swift */; };
 		DB8A7F352B87401D00B69212 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8A7F342B87401D00B69212 /* CategoryViewController.swift */; };
+		DB8A7F372B875D7D00B69212 /* ScreenshotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8A7F362B875D7D00B69212 /* ScreenshotViewController.swift */; };
+		DB8A7F3B2B87643E00B69212 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8A7F3A2B87643E00B69212 /* UIImageView + Extension.swift */; };
 		DBA37F952B78E63B00051C51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA37F942B78E63B00051C51 /* AppDelegate.swift */; };
 		DBA37F972B78E63B00051C51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA37F962B78E63B00051C51 /* SceneDelegate.swift */; };
 		DBA37F9E2B78E63C00051C51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBA37F9D2B78E63C00051C51 /* Assets.xcassets */; };
@@ -145,6 +147,8 @@
 		DB8A7F2B2B85DFDA00B69212 /* SeasonSeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonSeriesViewController.swift; sourceTree = "<group>"; };
 		DB8A7F322B87398700B69212 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		DB8A7F342B87401D00B69212 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		DB8A7F362B875D7D00B69212 /* ScreenshotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotViewController.swift; sourceTree = "<group>"; };
+		DB8A7F3A2B87643E00B69212 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		DBA37F912B78E63B00051C51 /* OzinsheDemo2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OzinsheDemo2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBA37F942B78E63B00051C51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBA37F962B78E63B00051C51 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -248,9 +252,10 @@
 		DB07DEE82B83C2A4001E10C7 /* MovieInfo */ = {
 			isa = PBXGroup;
 			children = (
+				DB07DEEF2B83C950001E10C7 /* MovieInfoViewController.swift */,
 				DB07DEE92B83C5CE001E10C7 /* ScreenshotCollectionViewCell.swift */,
 				DB07DEED2B83C88E001E10C7 /* SimilarMovieCollectionViewCell.swift */,
-				DB07DEEF2B83C950001E10C7 /* MovieInfoViewController.swift */,
+				DB8A7F362B875D7D00B69212 /* ScreenshotViewController.swift */,
 			);
 			path = MovieInfo;
 			sourceTree = "<group>";
@@ -405,6 +410,7 @@
 				DB07DED92B833AAC001E10C7 /* TopAlignedCollectionView.swift */,
 				DB07DEF12B84C45D001E10C7 /* ItemDidSelect.swift */,
 				DB07DEF32B8526D3001E10C7 /* UILabel + Extension.swift */,
+				DB8A7F3A2B87643E00B69212 /* UIImageView + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -647,6 +653,7 @@
 				DBA37F972B78E63B00051C51 /* SceneDelegate.swift in Sources */,
 				DB07DEC02B831B0F001E10C7 /* CategoryAge.swift in Sources */,
 				DB07DEC82B831BA7001E10C7 /* BannerMovie.swift in Sources */,
+				DB8A7F3B2B87643E00B69212 /* UIImageView + Extension.swift in Sources */,
 				DBA37FFC2B7A05D000051C51 /* SearchViewController.swift in Sources */,
 				DB07DEDE2B835A83001E10C7 /* MainBannerTableViewCell.swift in Sources */,
 				DB07DEE42B8369B4001E10C7 /* AgeGenreCollectionViewCell.swift in Sources */,
@@ -677,6 +684,7 @@
 				DB8A7F282B85D87F00B69212 /* SeasonCollectionViewCell.swift in Sources */,
 				DB07DEE22B8366BD001E10C7 /* MainHistoryTableViewCell.swift in Sources */,
 				DBFDB7B92B7C9A6E00EA5C69 /* UITextfield+Extensions.swift in Sources */,
+				DB8A7F372B875D7D00B69212 /* ScreenshotViewController.swift in Sources */,
 				DBFDB7AF2B7C8A0700EA5C69 /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

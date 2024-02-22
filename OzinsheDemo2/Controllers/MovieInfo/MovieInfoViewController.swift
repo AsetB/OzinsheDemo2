@@ -706,4 +706,16 @@ extension MovieInfoViewController: UICollectionViewDelegate, UICollectionViewDat
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.similarCollectionView {
+            let movieinfoVC = MovieInfoViewController()
+            movieinfoVC.movie = similarMovies[indexPath.row]
+            navigationController?.show(movieinfoVC, sender: self)
+        }
+        let screenVC = ScreenshotViewController()
+        screenVC.selectedScreenshotIndex = indexPath.item
+        screenVC.movie = movie
+        navigationController?.show(screenVC, sender: self)
+    }
 }
