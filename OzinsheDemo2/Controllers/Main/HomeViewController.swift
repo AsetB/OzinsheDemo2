@@ -21,6 +21,10 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.register(MainBannerTableViewCell.self, forCellReuseIdentifier: "mainBannerCell")
+        tableView.register(MainMovieTableViewCell.self, forCellReuseIdentifier: "mainCell")
+        tableView.register(MainHistoryTableViewCell.self, forCellReuseIdentifier: "mainHistoryCell")
+        tableView.register(MainAgeGenreTableViewCell.self, forCellReuseIdentifier: "mainAgeGenreCell")
         return tableView
     }()
     //- MARK: - Lifecycle
@@ -317,35 +321,35 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         switch mainMovies[indexPath.row].cellType {
         case .mainBanner:
             return {
-                let cell = MainBannerTableViewCell()
+                let cell = tableView.dequeueReusableCell(withIdentifier: "mainBannerCell") as! MainBannerTableViewCell
                 cell.setCellData(mainMovie: mainMovies[indexPath.row])
                 cell.delegate = self
                 return cell
             }()
         case .userHistory:
             return {
-                let cell = MainHistoryTableViewCell()
+                let cell = tableView.dequeueReusableCell(withIdentifier: "mainHistoryCell") as! MainHistoryTableViewCell
                 cell.setCellData(mainMovie: mainMovies[indexPath.row])
                 cell.delegate = self
                 return cell
             }()
         case .genre:
             return {
-                let cell = MainAgeGenreTableViewCell()
+                let cell = tableView.dequeueReusableCell(withIdentifier: "mainAgeGenreCell") as! MainAgeGenreTableViewCell
                 cell.setCellData(mainMovie: mainMovies[indexPath.row])
                 cell.delegate = self
                 return cell
             }()
         case .ageCategory:
             return {
-                let cell = MainAgeGenreTableViewCell()
+                let cell = tableView.dequeueReusableCell(withIdentifier: "mainAgeGenreCell") as! MainAgeGenreTableViewCell
                 cell.setCellData(mainMovie: mainMovies[indexPath.row])
                 cell.delegate = self
                 return cell
             }()
         case .mainMovie:
             return {
-                let cell = MainMovieTableViewCell()
+                let cell = tableView.dequeueReusableCell(withIdentifier: "mainCell") as! MainMovieTableViewCell
                 cell.setCellData(mainMovie: mainMovies[indexPath.row])
                 cell.delegate = self
                 return cell
@@ -366,6 +370,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return 288
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if mainMovies[indexPath.row].cellType != .mainMovie {
+            return
+        }
+        
+        let categoryVC = CategoryViewController()
+        categoryVC.categoryID = mainMovies[indexPath.row].categoryId
+        categoryVC.categoryName = mainMovies[indexPath.row].categoryName
+        navigationController?.show(categoryVC, sender: self)
+    }
 }
 
 //- MARK: - ItemDidSelect
@@ -377,10 +392,21 @@ extension HomeViewController: ItemDidSelect {
     }
     
     func genreDidSelect(genreID: Int, genreName: String) {
-        print("genreDidSelect")
+        let categoryString = "genreId"
+        let categoryVC = CategoryViewController()
+        categoryVC.categoryID = genreID
+        categoryVC.categoryName = genreName
+        categoryVC.categoryString = categoryString
+        navigationController?.show(categoryVC, sender: self)
+        
     }
     
     func ageDidSelect(ageID: Int, ageName: String) {
-        print("ageDidSelect")
+        let categoryString = "categoryAgeId"
+        let categoryVC = CategoryViewController()
+        categoryVC.categoryID = ageID
+        categoryVC.categoryName = ageName
+        categoryVC.categoryString = categoryString
+        navigationController?.show(categoryVC, sender: self)
     }
 }

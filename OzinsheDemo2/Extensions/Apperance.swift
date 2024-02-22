@@ -50,6 +50,7 @@ extension Appearance {
     var textFieldActiveBorderColor: CGColor { UIColor(red: 229/255, green: 235/255, blue: 240/255, alpha: 1.0).cgColor }
     
     var mainTitleFont:UIFont { UIFont(name: "SFProDisplay-Bold", size: 24)! }
+    var boldFont12:UIFont { UIFont(name: "SFProDisplay-Bold", size: 12)! }
     var boldFont14:UIFont { UIFont(name: "SFProDisplay-Bold", size: 14)! }
     var boldFont16:UIFont { UIFont(name: "SFProDisplay-Bold", size: 16)! }
     var semiboldFont12:UIFont { UIFont(name: "SFProDisplay-Semibold", size: 12)! }

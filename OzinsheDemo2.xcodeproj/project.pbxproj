@@ -42,6 +42,8 @@
 		DB8A7F2A2B85DCC200B69212 /* SeriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8A7F292B85DCC200B69212 /* SeriesTableViewCell.swift */; };
 		DB8A7F2C2B85DFDA00B69212 /* SeasonSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8A7F2B2B85DFDA00B69212 /* SeasonSeriesViewController.swift */; };
 		DB8A7F302B85FD9B00B69212 /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = DB8A7F2F2B85FD9B00B69212 /* YouTubePlayerKit */; };
+		DB8A7F332B87398700B69212 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8A7F322B87398700B69212 /* MovieTableViewCell.swift */; };
+		DB8A7F352B87401D00B69212 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8A7F342B87401D00B69212 /* CategoryViewController.swift */; };
 		DBA37F952B78E63B00051C51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA37F942B78E63B00051C51 /* AppDelegate.swift */; };
 		DBA37F972B78E63B00051C51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA37F962B78E63B00051C51 /* SceneDelegate.swift */; };
 		DBA37F9E2B78E63C00051C51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBA37F9D2B78E63C00051C51 /* Assets.xcassets */; };
@@ -141,6 +143,8 @@
 		DB8A7F272B85D87F00B69212 /* SeasonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCollectionViewCell.swift; sourceTree = "<group>"; };
 		DB8A7F292B85DCC200B69212 /* SeriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesTableViewCell.swift; sourceTree = "<group>"; };
 		DB8A7F2B2B85DFDA00B69212 /* SeasonSeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonSeriesViewController.swift; sourceTree = "<group>"; };
+		DB8A7F322B87398700B69212 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		DB8A7F342B87401D00B69212 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		DBA37F912B78E63B00051C51 /* OzinsheDemo2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OzinsheDemo2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBA37F942B78E63B00051C51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBA37F962B78E63B00051C51 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -278,6 +282,15 @@
 			path = Seasons;
 			sourceTree = "<group>";
 		};
+		DB8A7F312B87396C00B69212 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				DB8A7F322B87398700B69212 /* MovieTableViewCell.swift */,
+				DB8A7F342B87401D00B69212 /* CategoryViewController.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		DBA37F882B78E63B00051C51 = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +351,7 @@
 		DBA37FCF2B78EFD100051C51 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DB8A7F312B87396C00B69212 /* Category */,
 				DB8A7F262B85D85D00B69212 /* Seasons */,
 				DB07DEE82B83C2A4001E10C7 /* MovieInfo */,
 				DBA380012B7A38DF00051C51 /* Onboarding */,
@@ -617,6 +631,7 @@
 			files = (
 				DB8A7F2C2B85DFDA00B69212 /* SeasonSeriesViewController.swift in Sources */,
 				DBFDB7B72B7C933D00EA5C69 /* SignInViewController.swift in Sources */,
+				DB8A7F352B87401D00B69212 /* CategoryViewController.swift in Sources */,
 				DB07DEDC2B835312001E10C7 /* MainBannerCollectionViewCell.swift in Sources */,
 				DB8A7F2A2B85DCC200B69212 /* SeriesTableViewCell.swift in Sources */,
 				DB07DEBE2B831AEE001E10C7 /* Screenshot.swift in Sources */,
@@ -653,6 +668,7 @@
 				DBA380052B7A39B800051C51 /* Slides.swift in Sources */,
 				DB07DECA2B831BBD001E10C7 /* Series.swift in Sources */,
 				DB4E9E782B7BE7760074DAD5 /* CustomGradientView.swift in Sources */,
+				DB8A7F332B87398700B69212 /* MovieTableViewCell.swift in Sources */,
 				DB07DEC42B831B4B001E10C7 /* Category.swift in Sources */,
 				DB07DEF02B83C950001E10C7 /* MovieInfoViewController.swift in Sources */,
 				DB07DEEA2B83C5CE001E10C7 /* ScreenshotCollectionViewCell.swift in Sources */,
