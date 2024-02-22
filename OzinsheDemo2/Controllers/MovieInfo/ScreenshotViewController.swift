@@ -57,11 +57,6 @@ class ScreenshotViewController: UIViewController {
             self.collectionView.scrollRectToVisible(rect, animated: false)
         }
     }
-    
-    func setData(movie: Movie) {
-        self.movie = movie
-        collectionView.reloadData()
-    }
 }
 
 //- MARK: - UICollectionViewDelegate & UICollectionViewDataSource
