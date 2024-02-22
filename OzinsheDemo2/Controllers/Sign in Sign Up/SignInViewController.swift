@@ -77,6 +77,7 @@ class SignInViewController: UIViewController {
         textfield.keyboardType = .emailAddress
         textfield.autocapitalizationType = .none
         textfield.tintColor = UIColor(red: 151/255, green: 83/255, blue: 240/255, alpha: 1.0)
+        textfield.backgroundColor = UIColor.FFFFFF_1_C_2431
         return textfield
     }()
     
@@ -99,6 +100,7 @@ class SignInViewController: UIViewController {
                             action: #selector(passTextfieldEditingDidEnd),
                             for: .editingDidEnd)
         textfield.tintColor = UIColor(red: 151/255, green: 83/255, blue: 240/255, alpha: 1.0)
+        textfield.backgroundColor = UIColor.FFFFFF_1_C_2431
         return textfield
     }()
     

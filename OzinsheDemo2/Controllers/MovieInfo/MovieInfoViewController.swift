@@ -361,6 +361,12 @@ class MovieInfoViewController: UIViewController {
         } else {
             showSeasonButton.setTitle("\(movie.seasonCount)" + " сезон" + "\(movie.seriesCount)" + " серий", for: .normal)
         }
+        
+        if similarMovies.isEmpty {
+            similarLabel.isHidden = true
+            similarCollectionView.isHidden = true
+            showSimilar.isHidden = true
+        }
     }
     
     func setLines() {
