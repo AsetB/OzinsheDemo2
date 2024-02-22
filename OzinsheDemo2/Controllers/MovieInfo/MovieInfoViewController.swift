@@ -17,12 +17,16 @@ class MovieInfoViewController: UIViewController {
     //- MARK: - Variables
     var movie = Movie()
     var similarMovies: [Movie] = []
-    
+    var dirLabelTopToDescrLabelBottom: Constraint? = nil
+    var dirLabelTopToDescrButtonBottom: Constraint? = nil
+    var dirNameLabelTopToDescrLabelBottom: Constraint? = nil
+    var dirNameLabelTopToDescrButtonBottom: Constraint? = nil
+    var screenLabelTopToSeriesLabelBottom: Constraint? = nil
+    var screenLabelTopToLinealViewBottom: Constraint? = nil
     //- MARK: - Top view Outlets
     
     var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        //scrollView.contentSize = CGSize(width: /*Int((self.view.window?.windowScene?.screen.bounds.width)!)*/ UIScreen.main.bounds.width, height: 1000)
         scrollView.isScrollEnabled = true
         scrollView.contentMode = .scaleToFill
         scrollView.backgroundColor = UIColor.FFFFFF_111827
@@ -288,16 +292,12 @@ class MovieInfoViewController: UIViewController {
         setupConstraints()
         setupButtonActions()
         setupData()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        imageGradientView.updateColors()
-        imageGradientView.updateLocations()
-        descriptionGradientView.updateColors()
-        descriptionGradientView.updateLocations()
+        setViews()
         setLines()
     }
     
@@ -352,17 +352,31 @@ class MovieInfoViewController: UIViewController {
             favoriteButton.setImage(UIImage(named: "FavoriteButtonEmpty"), for: .normal)
         }
         
-        showSeasonButton.setTitle("\(movie.seasonCount)" + " сезон" + "\(movie.seriesCount)" + " серий", for: .normal)
-        
-        if descriptionText.numberOfLines < 5 {
-            showFullDescription.isHidden = true
-            descriptionGradientView.isHidden = true
+        if movie.movieType == "MOVIE" {
+            showSeasonButton.isHidden = true
+            seasonsButtonArrow.isHidden = true
+            seriesLabel.isHidden = true
+            screenLabelTopToSeriesLabelBottom?.update(priority: .low)
+            screenLabelTopToLinealViewBottom?.update(priority: .high)
+        } else {
+            showSeasonButton.setTitle("\(movie.seasonCount)" + " сезон" + "\(movie.seriesCount)" + " серий", for: .normal)
         }
     }
     
     func setLines() {
         if descriptionText.numberOfLines > 4 {
             descriptionText.numberOfLines = 4
+        }
+        if descriptionText.numberOfVisibleLines < 4 {
+            showFullDescription.isHidden = true
+            descriptionGradientView.isHidden = true
+            dirLabelTopToDescrLabelBottom?.update(priority: .high)
+            dirLabelTopToDescrButtonBottom?.update(priority: .low)
+            dirNameLabelTopToDescrLabelBottom?.update(priority: .high)
+            dirNameLabelTopToDescrButtonBottom?.update(priority: .low)
+        } else {
+            showFullDescription.isHidden = false
+            descriptionGradientView.isHidden = false
         }
     }
     //- MARK: - Set Constraints
@@ -440,7 +454,8 @@ class MovieInfoViewController: UIViewController {
             make.height.equalTo(29)
         }
         directorLabel.snp.makeConstraints { make in
-            make.top.equalTo(showFullDescription.snp.bottom).offset(24)
+            self.dirLabelTopToDescrButtonBottom =  make.top.equalTo(showFullDescription.snp.bottom).offset(24).priority(.high).constraint
+            self.dirLabelTopToDescrLabelBottom =  make.top.equalTo(descriptionText.snp.bottom).offset(24).priority(.low).constraint
             make.leading.equalToSuperview().inset(24)
             make.height.equalTo(22)
         }
@@ -450,7 +465,8 @@ class MovieInfoViewController: UIViewController {
             make.height.equalTo(22)
         }
         directorNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(showFullDescription.snp.bottom).offset(24)
+            self.dirNameLabelTopToDescrButtonBottom =  make.top.equalTo(showFullDescription.snp.bottom).offset(24).priority(.high).constraint
+            self.dirNameLabelTopToDescrLabelBottom =  make.top.equalTo(descriptionText.snp.bottom).offset(24).priority(.low).constraint
             make.leading.equalTo(directorLabel.snp.trailing).offset(19)
             make.height.equalTo(22)
         }
@@ -482,7 +498,8 @@ class MovieInfoViewController: UIViewController {
             make.centerY.equalTo(showSeasonButton.snp.centerY)
         }
         screenshotsLabel.snp.makeConstraints { make in
-            make.top.equalTo(seriesLabel.snp.bottom).offset(32)
+            self.screenLabelTopToSeriesLabelBottom =  make.top.equalTo(seriesLabel.snp.bottom).offset(32).priority(.high).constraint
+            self.screenLabelTopToLinealViewBottom =  make.top.equalTo(linealLowerView.snp.bottom).offset(24).priority(.low).constraint
             make.leading.equalToSuperview().inset(24)
             make.height.equalTo(24)
         }
@@ -512,7 +529,6 @@ class MovieInfoViewController: UIViewController {
             make.top.equalTo(descriptionText.snp.top)
             make.bottom.equalTo(descriptionText.snp.bottom)
         }
-        
     }
     //- MARK: - Set Button Actions
     func setupButtonActions() {

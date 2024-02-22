@@ -81,19 +81,10 @@ class SeasonSeriesViewController: UIViewController {
     func downloadSeason() {
         SVProgressHUD.show()
         
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(AuthenticationService.shared.token)"
-        ]
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(AuthenticationService.shared.token)"]
         
         AF.request(URLs.GET_SEASONS + String(movie.id), method: .get, headers: headers).responseData { response in
-            
-            print("\(String(describing: response.request))")  // original URL request
-            print("\(String(describing: response.request?.allHTTPHeaderFields))")  // all HTTP Header Fields
-            print("\(String(describing: response.response))") // HTTP URL response
-            print("\(String(describing: response.data))")     // server data
-            print("\(response.result)")   // result of response serialization
-            print("\(String(describing: response.value))")   // result of response serialization
-            
+    
             SVProgressHUD.dismiss()
             var resultString = ""
             if let data = response.data {
@@ -178,7 +169,8 @@ extension SeasonSeriesViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 240
     }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let youTubePlayerViewController = YouTubePlayerViewController(
             player: ""
@@ -188,5 +180,4 @@ extension SeasonSeriesViewController: UITableViewDelegate, UITableViewDataSource
             fullscreenMode: .system, autoPlay: true, showControls: true, showFullscreenButton: true, useModestBranding: false, playInline: false, showRelatedVideos: false)
         self.show(youTubePlayerViewController, sender: self)
     }
-    
 }

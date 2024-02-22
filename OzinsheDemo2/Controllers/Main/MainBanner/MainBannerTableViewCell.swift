@@ -23,7 +23,6 @@ class MainBannerTableViewCell: UITableViewCell {
         
         let layout = TopAlignedCollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 22, left: 24, bottom: 10, right: 24)
-        //layout.itemSize = CGSize(width: 112, height: 220)
         layout.minimumInteritemSpacing = 16
         layout.minimumLineSpacing = 16
         layout.estimatedItemSize.width = 300

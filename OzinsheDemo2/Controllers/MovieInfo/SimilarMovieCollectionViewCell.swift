@@ -65,8 +65,4 @@ class SimilarMovieCollectionViewCell: UICollectionViewCell {
             make.horizontalEdges.bottom.equalToSuperview()
         }
     }
-    //- MARK: - Setup Cell Data
-    func setCellData(mainMovie: MainMovies) {
-        
-    }
 }

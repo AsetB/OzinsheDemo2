@@ -39,8 +39,4 @@ class ScreenshotCollectionViewCell: UICollectionViewCell {
         }
         
     }
-    //- MARK: - Setup Cell Data
-    func setCellData(mainMovie: MainMovies) {
-        
-    }
 }

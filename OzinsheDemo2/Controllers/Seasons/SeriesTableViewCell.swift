@@ -55,10 +55,4 @@ class SeriesTableViewCell: UITableViewCell {
             make.horizontalEdges.equalToSuperview().inset(24)
         }
     }
-    
-    //- MARK: - Setup Cell Data
-    func setCellData(mainMovie: MainMovies) {
-       
-    }
-
 }

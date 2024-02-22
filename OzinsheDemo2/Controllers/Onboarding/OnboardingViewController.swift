@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class OnboardingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class OnboardingViewController: UIViewController {
     
     //- MARK: - Local outlets
     lazy var collectionView: UICollectionView = {
@@ -118,8 +118,9 @@ class OnboardingViewController: UIViewController, UICollectionViewDelegate, UICo
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(118)
         }
     }
-    
-    //- MARK: - Collection View - UICollectionViewDelegate
+}
+//- MARK: - UICollectionViewDelegate & UICollectionViewDataSource
+extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return slidesArray.count

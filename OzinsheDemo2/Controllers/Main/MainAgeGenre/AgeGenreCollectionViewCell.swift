@@ -52,8 +52,4 @@ class AgeGenreCollectionViewCell: UICollectionViewCell {
             make.horizontalEdges.equalToSuperview()
         }
     }
-    //- MARK: - Setup Cell Data
-    func setCellData(mainMovie: MainMovies) {
-        
-    }
 }

@@ -116,12 +116,9 @@ class SignInViewController: UIViewController {
         let button = UIButton()
         var config = UIButton.Configuration.plain()
         let title = "Құпия сөзді ұмыттыңыз ба?"
-        //button.setTitle("title", for: .normal)
         config.attributedTitle = AttributedString(title, attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Semibold", size: 14)!]))
-        //config.attributedTitle?.foregroundColor = .purpleLabels
         config.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 0)
         config.baseForegroundColor = .purpleLabels
-        //button.titleLabel?.textAlignment = .right
         button.contentHorizontalAlignment = .trailing
         button.configuration = config
         return button
@@ -171,8 +168,7 @@ class SignInViewController: UIViewController {
         //title
         let title = "Apple ID-мен тіркеліңіз"
         config.attributedTitle = AttributedString(title, attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Semibold", size: 16)!]))
-        config.attributedTitle?.foregroundColor = ._111827_FFFFFF //не работает
-        //config.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 95.5, bottom: 16, trailing: 69.5)
+        //config.attributedTitle?.foregroundColor = ._111827_FFFFFF //не работает
         
         //button
         config.baseBackgroundColor = .FFFFFF_4_B_5563
@@ -181,7 +177,6 @@ class SignInViewController: UIViewController {
         button.layer.borderColor = UIColor.Border.appleGoogleSignInButton.cgColor
         button.layer.cornerRadius = appearance.buttonCornerRadius
         button.clipsToBounds = true
-        //button.layer.borderColor = CGColor(red: 75/255, green: 85/255, blue: 99/255, alpha: 1) for dark theme border color
         
         //logo
         config.image = UIImage(named: "apple-logo")
@@ -189,7 +184,7 @@ class SignInViewController: UIViewController {
         
         button.contentHorizontalAlignment = .center
         button.configuration = config
-        
+    
         return button
     }()
     
@@ -199,8 +194,7 @@ class SignInViewController: UIViewController {
         //title
         let title = "Google-мен тіркеліңіз"
         config.attributedTitle = AttributedString(title, attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Semibold", size: 16)!]))
-        config.attributedTitle?.foregroundColor = ._111827_FFFFFF //не работает
-        //config.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 95.5, bottom: 16, trailing: 69.5)
+        //config.attributedTitle?.foregroundColor = ._111827_FFFFFF //не работает
         
         //button
         config.baseBackgroundColor = .FFFFFF_4_B_5563
@@ -209,7 +203,6 @@ class SignInViewController: UIViewController {
         button.layer.borderColor = UIColor.Border.appleGoogleSignInButton.cgColor
         button.layer.cornerRadius = appearance.buttonCornerRadius
         button.clipsToBounds = true
-        //button.layer.borderColor = CGColor(red: 75/255, green: 85/255, blue: 99/255, alpha: 1) for dark theme border color
         
         //logo
         config.image = UIImage(named: "GoogleLogo")
@@ -404,8 +397,6 @@ class SignInViewController: UIViewController {
                     
                     if let token = json["accessToken"].string {
                         AuthenticationService.shared.token = token
-//                        Storage.sharedInstance.accessToken = token
-//                        UserDefaults.standard.set(token, forKey: "accessToken")
                         self.startApp()
                     } else {
                         SVProgressHUD.showError(withStatus: "CONNECTION_ERROR")
@@ -451,7 +442,6 @@ class SignInViewController: UIViewController {
     }
     
     //- MARK: - StartApp
-    
     func startApp() {
         let tabViewController = TabBarController()
         tabViewController.modalPresentationStyle = .fullScreen

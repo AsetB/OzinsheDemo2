@@ -46,10 +46,8 @@ class SlidesCollectionViewCell: UICollectionViewCell {
         let title: String = "Өткізу"
         var config = UIButton.Configuration.filled()
         config.attributedTitle = AttributedString(title, attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Regular", size: 12)!]))
-        //config.attributedTitle?.foregroundColor = UIColor(named: "111827 - FFFFFF")
         config.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16)
         config.background.cornerRadius = 8
-        //config.background.backgroundColor = UIColor(named: "FFFFFF - 111827")
         config.baseBackgroundColor = UIColor(named: "FFFFFF - 111827")
         config.baseForegroundColor = UIColor(named: "111827 - FFFFFF")
         button.configuration = config
@@ -85,15 +83,12 @@ class SlidesCollectionViewCell: UICollectionViewCell {
     //- MARK: - Constraints
     func setupConstraints() {
         slideImage.snp.makeConstraints { make in
-            //make.size.equalTo([375, 504].VResized)
             make.top.leading.trailing.equalToSuperview()
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(274)
         }
         centerLabel.snp.makeConstraints { make in
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(dynamicValue(for: 276))
             make.horizontalEdges.equalToSuperview().inset(40)
-//            make.horizontalEdges.equalToSuperview()
-//            make.bottom.equalTo(slideImage.snp.bottom).inset(10)
         }
         centerText.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(32)

@@ -50,8 +50,4 @@ class SeasonCollectionViewCell: UICollectionViewCell {
             make.verticalEdges.equalToSuperview()
         }
     }
-    //- MARK: - Setup Cell Data
-    func setCellData(mainMovie: MainMovies) {
-        
-    }
 }
