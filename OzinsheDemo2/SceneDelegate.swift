@@ -20,6 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
         
+        let defaults = UserDefaults.standard
+        let theme = defaults.string(forKey: "Theme")
+        if theme == "Dark" {
+            self.window?.overrideUserInterfaceStyle = .dark
+        } else {
+            self.window?.overrideUserInterfaceStyle = .light
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

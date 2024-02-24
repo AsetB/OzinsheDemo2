@@ -24,6 +24,10 @@ final class AuthenticationService {
         }
     }
     
+    func tokenClear() {
+        keychain.clear()
+    }
+    
     var isAuthorized: Bool {
         !token.isEmpty
     }

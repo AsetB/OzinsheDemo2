@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Localize_Swift
 
 class SlidesCollectionViewCell: UICollectionViewCell {
     //- MARK: - Local outlets

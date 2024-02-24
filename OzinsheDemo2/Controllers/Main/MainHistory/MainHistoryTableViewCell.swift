@@ -12,7 +12,7 @@ import SDWebImage
 class MainHistoryTableViewCell: UITableViewCell {
     //- MARK: - Variables
     var mainMovies = MainMovies()
-    var delegate: ItemDidSelect?
+    weak var delegate: ItemDidSelect?
     
     //- MARK: - Local Outlets
     lazy var mainLabel: UILabel = {

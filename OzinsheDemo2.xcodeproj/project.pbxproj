@@ -75,6 +75,11 @@
 		DBA380002B7A05EB00051C51 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA37FFF2B7A05EB00051C51 /* ProfileViewController.swift */; };
 		DBA380032B7A390A00051C51 /* SlidesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA380022B7A390A00051C51 /* SlidesCollectionViewCell.swift */; };
 		DBA380052B7A39B800051C51 /* Slides.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA380042B7A39B800051C51 /* Slides.swift */; };
+		DBA560F02B88902C00F6BC8B /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA560EF2B88902C00F6BC8B /* ProfileEditViewController.swift */; };
+		DBA560F22B88AA2800F6BC8B /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA560F12B88AA2800F6BC8B /* LanguageViewController.swift */; };
+		DBA560F42B88AB3F00F6BC8B /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA560F32B88AB3F00F6BC8B /* Language.swift */; };
+		DBA560F62B8A4DA900F6BC8B /* ProfileLogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA560F52B8A4DA900F6BC8B /* ProfileLogoutViewController.swift */; };
+		DBA560F82B8A625500F6BC8B /* PassChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA560F72B8A625500F6BC8B /* PassChangeViewController.swift */; };
 		DBFDB7AF2B7C8A0700EA5C69 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7AE2B7C8A0700EA5C69 /* Grid.swift */; };
 		DBFDB7B12B7C8A1100EA5C69 /* Apperance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7B02B7C8A1100EA5C69 /* Apperance.swift */; };
 		DBFDB7B72B7C933D00EA5C69 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7B62B7C933D00EA5C69 /* SignInViewController.swift */; };
@@ -175,6 +180,11 @@
 		DBA37FFF2B7A05EB00051C51 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DBA380022B7A390A00051C51 /* SlidesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidesCollectionViewCell.swift; sourceTree = "<group>"; };
 		DBA380042B7A39B800051C51 /* Slides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slides.swift; sourceTree = "<group>"; };
+		DBA560EF2B88902C00F6BC8B /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		DBA560F12B88AA2800F6BC8B /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
+		DBA560F32B88AB3F00F6BC8B /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		DBA560F52B8A4DA900F6BC8B /* ProfileLogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLogoutViewController.swift; sourceTree = "<group>"; };
+		DBA560F72B8A625500F6BC8B /* PassChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassChangeViewController.swift; sourceTree = "<group>"; };
 		DBFDB7AE2B7C8A0700EA5C69 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		DBFDB7B02B7C8A1100EA5C69 /* Apperance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apperance.swift; sourceTree = "<group>"; };
 		DBFDB7B62B7C933D00EA5C69 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				DB07DEF12B84C45D001E10C7 /* ItemDidSelect.swift */,
+				DBA560F32B88AB3F00F6BC8B /* Language.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -458,6 +469,10 @@
 			isa = PBXGroup;
 			children = (
 				DBA37FFF2B7A05EB00051C51 /* ProfileViewController.swift */,
+				DBA560EF2B88902C00F6BC8B /* ProfileEditViewController.swift */,
+				DBA560F12B88AA2800F6BC8B /* LanguageViewController.swift */,
+				DBA560F52B8A4DA900F6BC8B /* ProfileLogoutViewController.swift */,
+				DBA560F72B8A625500F6BC8B /* PassChangeViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -648,14 +663,18 @@
 			files = (
 				DB8A7F2C2B85DFDA00B69212 /* SeasonSeriesViewController.swift in Sources */,
 				DBFDB7B72B7C933D00EA5C69 /* SignInViewController.swift in Sources */,
+				DBA560F22B88AA2800F6BC8B /* LanguageViewController.swift in Sources */,
 				DB8A7F352B87401D00B69212 /* CategoryViewController.swift in Sources */,
 				DB07DEDC2B835312001E10C7 /* MainBannerCollectionViewCell.swift in Sources */,
 				DB8A7F2A2B85DCC200B69212 /* SeriesTableViewCell.swift in Sources */,
 				DB07DEBE2B831AEE001E10C7 /* Screenshot.swift in Sources */,
+				DBA560F82B8A625500F6BC8B /* PassChangeViewController.swift in Sources */,
 				DB70789B2B7E2E590010BFDA /* URLs.swift in Sources */,
 				DBA37F952B78E63B00051C51 /* AppDelegate.swift in Sources */,
 				DB07DEBC2B831AC2001E10C7 /* Movie.swift in Sources */,
+				DBA560F62B8A4DA900F6BC8B /* ProfileLogoutViewController.swift in Sources */,
 				DB07DEF42B8526D3001E10C7 /* UILabel + Extension.swift in Sources */,
+				DBA560F02B88902C00F6BC8B /* ProfileEditViewController.swift in Sources */,
 				DB07DEC22B831B2C001E10C7 /* Genres.swift in Sources */,
 				DB07DED02B83289D001E10C7 /* MainMovieCollectionViewCell.swift in Sources */,
 				DB70789E2B7E2E950010BFDA /* Storage.swift in Sources */,
@@ -665,6 +684,7 @@
 				DB07DEC02B831B0F001E10C7 /* CategoryAge.swift in Sources */,
 				DB07DEC82B831BA7001E10C7 /* BannerMovie.swift in Sources */,
 				DB8A7F3B2B87643E00B69212 /* UIImageView + Extension.swift in Sources */,
+				DBA560F42B88AB3F00F6BC8B /* Language.swift in Sources */,
 				DBA37FFC2B7A05D000051C51 /* SearchViewController.swift in Sources */,
 				DB07DEDE2B835A83001E10C7 /* MainBannerTableViewCell.swift in Sources */,
 				DB07DEE42B8369B4001E10C7 /* AgeGenreCollectionViewCell.swift in Sources */,

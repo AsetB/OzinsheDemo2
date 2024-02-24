@@ -31,6 +31,3 @@ extension UIViewController{
         self.present(alertMessagePopUpBox, animated: true)
     }
 }
-
-
-
