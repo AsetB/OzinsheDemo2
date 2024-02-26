@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings
+  OzinsheDemo2
+
+  Created by Aset Bakirov on 26.02.2024.
+  
+*/
+"PROFILE" = "Профиль";
+"MY_PROFILE" = "Мой профиль";
+"LANGUAGE" = "Язык";
+"PERSONAL_DATA" = "Личные данные";
+"EDIT" = "Править";
+"CHANGE_PASSWORD" = "Поменять пароль";
+"TERMS_AND_CONDITIONS" = "Условия и положения";
+"ANNOUNCEMENT" = "Объявление";
+"DARK_MODE" = "Темный режим";
+"YOUR_NAME" = "Ваше имя";
+"TELEPHONE" = "Телефон";
+"DATE_OF_BIRTH" = "Дата рождения";
+"SAVE_CHANGES" = "Сохранить изменения";
+"EXIT" = "Выход";
+"CONFIRM_EXIT_FROM_ACCOUNT" = "Вы действительно хотите выйти из аккаунта?";
+"YES_EXIT" = "Да, выйти";
+"NO" = "Нет";
+"YOUR_PASSWORD" = "Ваш пароль";
+"REPEAT_PASSWORD" = "Повторите пароль";
+"HELLO" = "Привет";
+"LOGIN_INTO_ACCOUNT" = "Войдите в аккаунт";
+"PASSWORD" = "Пароль";
+"YOUR_EMAIL" = "Ваш email";
+"FORGOT_YOUR_PASSWORD" = "Забыли пароль?";
+"LOGIN" = "Войти";
+"NO_ACCOUNT" = "Нет аккаунта? ";
+"GOT_ACCOUNT" = "У вас есть аккаунт? ";
+"OR" = "Или";
+"SIGNUP_APPLE" = "Зарегистрируйтесь с Apple ID";
+"SIGNUP_GOOGLE" = "Зарегистрируйтесь с Google";
+"SIGN_UP" = "Регистрация";
+"FILL_IN_DATA" = "Заполните данные";
+"PASS_NOT_MATCH" = "Пароли не совпадают";
+"PASS_CHANGED" = "Пароль успешно изменен";
+"LIST" = "Список";
+"SEARCH" = "Поиск";
+"CATEGORIES" = "Категории";
+"SEARCH_RESULTS" = "Результаты поиска";
+"PLAY" = "Смотреть";
+"CONTINUE_PLAY" = "Продолжить просмотр";
+"AGE_CATEGORY" = "В зависимости от возраста";
+"CHOOSE_GENRE" = "Выберите жанр";
+"ALL" = "Все";
+"WRONG_FORMAT" = "Неправильный формат";
+"DETAILS" = "Подробнее";
+"DIRECTOR" = "Режиссер:";
+"PRODUCER" = "Продюсер:";
+"SECTIONS" = "Разделы";
+"SCREENSHOTS" = "Скриншоты";
+"SIMILAR_SERIES" = "Похожие сериалы";
+"SEASON" = " сезон, ";
+"SEASON_IN_SERIES" = " сезон";
+"SERIES" = " серия";
+"ADD_FAVORITE" = "В избранное";
+"SHARE" = "Поделиться";
+"HIDE" = "Скрыть";
+"EPISODE" = " серия";
+"EMAIL_IN_USE" = "Пользователь с таким email уже зарегистрирован";
+"SKIP" = "Пропустить";
+"NEXT" = "Далее";

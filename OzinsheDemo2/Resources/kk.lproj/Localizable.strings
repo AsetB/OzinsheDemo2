@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings
+  OzinsheDemo2
+
+  Created by Aset Bakirov on 26.02.2024.
+  
+*/
+"PROFILE" = "Профиль";
+"MY_PROFILE" = "Менің профилім";
+"LANGUAGE" = "Тіл";
+"PERSONAL_DATA" = "Жеке деректер";
+"EDIT" = "Өңдеу";
+"CHANGE_PASSWORD" = "Құпия сөзді өзгерту";
+"TERMS_AND_CONDITIONS" = "Ережелер мен шарттар";
+"ANNOUNCEMENT" = "Хабарландырулар";
+"DARK_MODE" = "Қараңғы режим";
+"YOUR_NAME" = "Сіздің атыңыз";
+"TELEPHONE" = "Телефон";
+"DATE_OF_BIRTH" = "Туылған күні";
+"SAVE_CHANGES" = "Өзгерістерді сақтау";
+"EXIT" = "Шығу";
+"CONFIRM_EXIT_FROM_ACCOUNT" = "Сіз шынымен аккаунтыныздан шыққыңыз келеді ма?";
+"YES_EXIT" = "Иә, шығу";
+"NO" = "Жоқ";
+"YOUR_PASSWORD" = "Сіздің құпия сөзіңіз";
+"REPEAT_PASSWORD" = "Құпия сөзді қайталаңыз";
+"HELLO" = "Сәлем";
+"LOGIN_INTO_ACCOUNT" = "Аккаунтқа кіріңіз";
+"PASSWORD" = "Құпия сөз";
+"YOUR_EMAIL" = "Сіздің email";
+"FORGOT_YOUR_PASSWORD" = "Құпия сөзді ұмыттыңыз ба?";
+"LOGIN" = "Кіру";
+"NO_ACCOUNT" = "Аккаунтыныз жоқ па? ";
+"GOT_ACCOUNT" = "Сізде аккаунт бар ма? ";
+"OR" = "Немесе";
+"SIGNUP_APPLE" = "Apple ID-мен тіркеліңіз";
+"SIGNUP_GOOGLE" = "Google-мен тіркеліңіз";
+"SIGN_UP" = "Тіркелу";
+"FILL_IN_DATA" = "Деректерді толтырыңыз";
+"PASS_NOT_MATCH" = "Құпия сөздер бірдей емес";
+"PASS_CHANGED" = "Құпия сөз сәтті өзгертілді";
+"LIST" = "Тізім";
+"SEARCH" = "Іздеу";
+"CATEGORIES" = "Санаттар";
+"SEARCH_RESULTS" = "Іздеу нәтижелері";
+"PLAY" = "Қарау";
+"CONTINUE_PLAY" = "Қарауды жалғастырыңыз";
+"CHOOSE_GENRE" = "Жанрды таңдаңыз";
+"AGE_CATEGORY" = "Жасына сәйкес";
+"ALL" = "Барлығы";
+"WRONG_FORMAT" = "Қате формат";
+"DETAILS" = "Толығырақ";
+"DIRECTOR" = "Режиссер:";
+"PRODUCER" = "Продюсер:";
+"SECTIONS" = "Бөлімдер";
+"SCREENSHOTS" = "Скриншоттар";
+"SIMILAR_SERIES" = "Ұқсас телехикаялар";
+"SEASON" = " сезон, ";
+"SEASON_IN_SERIES" = " сезон";
+"SERIES" = " серия";
+"ADD_FAVORITE" = "Тізімге қосу";
+"SHARE" = "Бөлісу";
+"HIDE" = "Жасыру";
+"EPISODE" = "-ші бөлім";
+"EMAIL_IN_USE" = "Мұндай email-ы бар пайдаланушы тіркелген";
+"SKIP" = "Өткізу";
+"NEXT" = "Әрі қарай";

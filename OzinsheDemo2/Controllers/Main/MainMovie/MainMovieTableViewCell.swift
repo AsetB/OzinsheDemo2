@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SDWebImage
+import Localize_Swift
 
 class MainMovieTableViewCell: UITableViewCell {
     //- MARK: - Variables
@@ -90,7 +91,7 @@ class MainMovieTableViewCell: UITableViewCell {
     //- MARK: - Setup Cell Data
     func setCellData(mainMovie: MainMovies) {
         mainLabel.text = mainMovie.categoryName
-        goToCategoryLabel.text = "Барлығы"
+        goToCategoryLabel.text = "ALL".localized()
         self.mainMovies = mainMovie
         collectionView.reloadData()
     }

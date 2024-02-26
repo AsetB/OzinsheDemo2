@@ -56,7 +56,6 @@
 		DBA37FC62B78E68300051C51 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = DBA37FC52B78E68300051C51 /* SwiftyJSON */; };
 		DBA37FC92B78E6AA00051C51 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DBA37FC82B78E6AA00051C51 /* Alamofire */; };
 		DBA37FCD2B78E9AD00051C51 /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = DBA37FCC2B78E9AD00051C51 /* SVProgressHUD */; };
-		DBA37FD22B78F0B700051C51 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = DBA37FD12B78F0B700051C51 /* Localizable.xcstrings */; };
 		DBA37FD52B79E86900051C51 /* Localize_Swift in Frameworks */ = {isa = PBXBuildFile; productRef = DBA37FD42B79E86900051C51 /* Localize_Swift */; };
 		DBA37FDB2B79E99900051C51 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DBA37FD72B79E99900051C51 /* SF-Pro-Display-Bold.otf */; };
 		DBA37FDC2B79E99900051C51 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DBA37FD82B79E99900051C51 /* SF-Pro-Display-Regular.otf */; };
@@ -80,6 +79,7 @@
 		DBA560F42B88AB3F00F6BC8B /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA560F32B88AB3F00F6BC8B /* Language.swift */; };
 		DBA560F62B8A4DA900F6BC8B /* ProfileLogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA560F52B8A4DA900F6BC8B /* ProfileLogoutViewController.swift */; };
 		DBA560F82B8A625500F6BC8B /* PassChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA560F72B8A625500F6BC8B /* PassChangeViewController.swift */; };
+		DBEAED1F2B8CAA4400E575E5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBEAED212B8CAA4400E575E5 /* Localizable.strings */; };
 		DBFDB7AF2B7C8A0700EA5C69 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7AE2B7C8A0700EA5C69 /* Grid.swift */; };
 		DBFDB7B12B7C8A1100EA5C69 /* Apperance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7B02B7C8A1100EA5C69 /* Apperance.swift */; };
 		DBFDB7B72B7C933D00EA5C69 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7B62B7C933D00EA5C69 /* SignInViewController.swift */; };
@@ -166,13 +166,12 @@
 		DBA37FB12B78E63C00051C51 /* OzinsheDemo2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OzinsheDemo2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBA37FB52B78E63C00051C51 /* OzinsheDemo2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OzinsheDemo2UITests.swift; sourceTree = "<group>"; };
 		DBA37FB72B78E63C00051C51 /* OzinsheDemo2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OzinsheDemo2UITestsLaunchTests.swift; sourceTree = "<group>"; };
-		DBA37FD12B78F0B700051C51 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		DBA37FD72B79E99900051C51 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		DBA37FD82B79E99900051C51 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		DBA37FD92B79E99900051C51 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
 		DBA37FDA2B79E99900051C51 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		DBA37FE42B79EA0B00051C51 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		DBA37FEF2B79F70300051C51 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
+		DBA37FEF2B79F70300051C51 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		DBA37FF72B7A04CD00051C51 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		DBA37FF92B7A05C000051C51 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DBA37FFB2B7A05D000051C51 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +184,9 @@
 		DBA560F32B88AB3F00F6BC8B /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		DBA560F52B8A4DA900F6BC8B /* ProfileLogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLogoutViewController.swift; sourceTree = "<group>"; };
 		DBA560F72B8A625500F6BC8B /* PassChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassChangeViewController.swift; sourceTree = "<group>"; };
+		DBEAED202B8CAA4400E575E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DBEAED222B8CAA4A00E575E5 /* kk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = kk; path = kk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DBEAED232B8CAA4B00E575E5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DBFDB7AE2B7C8A0700EA5C69 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		DBFDB7B02B7C8A1100EA5C69 /* Apperance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apperance.swift; sourceTree = "<group>"; };
 		DBFDB7B62B7C933D00EA5C69 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -341,19 +343,15 @@
 		DBA37F932B78E63B00051C51 /* OzinsheDemo2 */ = {
 			isa = PBXGroup;
 			children = (
+				DBA37FA22B78E63C00051C51 /* Info.plist */,
+				DBEAED1E2B8CA9D300E575E5 /* App */,
+				DBEAED1D2B8CA9BB00E575E5 /* Resources */,
 				DB8A7F402B87AC4100B69212 /* Protocols */,
 				DB70789C2B7E2E860010BFDA /* Shared */,
 				DB7078992B7E2E4B0010BFDA /* Static */,
 				DBA37FDF2B79E9AB00051C51 /* Extensions */,
-				DBA37FD62B79E96E00051C51 /* Fonts */,
 				DBA37FD02B78EFDD00051C51 /* Model */,
 				DBA37FCF2B78EFD100051C51 /* Controllers */,
-				DBA37F942B78E63B00051C51 /* AppDelegate.swift */,
-				DBA37F962B78E63B00051C51 /* SceneDelegate.swift */,
-				DBA37F9D2B78E63C00051C51 /* Assets.xcassets */,
-				DBA37FA22B78E63C00051C51 /* Info.plist */,
-				DBA37FD12B78F0B700051C51 /* Localizable.xcstrings */,
-				DBA37FEF2B79F70300051C51 /* Launch Screen.storyboard */,
 			);
 			path = OzinsheDemo2;
 			sourceTree = "<group>";
@@ -378,11 +376,11 @@
 		DBA37FCF2B78EFD100051C51 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DBA380012B7A38DF00051C51 /* Onboarding */,
+				DBFDB7B52B7C92F600EA5C69 /* Sign in Sign Up */,
 				DB8A7F312B87396C00B69212 /* Category */,
 				DB8A7F262B85D85D00B69212 /* Seasons */,
 				DB07DEE82B83C2A4001E10C7 /* MovieInfo */,
-				DBA380012B7A38DF00051C51 /* Onboarding */,
-				DBFDB7B52B7C92F600EA5C69 /* Sign in Sign Up */,
 				DBA37FE02B79E9D800051C51 /* Main */,
 				DBA37FE32B79E9EF00051C51 /* Profile */,
 				DBA37FE22B79E9E900051C51 /* Favorites */,
@@ -493,6 +491,26 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		DBEAED1D2B8CA9BB00E575E5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DBA37FD62B79E96E00051C51 /* Fonts */,
+				DBEAED212B8CAA4400E575E5 /* Localizable.strings */,
+				DBA37FEF2B79F70300051C51 /* Launch Screen.storyboard */,
+				DBA37F9D2B78E63C00051C51 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DBEAED1E2B8CA9D300E575E5 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				DBA37F942B78E63B00051C51 /* AppDelegate.swift */,
+				DBA37F962B78E63B00051C51 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		DBFDB7B52B7C92F600EA5C69 /* Sign in Sign Up */ = {
 			isa = PBXGroup;
 			children = (
@@ -601,7 +619,7 @@
 				en,
 				Base,
 				ru,
-				"kk-KZ",
+				kk,
 			);
 			mainGroup = DBA37F882B78E63B00051C51;
 			packageReferences = (
@@ -631,9 +649,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBA37FDE2B79E99900051C51 /* SF-Pro-Display-Medium.otf in Resources */,
-				DBA37FD22B78F0B700051C51 /* Localizable.xcstrings in Resources */,
 				DBA37F9E2B78E63C00051C51 /* Assets.xcassets in Resources */,
 				DBA37FDD2B79E99900051C51 /* SF-Pro-Display-Semibold.otf in Resources */,
+				DBEAED1F2B8CAA4400E575E5 /* Localizable.strings in Resources */,
 				DBA37FDC2B79E99900051C51 /* SF-Pro-Display-Regular.otf in Resources */,
 				DBA37FDB2B79E99900051C51 /* SF-Pro-Display-Bold.otf in Resources */,
 				DBA37FF02B79F70300051C51 /* Launch Screen.storyboard in Resources */,
@@ -752,6 +770,19 @@
 			targetProxy = DBA37FB22B78E63C00051C51 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DBEAED212B8CAA4400E575E5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBEAED202B8CAA4400E575E5 /* en */,
+				DBEAED222B8CAA4A00E575E5 /* kk */,
+				DBEAED232B8CAA4B00E575E5 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DBA37FB92B78E63C00051C51 /* Debug */ = {

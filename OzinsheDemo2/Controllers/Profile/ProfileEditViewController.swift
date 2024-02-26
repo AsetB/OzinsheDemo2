@@ -14,7 +14,7 @@ import SVProgressHUD
 
 class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
     //- MARK: - Outlets
-    lazy var nameLabel: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Сіздің атыңыз"
         label.font = appearance.boldFont14
@@ -22,7 +22,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
         return label
     }()
     
-    lazy var emailLabel: UILabel = {
+    private lazy var emailLabel: UILabel = {
         let label = UILabel()
         label.text = "Email"
         label.font = appearance.boldFont14
@@ -30,7 +30,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
         return label
     }()
     
-    lazy var phoneLabel: UILabel = {
+    private lazy var phoneLabel: UILabel = {
         let label = UILabel()
         label.text = "Телефон"
         label.font = appearance.boldFont14
@@ -38,7 +38,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
         return label
     }()
     
-    lazy var birthdayLabel: UILabel = {
+    private lazy var birthdayLabel: UILabel = {
         let label = UILabel()
         label.text = "Туылған күні"
         label.font = appearance.boldFont14
@@ -46,7 +46,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
         return label
     }()
     
-    lazy var saveButton: UIButton = {
+    private lazy var saveButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "PurpleButtons")
         button.layer.cornerRadius = 12
@@ -57,7 +57,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
         return button
     }()
     
-    lazy var nameTextfield: UITextField = {
+    private lazy var nameTextfield: UITextField = {
         let textfield = UITextField()
         textfield.defaultTextAttributes = [NSAttributedString.Key.font : appearance.medium500Font16, NSAttributedString.Key.foregroundColor : appearance.c111827_FFFFFF]
         textfield.addTarget(self,
@@ -69,7 +69,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
         return textfield
     }()
     
-    lazy var emailTextfield: UITextField = {
+    private lazy var emailTextfield: UITextField = {
         let textfield = UITextField()
         textfield.defaultTextAttributes = [NSAttributedString.Key.font : appearance.medium500Font16, NSAttributedString.Key.foregroundColor : appearance.c111827_FFFFFF]
         textfield.addTarget(self,
@@ -97,7 +97,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
         return textfield
     }()
     
-    lazy var birthdayTextfield: UITextField = {
+    private lazy var birthdayTextfield: UITextField = {
         let textfield = UITextField()
         textfield.defaultTextAttributes = [NSAttributedString.Key.font : appearance.medium500Font16, NSAttributedString.Key.foregroundColor : appearance.c111827_FFFFFF]
         textfield.addTarget(self,
@@ -114,7 +114,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
     private lazy var datePicker = {
         let datePicker = UIDatePicker(frame: CGRect.zero)
         datePicker.datePickerMode = .date
-        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.preferredDatePickerStyle = .inline
         datePicker.sizeToFit()
         return datePicker
     }()
@@ -125,22 +125,22 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
         }
     
     //MARK: Dividers
-    let dividerView1: UIView = {
+    private let dividerView1: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.D_1_D_5_DB_1_C_2431
         return view
     }()
-    let dividerView2: UIView = {
+    private let dividerView2: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.D_1_D_5_DB_1_C_2431
         return view
     }()
-    let dividerView3: UIView = {
+    private let dividerView3: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.D_1_D_5_DB_1_C_2431
         return view
     }()
-    let dividerView4: UIView = {
+    private let dividerView4: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.D_1_D_5_DB_1_C_2431
         return view
@@ -149,14 +149,17 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.FFFFFF_111827
-        navigationItem.title = "Жеке деректер"
+        navigationItem.title = "PERSONAL_DATA".localized()
         addViews()
         setupView()
         setupConstraints()
         hideKeyboardWhenTappedAround()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        localize()
+    }
     //- MARK: - Add & Setup Views
-    func addViews() {
+    private func addViews() {
         view.addSubview(nameLabel)
         view.addSubview(nameTextfield)
         view.addSubview(dividerView1)
@@ -171,7 +174,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
         view.addSubview(dividerView4)
         view.addSubview(saveButton)
     }
-    func setupView() {
+    private func setupView() {
         datePicker.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: .valueChanged)
         nameTextfield.text = UserDefaults.standard.string(forKey: "name")
         emailTextfield.text = UserDefaults.standard.string(forKey: "email")
@@ -179,7 +182,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
         birthdayTextfield.text = UserDefaults.standard.string(forKey: "birthDate")
     }
     //- MARK: - Constraints
-    func setupConstraints() {
+    private func setupConstraints() {
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).inset(24)
             make.leading.equalTo(view.safeAreaLayoutGuide).inset(24)
@@ -242,11 +245,19 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(42)
         }
     }
+    //- MARK: - Localization
+    private func localize() {
+        navigationItem.title = "PERSONAL_DATA".localized()
+        nameLabel.text = "YOUR_NAME".localized()
+        phoneLabel.text = "TELEPHONE".localized()
+        birthdayLabel.text = "DATE_OF_BIRTH".localized()
+        saveButton.setTitle("SAVE_CHANGES".localized(), for: .normal)
+    }
     //- MARK: - Actions
-    @objc func nameTextfieldEditingChange() {
+    @objc private func nameTextfieldEditingChange() {
         
     }
-    @objc func savePersonalData() {
+    @objc private func savePersonalData() {
         guard let birthDate = birthdayTextfield.text else { return }
         let userId = UserDefaults.standard.integer(forKey: "userId")
         let language = "English"

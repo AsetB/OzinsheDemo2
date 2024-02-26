@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var currentScene: UIScene?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -20,6 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
         
+        currentScene = scene
+        
         let defaults = UserDefaults.standard
         let theme = defaults.string(forKey: "Theme")
         if theme == "Dark" {
@@ -27,6 +29,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             self.window?.overrideUserInterfaceStyle = .light
         }
+    }
+    
+    func setRootViewController(_ viewController: UIViewController){
+        
+        guard let scene = (currentScene as? UIWindowScene) else { return }
+        
+        window = UIWindow(frame: scene.coordinateSpace.bounds)
+        window?.windowScene = scene
+        window?.rootViewController = UINavigationController(rootViewController: viewController)
+        window?.makeKeyAndVisible()
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

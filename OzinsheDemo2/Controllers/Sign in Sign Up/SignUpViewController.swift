@@ -10,6 +10,7 @@ import SnapKit
 import SwiftyJSON
 import SVProgressHUD
 import Alamofire
+import Localize_Swift
 
 class SignUpViewController: UIViewController {
     //- MARK: - Variables
@@ -23,7 +24,7 @@ class SignUpViewController: UIViewController {
     //- MARK: - Local outlets
     lazy var titleLabel: UILabel = {
         let title = UILabel()
-        title.text = "Тіркелу"
+        title.text = "SIGN_UP".localized()
         title.font = appearance.mainTitleFont
         title.textColor = appearance.c111827_FFFFFF
         title.textAlignment = .left
@@ -32,7 +33,7 @@ class SignUpViewController: UIViewController {
     
     lazy var subTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Деректерді толтырыңыз"
+        label.text = "FILL_IN_DATA".localized()
         label.font = appearance.regular400Font16
         label.textColor = UIColor(red: 107/255, green: 114/255, blue: 128/255, alpha: 1)
         label.textAlignment = .left
@@ -50,7 +51,7 @@ class SignUpViewController: UIViewController {
     
     lazy var passwordLabel: UILabel = {
         let label = UILabel()
-        label.text = "Құпия сөз"
+        label.text = "PASSWORD".localized()
         label.font = appearance.boldFont14
         label.textColor = appearance.c111827_FFFFFF
         label.textAlignment = .left
@@ -59,7 +60,7 @@ class SignUpViewController: UIViewController {
     
     lazy var repeatPasswordLabel: UILabel = {
         let label = UILabel()
-        label.text = "Құпия сөзді қайталаңыз"
+        label.text = "REPEAT_PASSWORD".localized()
         label.font = appearance.boldFont14
         label.textColor = appearance.c111827_FFFFFF
         label.textAlignment = .left
@@ -68,7 +69,7 @@ class SignUpViewController: UIViewController {
     
     lazy var emailTextfield: TextFieldWithPadding = {
         let textfield = TextFieldWithPadding()
-        let placeholderText = "Сіздің email"
+        let placeholderText = "YOUR_EMAIL".localized()
         textfield.defaultTextAttributes = [NSAttributedString.Key.font : appearance.semiboldFont16, NSAttributedString.Key.foregroundColor : appearance.c111827_FFFFFF]
         textfield.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.font : appearance.regular400Font16, NSAttributedString.Key.foregroundColor : UIColor(red: 156/255, green: 163/255, blue: 175/255, alpha: 1)])
         textfield.layer.cornerRadius = appearance.textFieldCornerRadius
@@ -93,7 +94,7 @@ class SignUpViewController: UIViewController {
     
     lazy var passTextfield: TextFieldWithPadding = {
         let textfield = TextFieldWithPadding()
-        let placeholderText = "Сіздің құпия сөзіңіз"
+        let placeholderText = "YOUR_PASSWORD".localized()
         textfield.defaultTextAttributes = [NSAttributedString.Key.font : appearance.semiboldFont16, NSAttributedString.Key.foregroundColor : appearance.c111827_FFFFFF]
         textfield.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.font : appearance.regular400Font16, NSAttributedString.Key.foregroundColor : UIColor(red: 156/255, green: 163/255, blue: 175/255, alpha: 1)])
         textfield.layer.cornerRadius = appearance.textFieldCornerRadius
@@ -116,7 +117,7 @@ class SignUpViewController: UIViewController {
     
     lazy var repeatPassTextfield: TextFieldWithPadding = {
         let textfield = TextFieldWithPadding()
-        let placeholderText = "Сіздің құпия сөзіңіз"
+        let placeholderText = "YOUR_PASSWORD".localized()
         textfield.defaultTextAttributes = [NSAttributedString.Key.font : appearance.semiboldFont16, NSAttributedString.Key.foregroundColor : appearance.c111827_FFFFFF]
         textfield.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.font : appearance.regular400Font16, NSAttributedString.Key.foregroundColor : UIColor(red: 156/255, green: 163/255, blue: 175/255, alpha: 1)])
         textfield.layer.cornerRadius = appearance.textFieldCornerRadius
@@ -158,7 +159,7 @@ class SignUpViewController: UIViewController {
     lazy var signUpButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.filled()
-        let title = "Тіркелу"
+        let title = "SIGN_UP".localized()
         config.attributedTitle = AttributedString(title, attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Semibold", size: 16)!]))
         config.attributedTitle?.foregroundColor = appearance.FFFFFF
         config.background.backgroundColor = .purpleButtons
@@ -171,8 +172,8 @@ class SignUpViewController: UIViewController {
     lazy var goToSignInButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.plain()
-        let stringOne = "Сізде аккаунт бар ма? "
-        let stringTwo = "Кіру"
+        let stringOne = "GOT_ACCOUNT".localized()
+        let stringTwo = "LOGIN".localized()
         var buttonStringOne = NSMutableAttributedString(string: stringOne, attributes: [NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Regular", size: 14)!])
         var buttonStringTwo = NSMutableAttributedString(string: stringTwo, attributes: [NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Semibold", size: 14)!])
         buttonStringOne.addAttributes([NSAttributedString.Key.foregroundColor : UIColor(red: 107/255, green: 114/255, blue: 128/255, alpha: 1)], range: NSRange(location: 0, length: stringOne.count))
@@ -186,7 +187,7 @@ class SignUpViewController: UIViewController {
     
     lazy var errorMailFormatLabel: UILabel = {
         let label = UILabel()
-        label.text = "Қате формат"
+        label.text = "WRONG_FORMAT".localized()
         label.textColor = UIColor(red: 255/255, green: 64/255, blue: 43/255, alpha: 1)
         label.font = appearance.regular400Font14
         return label
@@ -194,7 +195,7 @@ class SignUpViewController: UIViewController {
     
     lazy var errorMailTakenLabel: UILabel = {
         let label = UILabel()
-        label.text = "Мұндай email-ы бар пайдаланушы тіркелген"
+        label.text = "EMAIL_IN_USE".localized()
         label.textColor = UIColor(red: 255/255, green: 64/255, blue: 43/255, alpha: 1)
         label.font = appearance.regular400Font14
         label.textAlignment = .center

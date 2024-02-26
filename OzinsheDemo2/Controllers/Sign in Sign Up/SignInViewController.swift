@@ -10,6 +10,7 @@ import SnapKit
 import SwiftyJSON
 import SVProgressHUD
 import Alamofire
+import Localize_Swift
 
 class SignInViewController: UIViewController {
     
@@ -21,7 +22,7 @@ class SignInViewController: UIViewController {
     //- MARK: - Local outlets
     lazy var titleLabel: UILabel = {
         let title = UILabel()
-        title.text = "Сәлем"
+        title.text = "HELLO".localized()
         title.font = appearance.mainTitleFont
         title.textColor = appearance.c111827_FFFFFF
         title.textAlignment = .left
@@ -30,7 +31,7 @@ class SignInViewController: UIViewController {
     
     lazy var subTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Аккаунтқа кіріңіз"
+        label.text = "LOGIN_INTO_ACCOUNT".localized()
         label.font = appearance.regular400Font16
         label.textColor = UIColor(red: 107/255, green: 114/255, blue: 128/255, alpha: 1)
         label.textAlignment = .left
@@ -48,7 +49,7 @@ class SignInViewController: UIViewController {
     
     lazy var passwordLabel: UILabel = {
         let label = UILabel()
-        label.text = "Құпия сөз"
+        label.text = "PASSWORD".localized()
         label.font = appearance.boldFont14
         label.textColor = appearance.c111827_FFFFFF
         label.textAlignment = .left
@@ -57,7 +58,7 @@ class SignInViewController: UIViewController {
     
     lazy var emailTextfield: TextFieldWithPadding = {
         let textfield = TextFieldWithPadding()
-        let placeholderText = "Сіздің email"
+        let placeholderText = "YOUR_EMAIL".localized()
         textfield.defaultTextAttributes = [NSAttributedString.Key.font : appearance.semiboldFont16, NSAttributedString.Key.foregroundColor : appearance.c111827_FFFFFF]
         textfield.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.font : appearance.regular400Font16, NSAttributedString.Key.foregroundColor : UIColor(red: 156/255, green: 163/255, blue: 175/255, alpha: 1)])
         textfield.layer.cornerRadius = appearance.textFieldCornerRadius
@@ -83,7 +84,7 @@ class SignInViewController: UIViewController {
     
     lazy var passTextfield: TextFieldWithPadding = {
         let textfield = TextFieldWithPadding()
-        let placeholderText = "Сіздің құпия сөзіңіз"
+        let placeholderText = "YOUR_PASSWORD".localized()
         textfield.defaultTextAttributes = [NSAttributedString.Key.font : appearance.semiboldFont16, NSAttributedString.Key.foregroundColor : appearance.c111827_FFFFFF]
         textfield.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.font : appearance.regular400Font16, NSAttributedString.Key.foregroundColor : UIColor(red: 156/255, green: 163/255, blue: 175/255, alpha: 1)])
         textfield.layer.cornerRadius = appearance.textFieldCornerRadius
@@ -117,7 +118,7 @@ class SignInViewController: UIViewController {
     let forgotPassButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.plain()
-        let title = "Құпия сөзді ұмыттыңыз ба?"
+        let title = "FORGOT_YOUR_PASSWORD".localized()
         config.attributedTitle = AttributedString(title, attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Semibold", size: 14)!]))
         config.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 0)
         config.baseForegroundColor = .purpleLabels
@@ -129,7 +130,7 @@ class SignInViewController: UIViewController {
     lazy var enterButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.filled()
-        let title = "Кіру"
+        let title = "LOGIN".localized()
         config.attributedTitle = AttributedString(title, attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Semibold", size: 16)!]))
         config.attributedTitle?.foregroundColor = appearance.FFFFFF
         config.background.backgroundColor = .purpleButtons
@@ -142,12 +143,12 @@ class SignInViewController: UIViewController {
     lazy var goToSignUpButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.plain()
-        let stringOne = "Аккаунтыныз жоқ па? "
-        let stringTwo = "Тіркелу"
+        let stringOne = "NO_ACCOUNT".localized()
+        let stringTwo = "SIGN_UP".localized()
         var buttonStringOne = NSMutableAttributedString(string: stringOne, attributes: [NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Regular", size: 14)!])
         var buttonStringTwo = NSMutableAttributedString(string: stringTwo, attributes: [NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Semibold", size: 14)!])
-        buttonStringOne.addAttributes([NSAttributedString.Key.foregroundColor : UIColor(red: 107/255, green: 114/255, blue: 128/255, alpha: 1)], range: NSRange(location: 0, length: 19))
-        buttonStringTwo.addAttributes([NSAttributedString.Key.foregroundColor : UIColor(red: 179/255, green: 118/255, blue: 247/255, alpha: 1)], range: NSRange(location: 0, length: 7))
+        buttonStringOne.addAttributes([NSAttributedString.Key.foregroundColor : UIColor(red: 107/255, green: 114/255, blue: 128/255, alpha: 1)], range: NSRange(location: 0, length: stringOne.count))
+        buttonStringTwo.addAttributes([NSAttributedString.Key.foregroundColor : UIColor(red: 179/255, green: 118/255, blue: 247/255, alpha: 1)], range: NSRange(location: 0, length: stringTwo.count))
         buttonStringOne.append(buttonStringTwo)
         button.setAttributedTitle(buttonStringOne, for: .normal)
         button.contentHorizontalAlignment = .center
@@ -157,7 +158,7 @@ class SignInViewController: UIViewController {
     
     lazy var orLabel: UILabel = {
         let label = UILabel()
-        label.text = "Немесе"
+        label.text = "OR".localized()
         label.font = appearance.medium500Font14
         label.textColor = ._9_CA_3_AF
         label.textAlignment = .center
@@ -168,7 +169,7 @@ class SignInViewController: UIViewController {
         let button = UIButton()
         var config = UIButton.Configuration.filled()
         //title
-        let title = "Apple ID-мен тіркеліңіз"
+        let title = "SIGNUP_APPLE".localized()
         config.attributedTitle = AttributedString(title, attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Semibold", size: 16)!]))
         //config.attributedTitle?.foregroundColor = ._111827_FFFFFF //не работает
         
@@ -194,7 +195,7 @@ class SignInViewController: UIViewController {
         let button = UIButton()
         var config = UIButton.Configuration.filled()
         //title
-        let title = "Google-мен тіркеліңіз"
+        let title = "SIGNUP_GOOGLE".localized()
         config.attributedTitle = AttributedString(title, attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Semibold", size: 16)!]))
         //config.attributedTitle?.foregroundColor = ._111827_FFFFFF //не работает
         
@@ -217,7 +218,7 @@ class SignInViewController: UIViewController {
     
     lazy var errorLabel: UILabel = {
         let label = UILabel()
-        label.text = "Қате формат"
+        label.text = "WRONG_FORMAT".localized()
         label.textColor = UIColor(red: 255/255, green: 64/255, blue: 43/255, alpha: 1)
         label.font = appearance.regular400Font14
         return label

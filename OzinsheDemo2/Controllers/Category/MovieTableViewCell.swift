@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SDWebImage
+import Localize_Swift
 
 class MovieTableViewCell: UITableViewCell {
     //- MARK: - Local Outlets
@@ -47,7 +48,7 @@ class MovieTableViewCell: UITableViewCell {
 
         imageView.image = UIImage(named: "Play")
 
-        label.text = "Қарау"
+        label.text = "PLAY".localized()
         label.textColor = UIColor(red: 0.59, green: 0.33, blue: 0.94, alpha: 1)
         label.font =  appearance.boldFont12
 

@@ -12,6 +12,7 @@ import SwiftyJSON
 import SDWebImage
 import SVProgressHUD
 import YouTubePlayerKit
+import Localize_Swift
 
 class SeasonSeriesViewController: UIViewController {
     //- MARK: - Variables
@@ -58,7 +59,7 @@ class SeasonSeriesViewController: UIViewController {
         setupConstraints()
     }
     override func viewWillAppear(_ animated: Bool) {
-        navigationItem.title = "Бөлімдер"
+        navigationItem.title = "SECTIONS".localized()
     }
     //- MARK: - Setup View
     func setupViews() {
@@ -127,7 +128,7 @@ extension SeasonSeriesViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! SeasonCollectionViewCell
         
-        cell.seasonLabel.text = "\(seasons[indexPath.row].number)" + "сезон"
+        cell.seasonLabel.text = "\(seasons[indexPath.row].number)" + "SEASON_IN_SERIES".localized()
         
         if currentSeason == seasons[indexPath.row].number - 1 {
             cell.seasonLabel.textColor = UIColor(red: 249/255, green: 250/255, blue: 251/255, alpha: 1)
@@ -161,7 +162,7 @@ extension SeasonSeriesViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = SeriesTableViewCell()
-        cell.seriesLabel.text = "\(seasons[currentSeason].videos[indexPath.row].number)" + "-ші бөлім"
+        cell.seriesLabel.text = "\(seasons[currentSeason].videos[indexPath.row].number)" + "EPISODE".localized()
         let transformer = SDImageResizingTransformer(size: CGSize(width: 345, height: 178), scaleMode: .aspectFill)
         cell.posterImage.sd_setImage(with: URL(string: "https://img.youtube.com/vi/\(seasons[currentSeason].videos[indexPath.row].link)/hqdefault.jpg"), placeholderImage: nil, context: [.imageTransformer : transformer])
         return cell

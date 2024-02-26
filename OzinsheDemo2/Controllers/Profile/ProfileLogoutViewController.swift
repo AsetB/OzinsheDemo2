@@ -7,10 +7,11 @@
 
 import UIKit
 import SnapKit
+import Localize_Swift
 
 class ProfileLogoutViewController: UIViewController, UIGestureRecognizerDelegate {
     //- MARK: - Outlets
-    lazy var topLabel: UILabel = {
+    private lazy var topLabel: UILabel = {
         let label = UILabel()
         label.text = "Шығу"
         label.font = appearance.mainTitleFont
@@ -18,7 +19,7 @@ class ProfileLogoutViewController: UIViewController, UIGestureRecognizerDelegate
         return label
     }()
     
-    lazy var subTitleLabel: UILabel = {
+    private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Сіз шынымен аккаунтыныздан "
         label.font = appearance.regular400Font14
@@ -26,14 +27,14 @@ class ProfileLogoutViewController: UIViewController, UIGestureRecognizerDelegate
         return label
     }()
     
-    let lineView: UIView = {
+    private let lineView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.D_1_D_5_DB_6_B_7280
         view.layer.cornerRadius = 3
         return view
     }()
     
-    lazy var backgroundView: UIView = {
+    private lazy var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.FFFFFF_1_C_2431
         view.layer.cornerRadius = 32
@@ -42,7 +43,7 @@ class ProfileLogoutViewController: UIViewController, UIGestureRecognizerDelegate
         return view
     }()
     
-    lazy var confirmButton: UIButton = {
+    private lazy var confirmButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "PurpleButtons")
         button.layer.cornerRadius = 12
@@ -53,7 +54,7 @@ class ProfileLogoutViewController: UIViewController, UIGestureRecognizerDelegate
         return button
     }()
     
-    lazy var noConfirmButton: UIButton = {
+    private lazy var noConfirmButton: UIButton = {
         let button = UIButton()
         //button.backgroundColor = UIColor.transparent
         button.setTitle("Жоқ", for: .normal)
@@ -70,8 +71,11 @@ class ProfileLogoutViewController: UIViewController, UIGestureRecognizerDelegate
         setupView()
         setupConstraints()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        localize() 
+    }
     //- MARK: - Setup Views
-    func addViews() {
+    private func addViews() {
         view.addSubview(backgroundView)
         backgroundView.addSubview(lineView)
         backgroundView.addSubview(topLabel)
@@ -79,13 +83,13 @@ class ProfileLogoutViewController: UIViewController, UIGestureRecognizerDelegate
         backgroundView.addSubview(confirmButton)
         backgroundView.addSubview(noConfirmButton)
     }
-    func setupView() {
+    private func setupView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissView))
         tap.delegate = self
         view.addGestureRecognizer(tap)
     }
     //- MARK: - Constraints
-    func setupConstraints() {
+    private func setupConstraints() {
         backgroundView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalToSuperview()
@@ -134,13 +138,17 @@ class ProfileLogoutViewController: UIViewController, UIGestureRecognizerDelegate
         UserDefaults.standard.removeObject(forKey: "birthDate")
         UserDefaults.standard.removeObject(forKey: "phoneNumber")
         
-        let rootViewController = UINavigationController(rootViewController: SignInViewController())
-        
-        let sceneDelegate = UIApplication.shared.delegate as! SceneDelegate
-        sceneDelegate.window?.rootViewController = rootViewController
-        sceneDelegate.window?.makeKeyAndVisible()
+        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as! SceneDelegate
+        sceneDelegate.setRootViewController(SignInViewController())
     }
     @objc func cancelLogout() {
         dismissView()
+    }
+    //- MARK: - Localization
+    private func localize() {
+        topLabel.text = "EXIT".localized()
+        subTitleLabel.text = "CONFIRM_EXIT_FROM_ACCOUNT".localized()
+        confirmButton.setTitle("YES_EXIT".localized(), for: .normal)
+        noConfirmButton.setTitle("NO".localized(), for: .normal)
     }
 }

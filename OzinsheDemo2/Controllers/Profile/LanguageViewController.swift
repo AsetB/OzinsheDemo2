@@ -16,7 +16,7 @@ class LanguageViewController: UIViewController, UIGestureRecognizerDelegate {
     //- MARK: - Outlets
     lazy var topLabel: UILabel = {
         let label = UILabel()
-        label.text = "Тіл"
+        label.text = "LANGUAGE".localized()
         label.font = appearance.mainTitleFont
         label.textColor = UIColor._111827_FFFFFF
         return label

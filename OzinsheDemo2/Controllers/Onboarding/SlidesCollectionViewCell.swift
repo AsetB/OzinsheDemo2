@@ -44,7 +44,7 @@ class SlidesCollectionViewCell: UICollectionViewCell {
     
     let skipButton: UIButton = {
         let button = UIButton()
-        let title: String = "Өткізу"
+        let title: String = "SKIP".localized()
         var config = UIButton.Configuration.filled()
         config.attributedTitle = AttributedString(title, attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Regular", size: 12)!]))
         config.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16)
@@ -59,14 +59,14 @@ class SlidesCollectionViewCell: UICollectionViewCell {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "PurpleButtons")
         button.layer.cornerRadius = 12
-        button.setTitle("Әрі қарай", for: .normal)
+        button.setTitle("NEXT".localized(), for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 16)
         button.titleLabel?.textColor = UIColor(named: "FFFFFF")
         return button
     }()
     
     //- MARK: - Gradient
-    var gradientView = CustomGradientView(startColor: UIColor(named: "startingpoint")!, midColor: UIColor(named: "endingpoint")!, endColor: UIColor(named: "endingpoint")!, startLocation: 0.01, midLocation: 0.43, endLocation: 1.0, horizontalMode: false, diagonalMode: false)
+    var gradientView = CustomGradientView(startColor: UIColor(named: "startingpoint")!, midColor: UIColor(named: "endingpoint")!, endColor: UIColor(named: "endingpoint")!, startLocation: 0.01, midLocation: 0.37, endLocation: 1.0, horizontalMode: false, diagonalMode: false)
     
     //- MARK: - Lifecycle
     override init(frame: CGRect) {

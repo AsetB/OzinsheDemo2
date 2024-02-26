@@ -12,6 +12,7 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         setupTabs()
     }
+
     
     func setupTabs() {
         tabBar.backgroundColor = UIColor(named: "FFFFFF - 1C2431")
@@ -27,7 +28,7 @@ class TabBarController: UITabBarController {
         searchVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Search"), selectedImage: UIImage(named: "SearchSelected"))
         favoritesVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Favorite"), selectedImage: UIImage(named: "FavoriteSelected"))
         profileVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Profile"), selectedImage: UIImage(named: "ProfileSelected"))
-        
+ 
         setViewControllers([homeVC, searchVC, favoritesVC, profileVC], animated: false)
     }
 }

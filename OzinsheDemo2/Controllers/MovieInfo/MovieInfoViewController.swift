@@ -12,6 +12,7 @@ import Alamofire
 import SwiftyJSON
 import SVProgressHUD
 import YouTubePlayerKit
+import Localize_Swift
 
 class MovieInfoViewController: UIViewController {
     //- MARK: - Variables
@@ -68,7 +69,7 @@ class MovieInfoViewController: UIViewController {
         let label = UILabel()
         label.font = appearance.semiboldFont12
         label.textColor = UIColor.D_1_D_5_DB_9_CA_3_AF
-        label.text = "Тізімге қосу"
+        label.text = "ADD_FAVORITE".localized()
         return label
     }()
     
@@ -83,7 +84,7 @@ class MovieInfoViewController: UIViewController {
         let label = UILabel()
         label.font = appearance.semiboldFont12
         label.textColor = UIColor.D_1_D_5_DB_9_CA_3_AF
-        label.text = "Бөлісу"
+        label.text = "SHARE".localized()
         return label
     }()
     
@@ -126,6 +127,13 @@ class MovieInfoViewController: UIViewController {
         text.font = appearance.regular400Font14
         text.textColor = UIColor._9_CA_3_AF
         text.numberOfLines = 19
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .left
+        paragraphStyle.minimumLineHeight = 22
+        paragraphStyle.lineBreakMode = .byWordWrapping
+        let attributedString = NSMutableAttributedString(string: text.text ?? "default value")
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
+        text.attributedText = attributedString
         return text
     }()
     
@@ -134,7 +142,7 @@ class MovieInfoViewController: UIViewController {
     lazy var showFullDescription: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor.clear
-        button.setTitle("Толығырақ", for: .normal)
+        button.setTitle("DETAILS".localized(), for: .normal)
         button.setTitleColor(UIColor.purpleLabels, for: .normal)
         button.titleLabel?.font = appearance.semiboldFont14
         return button
@@ -142,7 +150,7 @@ class MovieInfoViewController: UIViewController {
     
     lazy var directorLabel: UILabel = {
         let label = UILabel()
-        label.text = "Режиссер:"
+        label.text = "DIRECTOR".localized()
         label.font = appearance.regular400Font14
         label.textColor = UIColor(red: 0.29, green: 0.33, blue: 0.39, alpha: 1)
         label.textAlignment = .left
@@ -151,7 +159,7 @@ class MovieInfoViewController: UIViewController {
     
     lazy var producerLabel: UILabel = {
         let label = UILabel()
-        label.text = "Продюсер:"
+        label.text = "PRODUCER".localized()
         label.font = appearance.regular400Font14
         label.textColor = UIColor(red: 0.29, green: 0.33, blue: 0.39, alpha: 1)
         label.textAlignment = .left
@@ -176,7 +184,7 @@ class MovieInfoViewController: UIViewController {
     
     lazy var seriesLabel: UILabel = {
         let label = UILabel()
-        label.text = "Бөлімдер"
+        label.text = "SECTIONS".localized()
         label.font = appearance.boldFont16
         label.textColor = UIColor._111827_FFFFFF
         label.textAlignment = .left
@@ -185,7 +193,7 @@ class MovieInfoViewController: UIViewController {
     
     lazy var screenshotsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Скриншоттар"
+        label.text = "SCREENSHOTS".localized()
         label.font = appearance.boldFont16
         label.textColor = UIColor._111827_FFFFFF
         label.textAlignment = .left
@@ -194,7 +202,7 @@ class MovieInfoViewController: UIViewController {
     
     lazy var similarLabel: UILabel = {
         let label = UILabel()
-        label.text = "Ұқсас телехикаялар"
+        label.text = "SIMILAR_SERIES".localized()
         label.font = appearance.boldFont16
         label.textColor = UIColor._111827_FFFFFF
         label.textAlignment = .left
@@ -221,7 +229,7 @@ class MovieInfoViewController: UIViewController {
     lazy var showSimilar: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor.clear
-        button.setTitle("Барлығы", for: .normal)
+        button.setTitle("ALL".localized(), for: .normal)
         button.titleLabel?.font = appearance.semiboldFont14
         button.titleLabel?.textColor = UIColor.purpleLabels
         return button
@@ -359,7 +367,7 @@ class MovieInfoViewController: UIViewController {
             screenLabelTopToSeriesLabelBottom?.update(priority: .low)
             screenLabelTopToLinealViewBottom?.update(priority: .high)
         } else {
-            showSeasonButton.setTitle("\(movie.seasonCount)" + " сезон" + "\(movie.seriesCount)" + " серий", for: .normal)
+            showSeasonButton.setTitle("\(movie.seasonCount)" + "SEASON".localized() + "\(movie.seriesCount)" + "SERIES".localized(), for: .normal)
         }
         
         if similarMovies.isEmpty {

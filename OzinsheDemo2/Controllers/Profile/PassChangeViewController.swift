@@ -10,10 +10,11 @@ import SnapKit
 import Alamofire
 import SwiftyJSON
 import SVProgressHUD
+import Localize_Swift
 
 class PassChangeViewController: UIViewController {
     //- MARK: - Outlets
-    lazy var passwordLabel: UILabel = {
+    private lazy var passwordLabel: UILabel = {
         let label = UILabel()
         label.text = "Құпия сөз"
         label.font = appearance.boldFont14
@@ -22,7 +23,7 @@ class PassChangeViewController: UIViewController {
         return label
     }()
     
-    lazy var repeatPasswordLabel: UILabel = {
+    private lazy var repeatPasswordLabel: UILabel = {
         let label = UILabel()
         label.text = "Құпия сөзді қайталаңыз"
         label.font = appearance.boldFont14
@@ -31,9 +32,9 @@ class PassChangeViewController: UIViewController {
         return label
     }()
     
-    lazy var passTextfield: TextFieldWithPadding = {
+    private lazy var passTextfield: TextFieldWithPadding = {
         let textfield = TextFieldWithPadding()
-        let placeholderText = "Сіздің құпия сөзіңіз"
+        let placeholderText = "YOUR_PASSWORD".localized()
         textfield.defaultTextAttributes = [NSAttributedString.Key.font : appearance.semiboldFont16, NSAttributedString.Key.foregroundColor : appearance.c111827_FFFFFF]
         textfield.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.font : appearance.regular400Font16, NSAttributedString.Key.foregroundColor : UIColor(red: 156/255, green: 163/255, blue: 175/255, alpha: 1)])
         textfield.layer.cornerRadius = appearance.textFieldCornerRadius
@@ -54,9 +55,9 @@ class PassChangeViewController: UIViewController {
         return textfield
     }()
     
-    lazy var repeatPassTextfield: TextFieldWithPadding = {
+    private lazy var repeatPassTextfield: TextFieldWithPadding = {
         let textfield = TextFieldWithPadding()
-        let placeholderText = "Сіздің құпия сөзіңіз"
+        let placeholderText = "YOUR_PASSWORD".localized()
         textfield.defaultTextAttributes = [NSAttributedString.Key.font : appearance.semiboldFont16, NSAttributedString.Key.foregroundColor : appearance.c111827_FFFFFF]
         textfield.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.font : appearance.regular400Font16, NSAttributedString.Key.foregroundColor : UIColor(red: 156/255, green: 163/255, blue: 175/255, alpha: 1)])
         textfield.layer.cornerRadius = appearance.textFieldCornerRadius
@@ -77,7 +78,7 @@ class PassChangeViewController: UIViewController {
         return textfield
     }()
     
-    lazy var showPassButton: UIButton = {
+    private lazy var showPassButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.plain()
         config.image = UIImage(named: "Show")
@@ -87,7 +88,7 @@ class PassChangeViewController: UIViewController {
         return button
     }()
     
-    lazy var showRepeatPassButton: UIButton = {
+    private lazy var showRepeatPassButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.plain()
         config.image = UIImage(named: "Show")
@@ -97,7 +98,7 @@ class PassChangeViewController: UIViewController {
         return button
     }()
     
-    lazy var saveButton: UIButton = {
+    private lazy var saveButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "PurpleButtons")
         button.layer.cornerRadius = 12
@@ -117,8 +118,11 @@ class PassChangeViewController: UIViewController {
         setupBorderColor()
         hideKeyboardWhenTappedAround()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        localize()
+    }
     //- MARK: - Setup View
-    func setupView() {
+    private func setupView() {
         view.addSubview(passwordLabel)
         view.addSubview(passTextfield)
         view.addSubview(showPassButton)
@@ -128,7 +132,7 @@ class PassChangeViewController: UIViewController {
         view.addSubview(saveButton)
     }
     //- MARK: - Constraints
-    func setupConstraints() {
+    private func setupConstraints() {
         passwordLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).inset(21)
             make.leading.equalTo(view.safeAreaLayoutGuide).inset(24)
@@ -236,5 +240,13 @@ class PassChangeViewController: UIViewController {
         } else {
             SVProgressHUD.showError(withStatus: "PASS_NOT_MATCH")
         }
+    }
+    
+    //- MARK: - Localization
+    private func localize() {
+        navigationItem.title = "CHANGE_PASSWORD".localized()
+        passwordLabel.text = "PASSWORD".localized()
+        repeatPasswordLabel.text = "REPEAT_PASSWORD".localized()
+        saveButton.setTitle("SAVE_CHANGES".localized(), for: .normal)
     }
 }

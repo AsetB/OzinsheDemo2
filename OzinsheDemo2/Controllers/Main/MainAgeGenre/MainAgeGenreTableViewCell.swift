@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SDWebImage
+import Localize_Swift
 
 class MainAgeGenreTableViewCell: UITableViewCell {
     //- MARK: - Variables
@@ -76,9 +77,9 @@ class MainAgeGenreTableViewCell: UITableViewCell {
     func setCellData(mainMovie: MainMovies) {
         self.mainMovies = mainMovie
         if mainMovie.cellType == .ageCategory {
-            mainLabel.text = "Жасына сәйкес"
+            mainLabel.text = "AGE_CATEGORY".localized()
         } else {
-            mainLabel.text = "Жанрды таңдаңыз"
+            mainLabel.text = "CHOOSE_GENRE".localized()
         }
         collectionView.reloadData()
     }

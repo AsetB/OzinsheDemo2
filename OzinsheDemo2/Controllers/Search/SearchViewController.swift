@@ -11,6 +11,7 @@ import Alamofire
 import SDWebImage
 import SwiftyJSON
 import SVProgressHUD
+import Localize_Swift
 
 class SearchViewController: UIViewController {
     //- MARK: - Variables
@@ -21,7 +22,7 @@ class SearchViewController: UIViewController {
     //- MARK: - Local Outlets
     lazy var searchTextfield: TextFieldWithPadding = {
         let textfield = TextFieldWithPadding()
-        let placeholderText = "Іздеу"
+        let placeholderText = "SEARCH".localized()
         textfield.defaultTextAttributes = [NSAttributedString.Key.font : appearance.semiboldFont16, NSAttributedString.Key.foregroundColor : appearance.c111827_FFFFFF]
         textfield.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.font : appearance.semiboldFont16, NSAttributedString.Key.foregroundColor : UIColor(red: 156/255, green: 163/255, blue: 175/255, alpha: 1)])
         textfield.layer.cornerRadius = appearance.textFieldCornerRadius
@@ -61,7 +62,7 @@ class SearchViewController: UIViewController {
     
     lazy var topLabel: UILabel = {
         let label = UILabel()
-        label.text = "Санаттар"
+        label.text = "CATEGORIES".localized()
         label.font = appearance.mainTitleFont
         label.textColor = UIColor._111827_FFFFFF
         return label
@@ -97,7 +98,6 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.FFFFFF_111827
-        navigationItem.title = "Іздеу"
         downloadCategories()
         addViews()
         setupConstraints()
@@ -105,8 +105,11 @@ class SearchViewController: UIViewController {
         setupBorderColor()
         hideKeyboardWhenTappedAround()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = "SEARCH".localized()
+    }
     //- MARK: - add & set Views
-    func addViews() {
+    private func addViews() {
         view.addSubview(searchTextfield)
         view.addSubview(searchButton)
         view.addSubview(cancelSearchButton)
@@ -114,12 +117,12 @@ class SearchViewController: UIViewController {
         view.addSubview(collectionView)
         view.addSubview(tableView)
     }
-    func setupViews() {
+    private func setupViews() {
         cancelSearchButton.isHidden = true
     }
     
     //- MARK: - Constraints
-    func setupConstraints() {
+    private func setupConstraints() {
         searchTextfield.snp.makeConstraints { make in
             make.top.leading.equalTo(view.safeAreaLayoutGuide).inset(24)
             make.height.equalTo(56)
@@ -219,7 +222,7 @@ class SearchViewController: UIViewController {
     func downloadSearchMovies() {
         
         if searchTextfield.text!.isEmpty {
-            topLabel.text = "Санаттар" //"CATEGORIES".localized()
+            topLabel.text = "CATEGORIES".localized()
             collectionView.isHidden = false
             tableViewTopToTopLabelBottom?.update(priority: .low)
             tableViewTopToCollectionViewBottom?.update(priority: .high)
@@ -230,7 +233,7 @@ class SearchViewController: UIViewController {
             searchButton.setImage(UIImage(named: "searchButton"), for: .normal)
             return
         } else {
-            topLabel.text = "Іздеу нәтижелері"//"SEARCH_RESULTS".localized()
+            topLabel.text = "SEARCH_RESULTS".localized()
             collectionView.isHidden = true
             tableViewTopToTopLabelBottom?.update(priority: .high)
             tableViewTopToCollectionViewBottom?.update(priority: .low)

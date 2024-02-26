@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SDWebImage
+import Localize_Swift
 
 class MainHistoryTableViewCell: UITableViewCell {
     //- MARK: - Variables
@@ -73,7 +74,7 @@ class MainHistoryTableViewCell: UITableViewCell {
     
     //- MARK: - Setup Cell Data
     func setCellData(mainMovie: MainMovies) {
-        mainLabel.text = "Қарауды жалғастырыңыз"
+        mainLabel.text = "CONTINUE_PLAY".localized()
         self.mainMovies = mainMovie
         collectionView.reloadData()
     }

@@ -13,14 +13,14 @@ import SwiftyJSON
 
 class ProfileViewController: UIViewController {
     //- MARK: - Outlets
-    lazy var profileImage: UIImageView = {
+    private lazy var profileImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "Avatar")
         image.contentMode = .scaleAspectFit
         return image
     }()
     
-    lazy var profileTopLabel: UILabel = {
+    private lazy var profileTopLabel: UILabel = {
         let label = UILabel()
         label.text = "Менің профилім"
         label.font = appearance.mainTitleFont
@@ -28,20 +28,20 @@ class ProfileViewController: UIViewController {
         return label
     }()
     
-    lazy var emailLabel: UILabel = {
+    private lazy var emailLabel: UILabel = {
         let label = UILabel()
         label.font = appearance.regular400Font14
         label.textColor = UIColor._9_CA_3_AF
         return label
     }()
     
-    lazy var backgroundView: UIView = {
+    private lazy var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.F_9_FAFB_111827
         return view
     }()
     
-    lazy var personalDataButton: UIButton = {
+    private lazy var personalDataButton: UIButton = {
         let button = UIButton()
         button.setTitle("Жеке деректер", for: .normal)
         button.setTitleColor(UIColor._1_C_2431_E_5_E_7_EB, for: .normal)
@@ -49,23 +49,12 @@ class ProfileViewController: UIViewController {
         button.contentHorizontalAlignment = .leading
         button.addTarget(self, action: #selector(editPersonalData), for: .touchUpInside)
         
-        var label = UILabel()
-        label.text = "Өңдеу"
-        label.font = appearance.semiboldFont12
-        label.textColor = UIColor._9_CA_3_AF
-        
         var image = UIImageView()
         image.image = UIImage(named: "arrow")
-        button.addSubview(label)
         button.addSubview(image)
         
-        label.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(24)
-            make.height.equalTo(16)
-        }
         image.snp.makeConstraints { make in
-            make.centerY.equalTo(label)
+            make.centerY.equalToSuperview()
             make.trailing.equalToSuperview()
             make.size.equalTo(16)
         }
@@ -73,7 +62,15 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
-    lazy var changePassButton: UIButton = {
+    private lazy var editLabel: UILabel = {
+        var label = UILabel()
+        label.text = "EDIT".localized()
+        label.font = appearance.semiboldFont12
+        label.textColor = UIColor._9_CA_3_AF
+        return label
+    }()
+    
+    private lazy var changePassButton: UIButton = {
         let button = UIButton()
         button.setTitle("Құпия сөзді өзгерту", for: .normal)
         button.setTitleColor(UIColor._1_C_2431_E_5_E_7_EB, for: .normal)
@@ -92,9 +89,9 @@ class ProfileViewController: UIViewController {
         return button
     }()
 
-    lazy var changeLanguageButton: UIButton = {
+    private lazy var changeLanguageButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Тіл", for: .normal)
+        button.setTitle("LANGUAGE".localized(), for: .normal)
         button.setTitleColor(UIColor._1_C_2431_E_5_E_7_EB, for: .normal)
         button.titleLabel?.font = appearance.medium500Font16
         button.contentHorizontalAlignment = .leading
@@ -111,7 +108,7 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
-    lazy var currentLanguageLabel: UILabel = {
+    private lazy var currentLanguageLabel: UILabel = {
         let label = UILabel()
         label.text = "Қазақша"
         label.font = appearance.semiboldFont12
@@ -119,7 +116,7 @@ class ProfileViewController: UIViewController {
         return label
     }()
   
-    lazy var darkModeLabel: UILabel = {
+    private lazy var darkModeLabel: UILabel = {
         let label = UILabel()
         label.text = "Қараңғы режим"
         label.font = appearance.medium500Font16
@@ -127,7 +124,7 @@ class ProfileViewController: UIViewController {
         return label
     }()
     
-    lazy var darkModeSwitch: UISwitch = {
+    private lazy var darkModeSwitch: UISwitch = {
         let switchButton = UISwitch()
         switchButton.onTintColor = UIColor(red: 179/255, green: 118/255, blue: 247/255, alpha: 1)
         switchButton.backgroundColor = UIColor.F_9_FAFB_111827
@@ -135,19 +132,19 @@ class ProfileViewController: UIViewController {
         return switchButton
     }()
     //dividers
-    let dividerView1: UIView = {
+    private let dividerView1: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.D_1_D_5_DB_1_C_2431
         return view
     }()
     
-    let dividerView2: UIView = {
+    private let dividerView2: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.D_1_D_5_DB_1_C_2431
         return view
     }()
     
-    let dividerView3: UIView = {
+    private let dividerView3: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.D_1_D_5_DB_1_C_2431
         return view
@@ -156,23 +153,25 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.FFFFFF_1_C_2431
-        navigationItem.title = "Профиль"
+        navigationItem.title = "PROFILE".localized()
         loadProfileInfo()
         addViews()
         setupViews()
         setupConstraints()
+        setLanguage()
     }
     override func viewWillAppear(_ animated: Bool) {
         setLanguage()
         setupViews()
     }
     //- MARK: - Add & Set Views
-    func addViews() {
+    private func addViews() {
         view.addSubview(profileImage)
         view.addSubview(profileTopLabel)
         view.addSubview(emailLabel)
         view.addSubview(backgroundView)
         backgroundView.addSubview(personalDataButton)
+        personalDataButton.addSubview(editLabel)
         backgroundView.addSubview(dividerView1)
         backgroundView.addSubview(changePassButton)
         backgroundView.addSubview(dividerView2)
@@ -182,7 +181,7 @@ class ProfileViewController: UIViewController {
         backgroundView.addSubview(darkModeLabel)
         backgroundView.addSubview(darkModeSwitch)
     }
-    func setupViews() {
+    private func setupViews() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Logout"), style: .done, target: self, action: #selector(signOut))
         navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 1, green: 0.25, blue: 0.17, alpha: 1)
         
@@ -194,7 +193,7 @@ class ProfileViewController: UIViewController {
         emailLabel.text = UserDefaults.standard.string(forKey: "email")
     }
     //- MARK: - Constraints
-    func setupConstraints() {
+    private func setupConstraints() {
         profileImage.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).inset(32)
             make.centerX.equalToSuperview()
@@ -216,6 +215,11 @@ class ProfileViewController: UIViewController {
             make.top.equalToSuperview()
             make.horizontalEdges.equalToSuperview().inset(24)
             make.height.equalTo(64)
+        }
+        editLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().inset(24)
+            make.height.equalTo(16)
         }
         dividerView1.snp.makeConstraints { make in
             make.top.equalTo(personalDataButton.snp.bottom)
@@ -280,7 +284,7 @@ class ProfileViewController: UIViewController {
         
         present(languageView, animated: true, completion: nil)
     }
-    @objc func changeTheme() {
+    @objc private func changeTheme() {
         let defaults = UserDefaults.standard
         if let window = view.window {
             if darkModeSwitch.isOn {
@@ -293,7 +297,7 @@ class ProfileViewController: UIViewController {
         }
     }
     //- MARK: - Data load
-    func loadProfileInfo() {
+    private func loadProfileInfo() {
         
         let headers: HTTPHeaders = ["Authorization": "Bearer \(AuthenticationService.shared.token)"]
         
@@ -355,12 +359,20 @@ extension ProfileViewController: Language {
         setLanguage()
     }
     
-    func setLanguage() {
+    private func setLanguage() {
         switch Localize.currentLanguage() {
         case "ru": currentLanguageLabel.text = "Русский"
         case "en": currentLanguageLabel.text = "English"
         case "kk": currentLanguageLabel.text = "Қазақша"
         default: currentLanguageLabel.text = "Қазақша"
         }
+        
+        changeLanguageButton.setTitle("LANGUAGE".localized(), for: .normal)
+        profileTopLabel.text = "MY_PROFILE".localized()
+        personalDataButton.setTitle("PERSONAL_DATA".localized(), for: .normal)
+        changePassButton.setTitle("CHANGE_PASSWORD".localized(), for: .normal)
+        darkModeLabel.text = "DARK_MODE".localized()
+        editLabel.text = "EDIT".localized()
+        navigationItem.title = "PROFILE".localized()
     }
 }

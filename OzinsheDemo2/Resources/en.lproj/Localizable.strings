@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings
+  OzinsheDemo2
+
+  Created by Aset Bakirov on 26.02.2024.
+  
+*/
+"PROFILE" = "Profile";
+"MY_PROFILE" = "My profile";
+"LANGUAGE" = "Language";
+"PERSONAL_DATA" = "Personal data";
+"EDIT" = "Edit";
+"CHANGE_PASSWORD" = "Change password";
+"TERMS_AND_CONDITIONS" = "Terms and conditions";
+"ANNOUNCEMENT" = "Announcement";
+"DARK_MODE" = "Dark mode";
+"YOUR_NAME" = "Your name";
+"TELEPHONE" = "Telephone";
+"DATE_OF_BIRTH" = "Date of birth";
+"SAVE_CHANGES" = "Save changes";
+"EXIT" = "Exit";
+"CONFIRM_EXIT_FROM_ACCOUNT" = "Are you really want to log out from the account?";
+"YES_EXIT" = "Yes, exit";
+"NO" = "No";
+"YOUR_PASSWORD" = "Your password";
+"REPEAT_PASSWORD" = "Repeat the password";
+"HELLO" = "Hello";
+"LOGIN_INTO_ACCOUNT" = "Log in to your account";
+"PASSWORD" = "Password";
+"YOUR_EMAIL" = "Your email";
+"FORGOT_YOUR_PASSWORD" = "Forgot your password?";
+"LOGIN" = "Sign in";
+"NO_ACCOUNT" = "No account? ";
+"GOT_ACCOUNT" = "Do you have an account? ";
+"OR" = "Or";
+"SIGNUP_APPLE" = "Sign up with an Apple ID";
+"SIGNUP_GOOGLE" = "Sign up with Google";
+"SIGN_UP" = "Sign up";
+"FILL_IN_DATA" = "Fill in the data";
+"PASS_NOT_MATCH" = "Passwords don't match";
+"PASS_CHANGED" = "The password has been successfully changed";
+"LIST" = "List";
+"SEARCH" = "Search";
+"CATEGORIES" = "Categories";
+"SEARCH_RESULTS" = "Search results";
+"PLAY" = "Play";
+"CONTINUE_PLAY" = "Continue to watch";
+"AGE_CATEGORY" = "According to the age";
+"CHOOSE_GENRE" = "Choose a genre";
+"ALL" = "All";
+"WRONG_FORMAT" = "Wrong format";
+"DETAILS" = "Details";
+"DIRECTOR" = "Director:";
+"PRODUCER" = "Producer:";
+"SECTIONS" = "Sections";
+"SCREENSHOTS" = "Screenshots";
+"SIMILAR_SERIES" = "Similar series";
+"SEASON" = " season, ";
+"SEASON_IN_SERIES" = " season";
+"SERIES" = " episode";
+"ADD_FAVORITE" = "Add to favorites";
+"SHARE" = "Share";
+"HIDE" = "Hide";
+"EPISODE" = " episode";
+"EMAIL_IN_USE" = "A user with such an email is registered";
+"SKIP" = "Skip";
+"NEXT" = "Next";

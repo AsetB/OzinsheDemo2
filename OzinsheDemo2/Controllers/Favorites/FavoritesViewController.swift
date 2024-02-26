@@ -10,6 +10,7 @@ import SwiftyJSON
 import SVProgressHUD
 import Alamofire
 import SnapKit
+import Localize_Swift
 
 class FavoritesViewController: UIViewController {
     //- MARK: - Variables
@@ -27,12 +28,13 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.FFFFFF_111827
-        navigationItem.title = "Тізім"
+        navigationItem.title = "LIST".localized()
         setupViews()
         setupConstraints()
     }
     override func viewWillAppear(_ animated: Bool) {
         downloadFavorites()
+        navigationItem.title = "LIST".localized()
     }
     //- MARK: - add Views
     func setupViews() {
