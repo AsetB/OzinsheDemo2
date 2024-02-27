@@ -105,10 +105,10 @@ class SeasonSeriesViewController: UIViewController {
                     self.tableView.reloadData()
                     self.collectionView.reloadData()
                 } else {
-                    SVProgressHUD.showError(withStatus: "CONNECTION_ERROR")
+                    SVProgressHUD.showError(withStatus: "CONNECTION_ERROR".lowercased())
                 }
             } else {
-                var ErrorString = "CONNECTION_ERROR"
+                var ErrorString = "CONNECTION_ERROR".localized()
                 if let sCode = response.response?.statusCode {
                     ErrorString = ErrorString + " \(sCode)"
                 }

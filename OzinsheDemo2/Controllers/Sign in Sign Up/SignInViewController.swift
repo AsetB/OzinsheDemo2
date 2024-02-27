@@ -20,6 +20,21 @@ class SignInViewController: UIViewController {
     var errorLabelBottomToPassLabelTop: Constraint? = nil
     
     //- MARK: - Local outlets
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.isScrollEnabled = true
+        scrollView.bounces = false
+        scrollView.backgroundColor = UIColor.FFFFFF_111827
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.contentInsetAdjustmentBehavior = .never
+        return scrollView
+    }()
+    
+    lazy var contentView: UIView = {
+        let view = UIView()
+        return view
+    }()
     lazy var titleLabel: UILabel = {
         let title = UILabel()
         title.text = "HELLO".localized()
@@ -197,8 +212,6 @@ class SignInViewController: UIViewController {
         //title
         let title = "SIGNUP_GOOGLE".localized()
         config.attributedTitle = AttributedString(title, attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Semibold", size: 16)!]))
-        //config.attributedTitle?.foregroundColor = ._111827_FFFFFF //не работает
-        
         //button
         config.baseBackgroundColor = .FFFFFF_4_B_5563
         config.baseForegroundColor = ._111827_FFFFFF
@@ -206,7 +219,6 @@ class SignInViewController: UIViewController {
         button.layer.borderColor = UIColor.Border.appleGoogleSignInButton.cgColor
         button.layer.cornerRadius = appearance.buttonCornerRadius
         button.clipsToBounds = true
-        
         //logo
         config.image = UIImage(named: "GoogleLogo")
         config.imagePadding = 10
@@ -223,6 +235,7 @@ class SignInViewController: UIViewController {
         label.font = appearance.regular400Font14
         return label
     }()
+    
     //- MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -250,26 +263,38 @@ class SignInViewController: UIViewController {
 
     //- MARK: - Views
     func setupViews() {
-        view.addSubview(titleLabel)
-        view.addSubview(subTitleLabel)
-        view.addSubview(emailLabel)
-        view.addSubview(emailTextfield)
-        view.addSubview(passwordLabel)
-        view.addSubview(passTextfield)
-        view.addSubview(showPassButton)
-        view.addSubview(forgotPassButton)
-        view.addSubview(enterButton)
-        view.addSubview(goToSignUpButton)
-        view.addSubview(orLabel)
-        view.addSubview(appleIDSignUpButton)
-        view.addSubview(googleSignUpButton)
-        view.addSubview(errorLabel)
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(subTitleLabel)
+        contentView.addSubview(emailLabel)
+        contentView.addSubview(emailTextfield)
+        contentView.addSubview(passwordLabel)
+        contentView.addSubview(passTextfield)
+        contentView.addSubview(showPassButton)
+        contentView.addSubview(forgotPassButton)
+        contentView.addSubview(enterButton)
+        contentView.addSubview(goToSignUpButton)
+        contentView.addSubview(orLabel)
+        contentView.addSubview(appleIDSignUpButton)
+        contentView.addSubview(googleSignUpButton)
+        contentView.addSubview(errorLabel)
         errorLabel.isHidden = true
     }
     //- MARK: - Constraints
     func setupConstraints() {
+        scrollView.snp.makeConstraints { make in
+            make.top.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview()
+        }
+        contentView.snp.makeConstraints { make in
+            make.edges.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
+            make.width.equalTo(scrollView.frameLayoutGuide)
+            make.height.equalTo(scrollView.frameLayoutGuide).priority(.medium)
+        }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.top.equalToSuperview().inset(16)
+            //make.top.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.horizontalEdges.equalToSuperview().inset(24)
             make.height.equalTo(34)
         }
@@ -281,6 +306,7 @@ class SignInViewController: UIViewController {
         emailLabel.snp.makeConstraints { make in
             make.top.equalTo(subTitleLabel.snp.bottom).offset(29)
             make.horizontalEdges.equalToSuperview().inset(24)
+            make.height.equalTo(21)
         }
         emailTextfield.snp.makeConstraints { make in
             make.top.equalTo(emailLabel.snp.bottom).offset(4)
@@ -291,6 +317,7 @@ class SignInViewController: UIViewController {
             self.passLabelTopToEmailTFBottom = make.top.equalTo(emailTextfield.snp.bottom).offset(13).priority(.high).constraint
             self.errorLabelBottomToPassLabelTop = make.top.equalTo(errorLabel.snp.bottom).offset(16).priority(.low).constraint
             make.horizontalEdges.equalToSuperview().inset(24)
+            make.height.equalTo(21)
         }
         passTextfield.snp.makeConstraints { make in
             make.top.equalTo(passwordLabel.snp.bottom).offset(4)
@@ -332,6 +359,7 @@ class SignInViewController: UIViewController {
             make.top.equalTo(appleIDSignUpButton.snp.bottom).offset(8)
             make.horizontalEdges.equalToSuperview().inset(24)
             make.height.equalTo(52)
+            make.bottom.equalToSuperview().inset(61)
         }
         errorLabel.snp.makeConstraints { make in
             self.errorLabelTopToEmailTFBottom = make.top.equalTo(emailTextfield.snp.bottom).offset(16).priority(.low).constraint
@@ -375,7 +403,7 @@ class SignInViewController: UIViewController {
         guard let password = passTextfield.text, !password.isEmpty else { return }
         
         if !emailTextfield.text!.isEmail(){
-            showAlertMessage(title: "Wrong email format", message: "Please write correct email")
+            showAlertMessage(title: "WRONG_EMAIL".localized(), message: "WRONG_EMAIL_TEXT".localized())
             emailTextfield.text = ""
             turnOffEmailFormatError()
             return
@@ -388,24 +416,26 @@ class SignInViewController: UIViewController {
             AF.request(URLs.SIGN_IN_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseData { response in
                 
                 SVProgressHUD.dismiss()
-                var resultString = ""
-                if let data = response.data {
-                    resultString = String(data: data, encoding: .utf8)!
-                    print(resultString)
-                }
                 
-                if response.response?.statusCode == 200 {
+                guard let responseCode = response.response?.statusCode else {
+                    SVProgressHUD.showError(withStatus: "CONNECTION_ERROR".localized())
+                    return
+                }
+                if responseCode == 200 {
                     let json = JSON(response.data!)
-                    print("JSON: \(json)")
-                    
                     if let token = json["accessToken"].string {
                         AuthenticationService.shared.token = token
                         self.startApp()
                     } else {
-                        SVProgressHUD.showError(withStatus: "CONNECTION_ERROR")
+                        SVProgressHUD.showError(withStatus: "CONNECTION_ERROR".localized())
                     }
                 } else {
-                    var ErrorString = "CONNECTION_ERROR"
+                    var resultString = ""
+                    if let data = response.data {
+                        resultString = String(data: data, encoding: .utf8)!
+                        print(resultString)
+                    }
+                    var ErrorString = "CONNECTION_ERROR".localized()
                     if let sCode = response.response?.statusCode {
                         ErrorString = ErrorString + " \(sCode)"
                     }

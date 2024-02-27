@@ -10,6 +10,7 @@ import SnapKit
 import SVProgressHUD
 import SwiftyJSON
 import Alamofire
+import Localize_Swift
 
 class HomeViewController: UIViewController {
     //- MARK: - Variables
@@ -32,7 +33,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.FFFFFF_111827
         addNavBarImage()
-        downloadMainBanners()
+        loadData()
         setUI()
     }
     
@@ -57,255 +58,118 @@ class HomeViewController: UIViewController {
         navigationItem.leftBarButtonItem = imageItem
     }
 
-    // - MARK: - Data loading
-    func downloadMainBanners() {
-        //SVProgressHUD.show()
-        
-        let headers: HTTPHeaders = ["Authorization": "Bearer \(AuthenticationService.shared.token)"]
-        
-        AF.request(URLs.MAIN_BANNERS_URL, method: .get, headers: headers).responseData { response in
-            
-            //SVProgressHUD.dismiss()
-            
-            
-            var resultString = ""
-            if let data = response.data {
-                resultString = String(data: data, encoding: .utf8)!
-                print(resultString)
-            }
-            
-            if response.response?.statusCode == 200 {
-                let json = JSON(response.data!)
-                print("JSON: \(json)")
-                
-                if let array = json.array {
-                    let movie = MainMovies()
-                    movie.cellType = .mainBanner
-                    for item in array {
-                        let bannerMovie = BannerMovie(json: item)
-                        movie.bannerMovie.append(bannerMovie)
+    // - MARK: - Data loading refactored
+    func loadData() {
+        downloadData(from: URLs.MAIN_BANNERS_URL, cellType: .mainBanner) { [weak self ] in
+            self?.downloadData(from: URLs.USER_HISTORY_URL, cellType: .userHistory) {
+                self?.downloadData(from: URLs.MAIN_MOVIES_URL, cellType: .mainMovie) {
+                    self?.downloadData(from: URLs.GET_GENRES, cellType: .genre) {
+                        self?.downloadData(from: URLs.GET_AGES, cellType: .ageCategory) {}
                     }
-                    self.mainMovies.append(movie)
-                    self.tableView.reloadData()
-                } else {
-                    SVProgressHUD.showError(withStatus: "CONNECTION_ERROR")
                 }
-            } else {
-                var ErrorString = "CONNECTION_ERROR"
-                if let sCode = response.response?.statusCode {
-                    ErrorString = ErrorString + " \(sCode)"
-                }
-                ErrorString = ErrorString + " \(resultString)"
-                SVProgressHUD.showError(withStatus: "\(ErrorString)")
             }
-            self.downloadUserHistory()
         }
-        
     }
-    
-    // load step 2
-    func downloadUserHistory() {
-        //SVProgressHUD.show()
-        
-        let headers: HTTPHeaders = ["Authorization": "Bearer \(AuthenticationService.shared.token)"]
-        
-        AF.request(URLs.USER_HISTORY_URL, method: .get, headers: headers).responseData { response in
-            
-            //SVProgressHUD.dismiss()
-            
-            
-            var resultString = ""
-            if let data = response.data {
-                resultString = String(data: data, encoding: .utf8)!
-                print(resultString)
-            }
-            
-            if response.response?.statusCode == 200 {
-                let json = JSON(response.data!)
-                print("JSON: \(json)")
-                
-                if let array = json.array {
-                    let movie = MainMovies()
-                    movie.cellType = .userHistory
-                    for item in array {
-                        let historyMovie = Movie(json: item)
-                        movie.movies.append(historyMovie)
-                    }
-                    if array.count > 0 {
-                        self.mainMovies.append(movie)
-                    }
-                    print(self.mainMovies.count)
-                    self.tableView.reloadData()
-                } else {
-                    SVProgressHUD.showError(withStatus: "CONNECTION_ERROR")
-                }
-            } else {
-                var ErrorString = "CONNECTION_ERROR"
-                if let sCode = response.response?.statusCode {
-                    ErrorString = ErrorString + " \(sCode)"
-                }
-                ErrorString = ErrorString + " \(resultString)"
-                SVProgressHUD.showError(withStatus: "\(ErrorString)")
-            }
-            self.downloadMainMovies()
-        }
-        
-    }
-    
-    // load step 3
-    func downloadMainMovies() {
+    func downloadData(from url: String, cellType: CellType, completion: @escaping () -> Void) {
         SVProgressHUD.show()
-        
         let headers: HTTPHeaders = ["Authorization": "Bearer \(AuthenticationService.shared.token)"]
         
-        AF.request(URLs.MAIN_MOVIES_URL, method: .get, headers: headers).responseData { response in
-            
+        AF.request(url, method: .get, headers: headers).responseData { [weak self] response in
             SVProgressHUD.dismiss()
-            
-            
-            var resultString = ""
-            if let data = response.data {
-                resultString = String(data: data, encoding: .utf8)!
-                print(resultString)
+            guard let responseCode = response.response?.statusCode else {
+                SVProgressHUD.showError(withStatus: "CONNECTION_ERROR".localized())
+                return
             }
-            
-            if response.response?.statusCode == 200 {
+            switch responseCode {
+            case 200:
                 let json = JSON(response.data!)
-                print("JSON: \(json)")
-                
-                if let array = json.array {
-                    for item in array {
-                        let movie = MainMovies(json: item)
-                        self.mainMovies.append(movie)
-                    }
-                    self.tableView.reloadData()
-                } else {
-                    SVProgressHUD.showError(withStatus: "CONNECTION_ERROR")
-                }
-            } else {
-                var ErrorString = "CONNECTION_ERROR"
-                if let sCode = response.response?.statusCode {
-                    ErrorString = ErrorString + " \(sCode)"
-                }
-                ErrorString = ErrorString + " \(resultString)"
-                SVProgressHUD.showError(withStatus: "\(ErrorString)")
-            }
-            self.downloadGenres()
-        }
-        
-    }
-    
-    // load step 4
-    func downloadGenres() {
-        //SVProgressHUD.show()
-        
-        let headers: HTTPHeaders = ["Authorization": "Bearer \(AuthenticationService.shared.token)"]
-        
-        AF.request(URLs.GET_GENRES, method: .get, headers: headers).responseData { response in
-            
-            //SVProgressHUD.dismiss()
-            
-            
-            var resultString = ""
-            if let data = response.data {
-                resultString = String(data: data, encoding: .utf8)!
-                print(resultString)
-            }
-            
-            if response.response?.statusCode == 200 {
-                let json = JSON(response.data!)
-                print("JSON: \(json)")
-                
-                if let array = json.array {
-                    let movie = MainMovies()
-                    movie.cellType = .genre
-                    for item in array {
-                        let genre = Genre(json: item)
-                        movie.genres.append(genre)
-                    }
-                    if self.mainMovies.count > 4 {
-                    if self.mainMovies[1].cellType == .userHistory {
-                            self.mainMovies.insert(movie, at: 4)
-                        } else {
-                            self.mainMovies.insert(movie, at: 3)
+                let movie = MainMovies()
+                movie.cellType = cellType
+                switch cellType {
+                case .mainBanner:
+                    if let array = json.array {
+                        for item in array {
+                            let bannerMovie = BannerMovie(json: item)
+                            movie.bannerMovie.append(bannerMovie)
                         }
+                        self?.mainMovies.append(movie)
+                        self?.tableView.reloadData()
                     }
-                    else {
-                        self.mainMovies.append(movie)
-                    }
-                    
-                    self.tableView.reloadData()
-                } else {
-                    SVProgressHUD.showError(withStatus: "CONNECTION_ERROR")
-                }
-            } else {
-                var ErrorString = "CONNECTION_ERROR"
-                if let sCode = response.response?.statusCode {
-                    ErrorString = ErrorString + " \(sCode)"
-                }
-                ErrorString = ErrorString + " \(resultString)"
-                SVProgressHUD.showError(withStatus: "\(ErrorString)")
-            }
-            self.downloadCategoryAges()
-        }
-        
-    }
-    
-    // load step 5
-    func downloadCategoryAges() {
-        //SVProgressHUD.show()
-        
-        let headers: HTTPHeaders = ["Authorization": "Bearer \(AuthenticationService.shared.token)"]
-        
-        AF.request(URLs.GET_AGES, method: .get, headers: headers).responseData { response in
-            
-            //SVProgressHUD.dismiss()
-            
-            
-            var resultString = ""
-            if let data = response.data {
-                resultString = String(data: data, encoding: .utf8)!
-                print(resultString)
-            }
-            
-            if response.response?.statusCode == 200 {
-                let json = JSON(response.data!)
-                print("JSON: \(json)")
-                
-                if let array = json.array {
-                    let movie = MainMovies()
-                    movie.cellType = .ageCategory
-                    for item in array {
-                        let ageCategory = CategoryAge(json: item)
-                        movie.categoryAges.append(ageCategory)
-                    }
-                    
-                    if self.mainMovies.count > 8 {
-                        if self.mainMovies[1].cellType == .userHistory {
-                            self.mainMovies.insert(movie, at: 8)
-                        } else {
-                            self.mainMovies.insert(movie, at: 7)
+                case .userHistory:
+                    if let array = json.array {
+                        for item in array {
+                            let historyMovie = Movie(json: item)
+                            movie.movies.append(historyMovie)
                         }
+                        if array.count > 0 {
+                            self?.mainMovies.append(movie)
+                        }
+                        self?.tableView.reloadData()
                     }
-                    else {
-                        self.mainMovies.append(movie)
+                case .mainMovie:
+                    if let array = json.array {
+                        for item in array {
+                            let movie = MainMovies(json: item)
+                            self?.mainMovies.append(movie)
+                        }
+                        self?.tableView.reloadData()
                     }
-                    self.tableView.reloadData()
-                } else {
-                    SVProgressHUD.showError(withStatus: "CONNECTION_ERROR")
+                case .genre:
+                    if let array = json.array {
+                        for item in array {
+                            let genre = Genre(json: item)
+                            movie.genres.append(genre)
+                        }
+                        if (self?.mainMovies.count)! > 4 {
+                        if self?.mainMovies[1].cellType == .userHistory {
+                                self?.mainMovies.insert(movie, at: 4)
+                            } else {
+                                self?.mainMovies.insert(movie, at: 3)
+                            }
+                        }
+                        else {
+                            self?.mainMovies.append(movie)
+                        }
+                        
+                        self?.tableView.reloadData()
+                    }
+                case .ageCategory:
+                    if let array = json.array {
+                        let movie = MainMovies()
+                        movie.cellType = .ageCategory
+                        for item in array {
+                            let ageCategory = CategoryAge(json: item)
+                            movie.categoryAges.append(ageCategory)
+                        }
+                        if (self?.mainMovies.count)! > 8 {
+                            if self?.mainMovies[1].cellType == .userHistory {
+                                self?.mainMovies.insert(movie, at: 8)
+                            } else {
+                                self?.mainMovies.insert(movie, at: 7)
+                            }
+                        }
+                        else {
+                            self?.mainMovies.append(movie)
+                        }
+                        self?.tableView.reloadData()
+                    }
                 }
-            } else {
-                var ErrorString = "CONNECTION_ERROR"
+            default:
+                var resultString = ""
+                if let data = response.data {
+                    resultString = String(data: data, encoding: .utf8)!
+                }
+                var ErrorString = "CONNECTION_ERROR".localized()
                 if let sCode = response.response?.statusCode {
                     ErrorString = ErrorString + " \(sCode)"
                 }
                 ErrorString = ErrorString + " \(resultString)"
                 SVProgressHUD.showError(withStatus: "\(ErrorString)")
             }
+            completion()
         }
     }
 }
-
     //- MARK: - UITableViewDelegate & UITableViewDataSource
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -398,7 +262,6 @@ extension HomeViewController: ItemDidSelect {
         categoryVC.categoryName = genreName
         categoryVC.categoryString = categoryString
         navigationController?.show(categoryVC, sender: self)
-        
     }
     
     func ageDidSelect(ageID: Int, ageName: String) {

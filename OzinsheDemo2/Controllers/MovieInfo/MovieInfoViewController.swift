@@ -396,10 +396,12 @@ class MovieInfoViewController: UIViewController {
     //- MARK: - Set Constraints
     func setupConstraints() {
         scrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.verticalEdges.equalToSuperview()
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
         contentView.snp.makeConstraints { make in
             make.top.equalTo(scrollView.contentLayoutGuide.snp.top)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             make.bottom.horizontalEdges.equalToSuperview()
         }
         posterImage.snp.makeConstraints { make in
@@ -587,7 +589,7 @@ class MovieInfoViewController: UIViewController {
                 self.setViews()
                 
             } else {
-                var ErrorString = "CONNECTION_ERROR"
+                var ErrorString = "CONNECTION_ERROR".localized()
                 if let sCode = response.response?.statusCode {
                     ErrorString = ErrorString + " \(sCode)"
                 }
@@ -675,10 +677,10 @@ class MovieInfoViewController: UIViewController {
                     }
                     self.similarCollectionView.reloadData()
                 } else {
-                    SVProgressHUD.showError(withStatus: "CONNECTION_ERROR")
+                    SVProgressHUD.showError(withStatus: "CONNECTION_ERROR".localized())
                 }
             } else {
-                var ErrorString = "CONNECTION_ERROR"
+                var ErrorString = "CONNECTION_ERROR".localized()
                 if let sCode = response.response?.statusCode {
                     ErrorString = ErrorString + " \(sCode)"
                 }

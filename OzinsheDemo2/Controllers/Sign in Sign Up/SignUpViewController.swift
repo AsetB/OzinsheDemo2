@@ -356,7 +356,7 @@ class SignUpViewController: UIViewController {
         guard let repeatedPass = repeatPassTextfield.text, !repeatedPass.isEmpty else { return }
         
         if !emailTextfield.text!.isEmail(){
-            showAlertMessage(title: "Wrong email format", message: "Please write correct email")
+            showAlertMessage(title: "WRONG_EMAIL".localized(), message: "WRONG_EMAIL_TEXT".localized())
             emailTextfield.text = ""
             turnOffEmailFormatError()
             return
@@ -371,12 +371,13 @@ class SignUpViewController: UIViewController {
             AF.request(URLs.SIGN_UP_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseData { response in
                 
                 SVProgressHUD.dismiss()
-                var resultString = ""
-                if let data = response.data {
-                    resultString = String(data: data, encoding: .utf8)!
-                    print(resultString)
+                
+                guard let responseCode = response.response?.statusCode else {
+                    SVProgressHUD.showError(withStatus: "CONNECTION_ERROR".localized())
+                    return
                 }
-                if response.response?.statusCode == 400 {
+                
+                if responseCode == 400 {
                     self.errorMailTakenLabel.isHidden = false
                     self.errorLabelTopToRepeatPassTFBottom?.update(priority: .high) // start low
                     self.signUpButtonTopToRepeatPassTFBottom?.update(priority: .low) // start high
@@ -384,18 +385,20 @@ class SignUpViewController: UIViewController {
                     return
                 }
                 
-                if response.response?.statusCode == 200 {
+                if responseCode == 200 {
                     let json = JSON(response.data!)
                     print("JSON: \(json)")
                     
                     if let token = json["accessToken"].string {
                         AuthenticationService.shared.token = token
                         self.startApp()
-                    } else {
-                        SVProgressHUD.showError(withStatus: "CONNECTION_ERROR")
                     }
                 } else {
-                    var ErrorString = "CONNECTION_ERROR"
+                    var resultString = ""
+                    if let data = response.data {
+                        resultString = String(data: data, encoding: .utf8)!
+                    }
+                    var ErrorString = "CONNECTION_ERROR".localized()
                     if let sCode = response.response?.statusCode {
                         ErrorString = ErrorString + " \(sCode)"
                     }
@@ -404,7 +407,7 @@ class SignUpViewController: UIViewController {
                 }
             }
         } else {
-            SVProgressHUD.showError(withStatus: "PASS_NOT_MATCH")
+            SVProgressHUD.showError(withStatus: "PASS_NOT_MATCH".localized())
         }
     }
     //- MARK: - TextField Actions

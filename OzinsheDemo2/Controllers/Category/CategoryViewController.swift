@@ -10,6 +10,7 @@ import SnapKit
 import Alamofire
 import SwiftyJSON
 import SVProgressHUD
+import Localize_Swift
 
 class CategoryViewController: UIViewController {
     //- MARK: - Variables
@@ -59,10 +60,14 @@ class CategoryViewController: UIViewController {
             var resultString = ""
             if let data = response.data {
                 resultString = String(data: data, encoding: .utf8)!
-                print(resultString)
             }
             
-            if response.response?.statusCode == 200 {
+            guard let responseCode = response.response?.statusCode else {
+                SVProgressHUD.showError(withStatus: "CONNECTION_ERROR".localized())
+                return
+            }
+            
+            if responseCode == 200 {
                 let json = JSON(response.data!)
                 print("JSON: \(json)")
                 
@@ -74,10 +79,10 @@ class CategoryViewController: UIViewController {
                         }
                         self.tableView.reloadData()
                     } else {
-                        SVProgressHUD.showError(withStatus: "CONNECTION_ERROR")
+                        SVProgressHUD.showError(withStatus: "CONNECTION_ERROR".localized())
                     }
                 } else {
-                    var ErrorString = "CONNECTION_ERROR"
+                    var ErrorString = "CONNECTION_ERROR".localized()
                     if let sCode = response.response?.statusCode {
                         ErrorString = ErrorString + " \(sCode)"
                     }

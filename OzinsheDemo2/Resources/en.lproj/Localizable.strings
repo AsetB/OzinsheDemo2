@@ -65,3 +65,7 @@
 "EMAIL_IN_USE" = "A user with such an email is registered";
 "SKIP" = "Skip";
 "NEXT" = "Next";
+"WRONG_EMAIL" = "Incorrect email format";
+"WRONG_EMAIL_TEXT" = "Please check again";
+"OOPS" = "Sorry";
+"NOT_AVAILABLE" = "Service is currently under development";

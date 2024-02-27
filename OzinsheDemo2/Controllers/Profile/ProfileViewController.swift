@@ -343,7 +343,7 @@ class ProfileViewController: UIViewController {
                     print("Error doesnt load user")
                 }
             } else {
-                var ErrorString = "CONNECTION_ERROR"
+                var ErrorString = "CONNECTION_ERROR".localized()
                 if let sCode = response.response?.statusCode {
                     ErrorString = ErrorString + " \(sCode)"
                 }

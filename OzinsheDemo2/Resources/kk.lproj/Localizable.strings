@@ -65,3 +65,8 @@
 "EMAIL_IN_USE" = "Мұндай email-ы бар пайдаланушы тіркелген";
 "SKIP" = "Өткізу";
 "NEXT" = "Әрі қарай";
+"WRONG_EMAIL" = "Email форматы дұрыс емес";
+"WRONG_EMAIL_TEXT" = "Қайта тексеріңіз";
+"CONNECTION_ERROR" = "Қосылым қатесі";
+"OOPS" = "Кешіріңіз";
+"NOT_AVAILABLE" = "Қызмет әзірленуде";

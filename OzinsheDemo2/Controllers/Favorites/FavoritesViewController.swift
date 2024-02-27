@@ -77,10 +77,10 @@ class FavoritesViewController: UIViewController {
                     }
                     self.tableView.reloadData()
                 } else {
-                    SVProgressHUD.showError(withStatus: "CONNECTION_ERROR")
+                    SVProgressHUD.showError(withStatus: "CONNECTION_ERROR".localized())
                 }
             } else {
-                var ErrorString = "CONNECTION_ERROR"
+                var ErrorString = "CONNECTION_ERROR".localized()
                 if let sCode = response.response?.statusCode {
                     ErrorString = ErrorString + " \(sCode)"
                 }
