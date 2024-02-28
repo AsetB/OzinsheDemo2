@@ -57,9 +57,6 @@ class FavoritesViewController: UIViewController {
             
             SVProgressHUD.dismiss()
             
-//            self.isLoading = false
-//            self.refreshControl?.endRefreshing()
-            
             var resultString = ""
             if let data = response.data {
                 resultString = String(data: data, encoding: .utf8)!

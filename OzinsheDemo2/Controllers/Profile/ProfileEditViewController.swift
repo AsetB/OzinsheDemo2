@@ -60,9 +60,6 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
     private lazy var nameTextfield: UITextField = {
         let textfield = UITextField()
         textfield.defaultTextAttributes = [NSAttributedString.Key.font : appearance.medium500Font16, NSAttributedString.Key.foregroundColor : appearance.c111827_FFFFFF]
-        textfield.addTarget(self,
-                            action: #selector(nameTextfieldEditingChange),
-                            for: .editingChanged)
         textfield.backgroundColor = UIColor.FFFFFF_111827
         textfield.borderStyle = .none
         textfield.textContentType = .givenName
@@ -72,9 +69,6 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
     private lazy var emailTextfield: UITextField = {
         let textfield = UITextField()
         textfield.defaultTextAttributes = [NSAttributedString.Key.font : appearance.medium500Font16, NSAttributedString.Key.foregroundColor : appearance.c111827_FFFFFF]
-        textfield.addTarget(self,
-                            action: #selector(nameTextfieldEditingChange),
-                            for: .editingChanged)
         textfield.backgroundColor = UIColor.FFFFFF_111827
         textfield.borderStyle = .none
         textfield.autocapitalizationType = .none
@@ -86,9 +80,6 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
     lazy var phoneTextfield: UITextField = {
         let textfield = UITextField()
         textfield.defaultTextAttributes = [NSAttributedString.Key.font : appearance.medium500Font16, NSAttributedString.Key.foregroundColor : appearance.c111827_FFFFFF]
-        textfield.addTarget(self,
-                            action: #selector(nameTextfieldEditingChange),
-                            for: .editingChanged)
         textfield.backgroundColor = UIColor.FFFFFF_111827
         textfield.borderStyle = .none
         textfield.textContentType = .telephoneNumber
@@ -100,9 +91,6 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
     private lazy var birthdayTextfield: UITextField = {
         let textfield = UITextField()
         textfield.defaultTextAttributes = [NSAttributedString.Key.font : appearance.medium500Font16, NSAttributedString.Key.foregroundColor : appearance.c111827_FFFFFF]
-        textfield.addTarget(self,
-                            action: #selector(nameTextfieldEditingChange),
-                            for: .editingChanged)
         textfield.backgroundColor = UIColor.FFFFFF_111827
         textfield.borderStyle = .none
         textfield.delegate = self
@@ -254,9 +242,6 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
         saveButton.setTitle("SAVE_CHANGES".localized(), for: .normal)
     }
     //- MARK: - Actions
-    @objc private func nameTextfieldEditingChange() {
-        
-    }
     @objc private func savePersonalData() {
         guard let birthDate = birthdayTextfield.text else { return }
         let userId = UserDefaults.standard.integer(forKey: "userId")

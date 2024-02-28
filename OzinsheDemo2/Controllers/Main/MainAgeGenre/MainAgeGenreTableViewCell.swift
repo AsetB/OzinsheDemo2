@@ -31,7 +31,6 @@ class MainAgeGenreTableViewCell: UITableViewCell {
         
         let layout = TopAlignedCollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
-        //layout.itemSize = CGSize(width: 112, height: 220)
         layout.minimumInteritemSpacing = 16
         layout.minimumLineSpacing = 16
         layout.estimatedItemSize.width = 184

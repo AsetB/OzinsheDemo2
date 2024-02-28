@@ -80,7 +80,6 @@
 		DBA560F62B8A4DA900F6BC8B /* ProfileLogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA560F52B8A4DA900F6BC8B /* ProfileLogoutViewController.swift */; };
 		DBA560F82B8A625500F6BC8B /* PassChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA560F72B8A625500F6BC8B /* PassChangeViewController.swift */; };
 		DBEAED1F2B8CAA4400E575E5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBEAED212B8CAA4400E575E5 /* Localizable.strings */; };
-		DBFDB7AF2B7C8A0700EA5C69 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7AE2B7C8A0700EA5C69 /* Grid.swift */; };
 		DBFDB7B12B7C8A1100EA5C69 /* Apperance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7B02B7C8A1100EA5C69 /* Apperance.swift */; };
 		DBFDB7B72B7C933D00EA5C69 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7B62B7C933D00EA5C69 /* SignInViewController.swift */; };
 		DBFDB7B92B7C9A6E00EA5C69 /* UITextfield+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7B82B7C9A6E00EA5C69 /* UITextfield+Extensions.swift */; };
@@ -187,7 +186,6 @@
 		DBEAED202B8CAA4400E575E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DBEAED222B8CAA4A00E575E5 /* kk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = kk; path = kk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DBEAED232B8CAA4B00E575E5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		DBFDB7AE2B7C8A0700EA5C69 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		DBFDB7B02B7C8A1100EA5C69 /* Apperance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apperance.swift; sourceTree = "<group>"; };
 		DBFDB7B62B7C933D00EA5C69 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		DBFDB7B82B7C9A6E00EA5C69 /* UITextfield+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+Extensions.swift"; sourceTree = "<group>"; };
@@ -422,7 +420,6 @@
 			isa = PBXGroup;
 			children = (
 				DB4E9E772B7BE7760074DAD5 /* CustomGradientView.swift */,
-				DBFDB7AE2B7C8A0700EA5C69 /* Grid.swift */,
 				DBFDB7B02B7C8A1100EA5C69 /* Apperance.swift */,
 				DBFDB7B82B7C9A6E00EA5C69 /* UITextfield+Extensions.swift */,
 				DB7078972B7E1D1E0010BFDA /* UIViewController+Extensions.swift */,
@@ -735,7 +732,6 @@
 				DB07DEE22B8366BD001E10C7 /* MainHistoryTableViewCell.swift in Sources */,
 				DBFDB7B92B7C9A6E00EA5C69 /* UITextfield+Extensions.swift in Sources */,
 				DB8A7F372B875D7D00B69212 /* ScreenshotViewController.swift in Sources */,
-				DBFDB7AF2B7C8A0700EA5C69 /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
