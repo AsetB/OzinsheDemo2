@@ -238,7 +238,7 @@ class PassChangeViewController: UIViewController {
                 }
             }
         } else {
-            SVProgressHUD.showError(withStatus: "PASS_NOT_MATCH")
+            SVProgressHUD.showError(withStatus: "PASS_NOT_MATCH".localized())
         }
     }
     

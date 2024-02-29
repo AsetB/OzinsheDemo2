@@ -154,13 +154,13 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.FFFFFF_1_C_2431
         navigationItem.title = "PROFILE".localized()
-        loadProfileInfo()
         addViews()
         setupViews()
         setupConstraints()
         setLanguage()
     }
     override func viewWillAppear(_ animated: Bool) {
+        loadProfileInfo()
         setLanguage()
         setupViews()
     }
@@ -190,7 +190,6 @@ class ProfileViewController: UIViewController {
         } else {
             darkModeSwitch.setOn(false, animated: false)
         }
-        emailLabel.text = UserDefaults.standard.string(forKey: "email")
     }
     //- MARK: - Constraints
     private func setupConstraints() {
@@ -301,7 +300,7 @@ class ProfileViewController: UIViewController {
         
         let headers: HTTPHeaders = ["Authorization": "Bearer \(AuthenticationService.shared.token)"]
         
-        AF.request(URLs.GET_PROFILE_URL, method: .get, headers: headers).responseData { response in
+        AF.request(URLs.GET_PROFILE_URL, method: .get, headers: headers).responseData { [weak self] response in
             
             var resultString = ""
             if let data = response.data {
@@ -350,6 +349,7 @@ class ProfileViewController: UIViewController {
                 ErrorString = ErrorString + " \(resultString)"
                 print(ErrorString)
             }
+            self?.emailLabel.text = UserDefaults.standard.string(forKey: "email")
         }
     }
 }

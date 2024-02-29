@@ -347,8 +347,7 @@ class SignUpViewController: UIViewController {
         repeatPassTextfield.isSecureTextEntry = !repeatPassTextfield.isSecureTextEntry
     }
     @objc func showSignInScreen() {
-        let signupVC = SignInViewController()
-        navigationController?.show(signupVC, sender: self)
+        navigationController?.popViewController(animated: true)
     }
     @objc func signUpAction() {
         guard let email = emailTextfield.text, !email.isEmpty else { return }

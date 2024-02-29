@@ -67,10 +67,20 @@ class MovieTableViewCell: UITableViewCell {
         return view
     }()
     
+//    lazy var bgView = {
+//        let view = UIView()
+//        view.backgroundColor = UIColor.F_3_F_4_F_6_1_C_2431
+//        return view
+//    }()
     //- MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: "movieCell")
         self.backgroundColor = UIColor.FFFFFF_111827
+        self.selectedBackgroundView = {
+            let view = UIView()
+            view.backgroundColor = UIColor.F_3_F_4_F_6_1_C_2431
+            return view
+        }()
         setupViews()
         setupConstraints()
     }

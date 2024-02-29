@@ -46,6 +46,8 @@ class LanguageViewController: UIViewController, UIGestureRecognizerDelegate {
         tableView.bounces = false
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
+        tableView.separatorStyle = .none
+        tableView.isScrollEnabled = false
         return tableView
     }()
     //- MARK: - Lifecycle
@@ -85,7 +87,7 @@ class LanguageViewController: UIViewController, UIGestureRecognizerDelegate {
             make.horizontalEdges.equalToSuperview().inset(24)
         }
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(topLabel.snp.bottom).offset(12)
+            make.top.equalTo(topLabel.snp.bottom).offset(14)
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
@@ -116,10 +118,13 @@ extension LanguageViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.checkImage.image = nil
         }
+        if cell.label.text == "Русский" {
+            cell.dividerView.isHidden = true
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65
+        return 62
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         Localize.setCurrentLanguage(languageArray[indexPath.row][1])

@@ -294,7 +294,6 @@ class SignInViewController: UIViewController {
         }
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(16)
-            //make.top.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.horizontalEdges.equalToSuperview().inset(24)
             make.height.equalTo(34)
         }

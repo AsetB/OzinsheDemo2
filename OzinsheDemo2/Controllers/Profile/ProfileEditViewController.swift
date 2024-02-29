@@ -99,6 +99,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
     }()
     
     //MARK: Date Picker
+    var dateToSave: String = ""
     private lazy var datePicker = {
         let datePicker = UIDatePicker(frame: CGRect.zero)
         datePicker.datePickerMode = .date
@@ -108,8 +109,11 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
     }()
     @objc func datePickerValueChanged(sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "d MMMM yyyy"
+        dateFormatter.locale = Locale(identifier: "kk-KZ")
         birthdayTextfield.text = dateFormatter.string(from: sender.date)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateToSave = dateFormatter.string(from: sender.date)
         }
     
     //MARK: Dividers
@@ -145,6 +149,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
     }
     override func viewWillAppear(_ animated: Bool) {
         localize()
+        setupView()
     }
     //- MARK: - Add & Setup Views
     private func addViews() {
@@ -167,7 +172,14 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
         nameTextfield.text = UserDefaults.standard.string(forKey: "name")
         emailTextfield.text = UserDefaults.standard.string(forKey: "email")
         phoneTextfield.text = UserDefaults.standard.string(forKey: "phoneNumber")
-        birthdayTextfield.text = UserDefaults.standard.string(forKey: "birthDate")
+        //birth date
+        guard let dateString = UserDefaults.standard.string(forKey: "birthDate") else { return }
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        var dateDate = dateFormatter.date(from: dateString)
+        dateFormatter.dateFormat = "d MMMM yyyy"
+        dateFormatter.locale = Locale(identifier: "kk-KZ")
+        birthdayTextfield.text = dateFormatter.string(from: dateDate!)
     }
     //- MARK: - Constraints
     private func setupConstraints() {
@@ -186,7 +198,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
             make.height.equalTo(1)
         }
         emailLabel.snp.makeConstraints { make in
-            make.top.equalTo(dividerView1.snp.bottom).offset(8)
+            make.top.equalTo(dividerView1.snp.bottom).offset(24)
             make.leading.equalTo(dividerView1.snp.leading)
         }
         emailTextfield.snp.makeConstraints { make in
@@ -200,7 +212,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
             make.height.equalTo(1)
         }
         phoneLabel.snp.makeConstraints { make in
-            make.top.equalTo(dividerView2.snp.bottom).offset(8)
+            make.top.equalTo(dividerView2.snp.bottom).offset(24)
             make.leading.equalTo(dividerView2.snp.leading)
         }
         phoneTextfield.snp.makeConstraints { make in
@@ -214,7 +226,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
             make.height.equalTo(1)
         }
         birthdayLabel.snp.makeConstraints { make in
-            make.top.equalTo(dividerView3.snp.bottom).offset(8)
+            make.top.equalTo(dividerView3.snp.bottom).offset(24)
             make.leading.equalTo(dividerView3.snp.leading)
         }
         birthdayTextfield.snp.makeConstraints { make in
@@ -243,7 +255,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
     }
     //- MARK: - Actions
     @objc private func savePersonalData() {
-        guard let birthDate = birthdayTextfield.text else { return }
+        let birthDate = dateToSave
         let userId = UserDefaults.standard.integer(forKey: "userId")
         let language = "English"
         guard let name = nameTextfield.text else { return }
@@ -255,7 +267,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
         let parameters = ["birthDate": birthDate, "id": userId, "language": language, "name": name, "phoneNumber": phoneNumber] as [String : Any]
         let headers: HTTPHeaders = ["Authorization": "Bearer \(AuthenticationService.shared.token)"]
         
-        AF.request(URLs.UPDATE_PROFILE_URL, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
+        AF.request(URLs.UPDATE_PROFILE_URL, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { [weak self] response in
             
             SVProgressHUD.dismiss()
             var resultString = ""
@@ -291,8 +303,8 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIPicker
                 ErrorString = ErrorString + " \(resultString)"
                 SVProgressHUD.showError(withStatus: "\(ErrorString)")
             }
+            self?.setupView()
         }
         SVProgressHUD.showSuccess(withStatus: "Profile data saved")
-        setupView()
     }
 }

@@ -73,6 +73,7 @@ class CategoryViewController: UIViewController {
                 
                 if json["content"].exists() {
                     if let array = json["content"].array {
+                        self.movies.removeAll()
                         for item in array {
                             let movies = Movie(json: item)
                             self.movies.append(movies)

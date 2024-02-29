@@ -230,8 +230,9 @@ class MovieInfoViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = UIColor.clear
         button.setTitle("ALL".localized(), for: .normal)
+        button.setTitleColor(UIColor.purpleLabels, for: .normal)
         button.titleLabel?.font = appearance.semiboldFont14
-        button.titleLabel?.textColor = UIColor.purpleLabels
+        button.contentHorizontalAlignment = .right
         return button
     }()
     
@@ -294,9 +295,7 @@ class MovieInfoViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "FFFFFF - 111827")
         navigationItem.title = ""
-        downloadSimilar()
         addViews()
-        setViews()
         setupConstraints()
         setupButtonActions()
         setupData()
@@ -305,8 +304,10 @@ class MovieInfoViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        downloadSimilar()
         setViews()
         setLines()
+        setGradients()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -348,12 +349,15 @@ class MovieInfoViewController: UIViewController {
         backgroundView.addSubview(linealLowerView)
         
     }
-    func setViews() {
+    
+    func setGradients() {
         imageGradientView.updateColors()
         imageGradientView.updateLocations()
         descriptionGradientView.updateColors()
         descriptionGradientView.updateLocations()
-        
+    }
+    
+    func setViews() {
         if movie.favorite {
             favoriteButton.setImage(UIImage(named: "FavoriteButtonSelected"), for: .normal)
         } else {
@@ -368,12 +372,6 @@ class MovieInfoViewController: UIViewController {
             screenLabelTopToLinealViewBottom?.update(priority: .high)
         } else {
             showSeasonButton.setTitle("\(movie.seasonCount)" + "SEASON".localized() + "\(movie.seriesCount)" + "SERIES".localized(), for: .normal)
-        }
-        
-        if similarMovies.isEmpty {
-            similarLabel.isHidden = true
-            similarCollectionView.isHidden = true
-            showSimilar.isHidden = true
         }
     }
     
@@ -396,13 +394,13 @@ class MovieInfoViewController: UIViewController {
     //- MARK: - Set Constraints
     func setupConstraints() {
         scrollView.snp.makeConstraints { make in
-            make.verticalEdges.equalToSuperview()
+            make.top.bottom.equalToSuperview()
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
         contentView.snp.makeConstraints { make in
-            make.top.equalTo(scrollView.contentLayoutGuide.snp.top)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.horizontalEdges.equalToSuperview()
+            make.edges.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
+            make.width.equalTo(scrollView.frameLayoutGuide)
+            make.height.equalTo(scrollView.frameLayoutGuide).priority(.medium)
         }
         posterImage.snp.makeConstraints { make in
             make.top.horizontalEdges.equalToSuperview()
@@ -443,7 +441,6 @@ class MovieInfoViewController: UIViewController {
         backgroundView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(324)
             make.horizontalEdges.bottom.equalToSuperview()
-            make.height.equalTo(830)
         }
         titleNameLabel.snp.makeConstraints { make in
             make.top.horizontalEdges.equalToSuperview().inset(24)
@@ -531,7 +528,7 @@ class MovieInfoViewController: UIViewController {
         }
         showSimilar.snp.makeConstraints { make in
             make.leading.equalTo(similarLabel.snp.trailing)
-            make.trailing.equalToSuperview()
+            make.trailing.equalToSuperview().inset(23)
             make.height.equalTo(34)
             make.centerY.equalTo(similarLabel.snp.centerY)
         }
@@ -539,6 +536,7 @@ class MovieInfoViewController: UIViewController {
             make.top.equalTo(similarLabel.snp.bottom).offset(16)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(220)
+            make.bottom.equalToSuperview().inset(45)
         }
         descriptionGradientView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
@@ -554,6 +552,7 @@ class MovieInfoViewController: UIViewController {
         playButton.addTarget(self, action: #selector(playMovie), for: .touchUpInside)
         showFullDescription.addTarget(self, action: #selector(showDescription), for: .touchUpInside)
         showSeasonButton.addTarget(self, action: #selector(showSeason), for: .touchUpInside)
+        showSimilar.addTarget(self, action: #selector(showSimilarCategory), for: .touchUpInside)
     }
     
     @objc func goBack() {
@@ -636,6 +635,11 @@ class MovieInfoViewController: UIViewController {
         seasonsViewController.movie = movie
         navigationController?.show(seasonsViewController, sender: self)
     }
+    @objc func showSimilarCategory() {
+        let SimilarVC = SimilarListViewController()
+        SimilarVC.movies = similarMovies
+        navigationController?.show(SimilarVC, sender: self)
+    }
     
     //- MARK: - Set Data
     func setupData() {
@@ -657,7 +661,7 @@ class MovieInfoViewController: UIViewController {
             "Authorization": "Bearer \(AuthenticationService.shared.token)"
         ]
         
-        AF.request(URLs.GET_SIMILAR + String(movie.id), method: .get, headers: headers).responseData { response in
+        AF.request(URLs.GET_SIMILAR + String(movie.id), method: .get, headers: headers).responseData { [weak self] response in
             
             SVProgressHUD.dismiss()
             var resultString = ""
@@ -671,11 +675,12 @@ class MovieInfoViewController: UIViewController {
                 print("JSON: \(json)")
                 
                 if let array = json.array {
+                    self?.similarMovies.removeAll()
                     for item in array {
                         let movie = Movie(json: item)
-                        self.similarMovies.append(movie)
+                        self?.similarMovies.append(movie)
                     }
-                    self.similarCollectionView.reloadData()
+                    self?.similarCollectionView.reloadData()
                 } else {
                     SVProgressHUD.showError(withStatus: "CONNECTION_ERROR".localized())
                 }
@@ -686,6 +691,11 @@ class MovieInfoViewController: UIViewController {
                 }
                 ErrorString = ErrorString + " \(resultString)"
                 SVProgressHUD.showError(withStatus: "\(ErrorString)")
+            }
+            if (self?.similarMovies.isEmpty == true) {
+                self?.similarLabel.isHidden = true
+                self?.similarCollectionView.isHidden = true
+                self?.showSimilar.isHidden = true
             }
         }
     }
@@ -728,6 +738,7 @@ extension MovieInfoViewController: UICollectionViewDelegate, UICollectionViewDat
             let movieinfoVC = MovieInfoViewController()
             movieinfoVC.movie = similarMovies[indexPath.row]
             navigationController?.show(movieinfoVC, sender: self)
+            return
         }
         let screenVC = ScreenshotViewController()
         screenVC.selectedScreenshotIndex = indexPath.item

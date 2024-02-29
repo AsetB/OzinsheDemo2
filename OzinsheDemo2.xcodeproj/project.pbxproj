@@ -79,6 +79,7 @@
 		DBA560F42B88AB3F00F6BC8B /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA560F32B88AB3F00F6BC8B /* Language.swift */; };
 		DBA560F62B8A4DA900F6BC8B /* ProfileLogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA560F52B8A4DA900F6BC8B /* ProfileLogoutViewController.swift */; };
 		DBA560F82B8A625500F6BC8B /* PassChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA560F72B8A625500F6BC8B /* PassChangeViewController.swift */; };
+		DBB1529F2B90E9F60091BF48 /* SimilarListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB1529E2B90E9F60091BF48 /* SimilarListViewController.swift */; };
 		DBEAED1F2B8CAA4400E575E5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBEAED212B8CAA4400E575E5 /* Localizable.strings */; };
 		DBFDB7B12B7C8A1100EA5C69 /* Apperance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7B02B7C8A1100EA5C69 /* Apperance.swift */; };
 		DBFDB7B72B7C933D00EA5C69 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDB7B62B7C933D00EA5C69 /* SignInViewController.swift */; };
@@ -183,6 +184,7 @@
 		DBA560F32B88AB3F00F6BC8B /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		DBA560F52B8A4DA900F6BC8B /* ProfileLogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLogoutViewController.swift; sourceTree = "<group>"; };
 		DBA560F72B8A625500F6BC8B /* PassChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassChangeViewController.swift; sourceTree = "<group>"; };
+		DBB1529E2B90E9F60091BF48 /* SimilarListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarListViewController.swift; sourceTree = "<group>"; };
 		DBEAED202B8CAA4400E575E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DBEAED222B8CAA4A00E575E5 /* kk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = kk; path = kk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DBEAED232B8CAA4B00E575E5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				DB07DEE92B83C5CE001E10C7 /* ScreenshotCollectionViewCell.swift */,
 				DB07DEED2B83C88E001E10C7 /* SimilarMovieCollectionViewCell.swift */,
 				DB8A7F362B875D7D00B69212 /* ScreenshotViewController.swift */,
+				DBB1529E2B90E9F60091BF48 /* SimilarListViewController.swift */,
 			);
 			path = MovieInfo;
 			sourceTree = "<group>";
@@ -698,6 +701,7 @@
 				DBA37F972B78E63B00051C51 /* SceneDelegate.swift in Sources */,
 				DB07DEC02B831B0F001E10C7 /* CategoryAge.swift in Sources */,
 				DB07DEC82B831BA7001E10C7 /* BannerMovie.swift in Sources */,
+				DBB1529F2B90E9F60091BF48 /* SimilarListViewController.swift in Sources */,
 				DB8A7F3B2B87643E00B69212 /* UIImageView + Extension.swift in Sources */,
 				DBA560F42B88AB3F00F6BC8B /* Language.swift in Sources */,
 				DBA37FFC2B7A05D000051C51 /* SearchViewController.swift in Sources */,
@@ -907,6 +911,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D8BPMJY996;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OzinsheDemo2/Info.plist;
@@ -941,6 +946,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D8BPMJY996;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OzinsheDemo2/Info.plist;
