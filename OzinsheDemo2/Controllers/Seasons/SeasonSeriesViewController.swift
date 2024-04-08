@@ -179,6 +179,7 @@ extension SeasonSeriesViewController: UITableViewDelegate, UITableViewDataSource
         youTubePlayerViewController.player.source = .video(id: seasons[currentSeason].videos[indexPath.row].link, startSeconds: nil, endSeconds: nil)
         youTubePlayerViewController.player.configuration = .init(
             fullscreenMode: .system, autoPlay: true, showControls: true, showFullscreenButton: true, useModestBranding: false, playInline: false, showRelatedVideos: false)
+        youTubePlayerViewController.hidesBottomBarWhenPushed = true
         self.show(youTubePlayerViewController, sender: self)
     }
 }
