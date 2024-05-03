@@ -3,7 +3,7 @@ Video streaming service for kids on Kazakh language.
 Internship project. UIKit with SnapKit.
 
 [![temp-Image-Dz-LEYg.avif](https://i.postimg.cc/bNq3ydGd/temp-Image-Dz-LEYg.avif)](https://postimg.cc/23X4Tk7f)
-[![temp-Imagesqsgj-J.avif](https://i.postimg.cc/BbSH0Lh0/temp-Imagesqsgj-J.avif)](https://postimg.cc/r0HKGmXn)
+![screencast gif](https://github.com/AsetB/OzinsheDemo2/blob/main/ScreenRecording.gif "Screen")
 
 [App Store](https://apps.apple.com/us/app/ozinshe/id1630335072)
 
